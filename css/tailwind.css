@@ -1,0 +1,208 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@source '../node_modules/pliny';
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Core theme configuration */
+@theme {
+  /* Font families */
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-display:
+    var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand colour: electric indigo */
+  --color-primary-50: oklch(0.962 0.018 272.314);
+  --color-primary-100: oklch(0.93 0.034 272.788);
+  --color-primary-200: oklch(0.87 0.065 274.039);
+  --color-primary-300: oklch(0.785 0.115 274.713);
+  --color-primary-400: oklch(0.673 0.182 276.935);
+  --color-primary-500: oklch(0.585 0.233 277.117);
+  --color-primary-600: oklch(0.511 0.262 276.966);
+  --color-primary-700: oklch(0.457 0.24 277.023);
+  --color-primary-800: oklch(0.398 0.195 277.366);
+  --color-primary-900: oklch(0.359 0.144 278.697);
+  --color-primary-950: oklch(0.257 0.09 281.288);
+
+  /* Cool slate greys */
+  --color-gray-50: oklch(0.984 0.003 247.858);
+  --color-gray-100: oklch(0.968 0.007 247.896);
+  --color-gray-200: oklch(0.929 0.013 255.508);
+  --color-gray-300: oklch(0.869 0.022 252.894);
+  --color-gray-400: oklch(0.704 0.04 256.788);
+  --color-gray-500: oklch(0.554 0.046 257.417);
+  --color-gray-600: oklch(0.446 0.043 257.281);
+  --color-gray-700: oklch(0.372 0.044 257.287);
+  --color-gray-800: oklch(0.279 0.041 260.031);
+  --color-gray-900: oklch(0.208 0.042 265.755);
+  --color-gray-950: oklch(0.145 0.03 266.5);
+
+  /* Line heights */
+  --line-height-11: 2.75rem;
+  --line-height-12: 3rem;
+  --line-height-13: 3.25rem;
+  --line-height-14: 3.5rem;
+
+  /* Z-index values */
+  --z-60: 60;
+  --z-70: 70;
+  --z-80: 80;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  .dark *,
+  .dark ::after,
+  .dark ::before {
+    border-color: var(--color-gray-800, currentColor);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  a,
+  button {
+    outline-color: var(--color-primary-500);
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid;
+    border-radius: var(--radius-sm);
+    outline-color: var(--color-primary-500);
+  }
+}
+
+@layer utilities {
+  .prose {
+    & :where(a):not(:where(.not-prose *)) {
+      color: var(--color-primary-600);
+      text-underline-offset: 3px;
+      &:hover {
+        color: var(--color-primary-700);
+      }
+      & code {
+        color: var(--color-primary-500);
+      }
+    }
+    & :where(h1, h2) {
+      font-weight: 700;
+      letter-spacing: var(--tracking-tight);
+      scroll-margin-top: 6rem;
+    }
+    & :where(h3, h4) {
+      font-weight: 600;
+      scroll-margin-top: 6rem;
+    }
+    & :where(code):not(pre code) {
+      color: var(--color-primary-600);
+    }
+    /* Plain markdown tables get the same look as <ComparisonTable /> */
+    & :where(table):not(:where(.not-prose *)) {
+      font-size: 0.9rem;
+    }
+    & :where(thead th):not(:where(.not-prose *)) {
+      /* works in light and dark mode (dark:prose-invert cannot be targeted from plain CSS) */
+      background: color-mix(in oklab, var(--color-gray-500) 10%, transparent);
+      padding: 0.6rem 0.75rem;
+    }
+    & :where(tbody td):not(:where(.not-prose *)) {
+      padding: 0.6rem 0.75rem;
+    }
+  }
+
+  /* Dark mode overrides for the rules above (`dark:prose-invert` is applied via the .dark class) */
+  .dark .prose {
+    & :where(a):not(:where(.not-prose *)) {
+      color: var(--color-primary-400);
+      &:hover {
+        color: var(--color-primary-300);
+      }
+      & code {
+        color: var(--color-primary-300);
+      }
+    }
+    & :where(h1, h2, h3, h4, h5, h6) {
+      color: var(--color-gray-100);
+    }
+    & :where(code):not(pre code) {
+      color: var(--color-primary-300);
+    }
+  }
+}
+
+/* Subtle dotted grid used behind hero sections */
+.bg-grid {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-gray-400) 35%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+.task-list-item::before {
+  @apply hidden;
+}
+
+.task-list-item {
+  @apply list-none;
+}
+
+.footnotes {
+  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+}
+
+.data-footnote-backref {
+  @apply no-underline;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
+}
+
+.content-header-link {
+  opacity: 0;
+  margin-left: -24px;
+  padding-right: 4px;
+}
+
+.content-header:hover .content-header-link,
+.content-header-link:hover {
+  opacity: 1;
+}
+
+.linkicon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Keep an empty AdSense slot from leaving a hole in the layout */
+ins.adsbygoogle[data-ad-status='unfilled'] {
+  display: none !important;
+}
