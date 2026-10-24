@@ -47,11 +47,12 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative -mx-4 overflow-hidden px-4 pt-14 pb-14 sm:-mx-6 sm:px-6 sm:pt-20 sm:pb-20 lg:-mx-8 lg:px-8">
-        <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
-        <div className="from-primary-400/25 absolute top-0 left-1/2 -z-10 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-gradient-to-r via-cyan-400/20 to-fuchsia-400/20 blur-3xl" />
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
+      {/* Hero: full-bleed banner that breaks out of the page container (main clips the overflow) */}
+      <section className="from-primary-50/80 relative isolate mb-14 ml-[calc(50%-50vw)] w-screen overflow-hidden border-b border-gray-200 bg-gradient-to-b via-white to-white dark:border-gray-800 dark:from-gray-900 dark:via-gray-950 dark:to-gray-950">
+        <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black_35%,transparent_80%)]" />
+        <div className="from-primary-400/25 absolute -top-24 -left-24 -z-10 h-96 w-[40rem] rounded-full bg-gradient-to-r to-fuchsia-400/20 blur-3xl" />
+        <div className="absolute -top-16 -right-24 -z-10 h-96 w-[40rem] rounded-full bg-gradient-to-l from-cyan-400/25 to-violet-400/15 blur-3xl" />
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pt-14 pb-16 sm:px-6 sm:pt-20 sm:pb-24 lg:grid-cols-[1.05fr_1fr] lg:px-8">
           <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left">
             <p className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/70 px-3 py-1 text-xs font-medium text-gray-600 backdrop-blur dark:border-gray-800 dark:bg-gray-900/70 dark:text-gray-300">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Independent reviews · No
@@ -93,7 +94,7 @@ export default function Home() {
               width={1867}
               height={1307}
               priority
-              sizes="(min-width: 1024px) 520px, (min-width: 640px) 576px, 100vw"
+              sizes="(min-width: 1280px) 600px, (min-width: 1024px) 45vw, (min-width: 640px) 576px, 100vw"
               className="h-auto w-full rounded-3xl shadow-2xl ring-1 shadow-gray-900/20 ring-gray-900/10 dark:ring-white/10"
             />
           </div>

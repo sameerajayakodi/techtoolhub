@@ -134,7 +134,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </a>
             <div className="flex min-h-screen flex-col">
               <Header />
-              <main id="main" className="flex-1">
+              <main id="main" className="flex-1 overflow-x-clip">
                 <SectionContainer>{children}</SectionContainer>
               </main>
               <Footer />
