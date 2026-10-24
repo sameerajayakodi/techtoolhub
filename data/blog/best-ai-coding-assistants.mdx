@@ -1,0 +1,311 @@
+---
+title: '6 Best AI Coding Assistants in 2026, Compared'
+date: '2026-10-24'
+lastmod: '2026-10-24'
+summary: 'Claude Code, Cursor, GitHub Copilot, OpenAI Codex, Google Antigravity and Devin Desktop compared on price, features and who each one suits best.'
+category: developer-tools
+format: listicle
+tags: ['ai coding', 'developer productivity', 'claude code', 'cursor', 'github copilot', 'best of']
+verdict: 'Claude Code and Codex are the strongest agents, Cursor is the best AI editor, and GitHub Copilot is the best value.'
+featured: true
+affiliate: false
+authors: ['default']
+draft: false
+---
+
+AI coding assistants have moved far beyond autocomplete. In 2026 the leading tools are **agents**: they read your codebase, plan a change across many files, run tests and open a pull request. They are also priced very differently, from free to $200 a month.
+
+We compared the six assistants developers talk about most, using each vendor's official pricing page, product documentation and recent independent comparisons (sources at the end). Prices were checked in **October 2026**.
+
+<Callout type="success" title="Our picks at a glance">
+  **Best coding agent:** Claude Code · **Best AI code editor:** Cursor · **Best value:** GitHub
+  Copilot · **Best if you already pay for ChatGPT:** OpenAI Codex · **Best free option:** Google
+  Antigravity · **Best for running many agents:** Devin Desktop (formerly Windsurf)
+</Callout>
+
+## Quick comparison
+
+<ComparisonTable
+  columns={['Tool', 'Type', 'Free plan', 'Entry paid plan', 'Works in', 'Best for']}
+  highlightRow={0}
+  highlightLabel="Top pick"
+  rows={[
+    [
+      '1. Claude Code',
+      'Agent (CLI + IDE)',
+      false,
+      '$20/mo (Claude Pro)',
+      'Terminal, VS Code, JetBrains, desktop, web',
+      'Complex multi-file work',
+    ],
+    [
+      '2. Cursor',
+      'AI-native editor',
+      true,
+      '$30/mo (Premium)',
+      'Own editor (VS Code-based)',
+      'Developers who want AI in the editor',
+    ],
+    [
+      '3. GitHub Copilot',
+      'Assistant + agent',
+      true,
+      '$10/mo (Pro)',
+      'VS Code, JetBrains, Visual Studio, CLI, GitHub',
+      'Best value, GitHub teams',
+    ],
+    [
+      '4. OpenAI Codex',
+      'Agent (CLI + cloud)',
+      false,
+      '$20/mo (ChatGPT Plus)',
+      'Terminal, IDE, web, iOS',
+      'ChatGPT subscribers',
+    ],
+    [
+      '5. Google Antigravity',
+      'Agent-first IDE',
+      true,
+      '$19.99/mo (Google AI Pro)',
+      'Own desktop app + CLI',
+      'Free agentic coding',
+    ],
+    [
+      '6. Devin Desktop',
+      'Editor + agent hub',
+      true,
+      '$20/mo (Pro)',
+      'Own editor, JetBrains plugin',
+      'Managing several agents',
+    ],
+  ]}
+  caption="Prices in USD, checked October 2026."
+/>
+
+<AdSense placement="inArticle" />
+
+## How we chose
+
+- We looked only at tools that are actively developed and widely used in 2026.
+- Each tool was compared on **agent capability** (multi-file edits, running commands, opening PRs), **editor support**, **pricing and limits**, and **model choice**.
+- Facts come from official pricing and product pages; rankings are our editorial judgement based on that research and independent comparisons. Read our [review process](/how-we-review).
+
+{/* TIP: add your own hands-on notes to each entry (what you built, how it went). First-hand experience makes the article more useful and helps it rank. */}
+
+## 1. Claude Code: best coding agent
+
+<ProductCard
+  rank={1}
+  name="Claude Code"
+  rating={4.8}
+  badge="Best coding agent"
+  bestFor="Complex, multi-file changes"
+  price="Included with Claude Pro ($20/mo, $17 yearly) and Max (from $100/mo)"
+  url="https://claude.com/pricing"
+  ctaText="See Claude plans"
+  pros={[
+    'Very strong at planning and executing multi-file changes',
+    'Works in the terminal, VS Code, JetBrains, desktop and web',
+    'Hooks, skills and scheduled tasks for automation',
+  ]}
+  cons={['No free tier for Claude Code', 'Heavy users will need the $100+ Max plan']}
+>
+  Anthropic's Claude Code is an agent that lives in your terminal and IDE. You describe a task, and
+  it explores the repository, edits files, runs your tests and iterates until the job is done.
+  Independent comparisons consistently rank it, alongside Codex, as one of the two most complete
+  coding agents available.
+</ProductCard>
+
+Claude Code is included in **Claude Pro** ($20/month or $17/month billed yearly) and **Max** (from $100/month for 5× or 20× Pro usage). It is not available on the free Claude plan.
+
+## 2. Cursor: best AI code editor
+
+<ProductCard
+  rank={2}
+  name="Cursor"
+  rating={4.6}
+  badge="Best AI editor"
+  bestFor="Developers who want AI built into the editor"
+  price="Free · Premium $30/mo · Super $100/mo · Ultra $200/mo"
+  url="https://cursor.com/pricing"
+  ctaText="See Cursor plans"
+  pros={[
+    'Polished VS Code-based editor with deep AI integration',
+    'Cloud agents, automations and Bugbot code review on Premium',
+    'Excellent tab completion and multi-file edits',
+  ]}
+  cons={[
+    'Pricing changed significantly after the SpaceX/xAI acquisition',
+    'Third-party models are billed separately at API prices',
+    'The $8 Plus plan only includes Grok models',
+  ]}
+>
+  Cursor is an AI-first fork of VS Code and is widely regarded as the strongest AI-native editor.
+  After its parent company Anysphere was acquired by SpaceX in August 2026, Cursor moved to new
+  plans that share usage with Grok.
+</ProductCard>
+
+The new line-up is **Free**, **Plus** ($8/month, Grok models only), **Premium** ($30/month, 4× Plus usage, cloud agents and Bugbot), **Super** ($100/month) and **Ultra** ($200/month). On Premium and above, Claude, GPT and Gemini models are available but billed separately at API list prices, so check the [pricing page](https://cursor.com/pricing) before you commit.
+
+## 3. GitHub Copilot: best value
+
+<ProductCard
+  rank={3}
+  name="GitHub Copilot"
+  rating={4.6}
+  badge="Best value"
+  bestFor="Most developers and GitHub-based teams"
+  price="Free · Pro $10/mo · Pro+ $39/mo · Max $100/mo"
+  url="https://github.com/features/copilot/plans"
+  ctaText="See Copilot plans"
+  pros={[
+    'Cheapest serious paid plan at $10/month',
+    'Works in almost every editor plus the CLI and GitHub.com',
+    'Access to 30+ models from Anthropic, OpenAI, Google and others',
+    'Cloud agent turns issues into pull requests',
+  ]}
+  cons={[
+    'Free plan caps inline suggestions at 2,000 per month',
+    'Delegating to Claude or Codex agents needs Pro+ or Max',
+  ]}
+>
+  GitHub Copilot is the easiest assistant to adopt: it plugs into VS Code, JetBrains, Visual Studio
+  and the terminal, and integrates tightly with GitHub issues, pull requests and code review.
+</ProductCard>
+
+Copilot now uses **AI credits** (1 credit = $0.01). **Pro** ($10/month) includes $15 of credits, the cloud agent and pull-request code review. **Pro+** ($39/month) adds delegation to third-party agents like Claude and Codex, and **Max** ($100/month) includes $200 of credits.
+
+## 4. OpenAI Codex: best if you already pay for ChatGPT
+
+<ProductCard
+  rank={4}
+  name="OpenAI Codex"
+  rating={4.6}
+  badge="Best for ChatGPT users"
+  bestFor="ChatGPT Plus and Pro subscribers"
+  price="Included with ChatGPT Plus ($20/mo) and Pro ($100 or $200/mo)"
+  url="https://openai.com/codex/"
+  ctaText="Learn about Codex"
+  pros={[
+    'No extra subscription if you already have ChatGPT Plus',
+    'Runs locally in the CLI/IDE or as cloud tasks',
+    'One of the most capable agents in independent comparisons',
+  ]}
+  cons={[
+    'Cloud tasks are limited per 5-hour window on Plus',
+    'Go plan does not unlock cloud task delegation',
+  ]}
+>
+  Codex is OpenAI's coding agent. It is not sold separately for interactive use; instead it is
+  bundled into ChatGPT plans and works across the web app, a CLI, IDE extensions and iOS.
+</ProductCard>
+
+If you already pay $20/month for [ChatGPT Plus](/blog/chatgpt-vs-claude-vs-gemini), Codex is effectively free to try. The $100 Pro plan (launched April 2026) gives 5× Plus's Codex usage, and the $200 Pro plan gives 20×.
+
+## 5. Google Antigravity: best free option
+
+<ProductCard
+  rank={5}
+  name="Google Antigravity"
+  rating={4.3}
+  badge="Best free"
+  bestFor="Trying agentic coding for free"
+  price="Free (weekly limits) · Google AI Pro $19.99/mo · AI Ultra from $99.99/mo"
+  url="https://antigravity.google/"
+  ctaText="Try Antigravity"
+  pros={[
+    'Genuinely usable free tier with unlimited tab completions',
+    'Agent-first desktop app and CLI',
+    'Higher limits come with Google AI Pro (which also includes 5 TB storage)',
+  ]}
+  cons={[
+    'Free tier drops non-Gemini models on November 2, 2026',
+    'Quota is based on agent work, so limits can be hard to predict',
+  ]}
+>
+  Antigravity is Google's agent-first development environment. Google's newest Gemini 4 Argon model
+  arrived there first for Ultra subscribers in October 2026.
+</ProductCard>
+
+## 6. Devin Desktop (formerly Windsurf): best for running many agents
+
+<ProductCard
+  rank={6}
+  name="Devin Desktop"
+  rating={4.2}
+  bestFor="Developers who want to manage several agents"
+  price="Free · Pro $20/mo · Max $200/mo · Teams $80/mo + $40/seat"
+  url="https://devin.ai/desktop"
+  ctaText="See Devin Desktop"
+  pros={[
+    'Agent command center with Kanban view for many agents',
+    'Local and cloud sessions with shared context',
+    'Supports third-party agents via Agent Client Protocol',
+  ]}
+  cons={[
+    'Recent rename and agent changes mean older tutorials are outdated',
+    'Big jump from $20 Pro to $200 Max',
+  ]}
+>
+  Cognition renamed Windsurf to Devin Desktop in June 2026. It keeps the Windsurf editor and adds a
+  command center for running and reviewing multiple local and cloud agents.
+</ProductCard>
+
+## How to choose the right AI coding assistant
+
+### Agent or editor?
+
+If you want an assistant that takes a task and finishes it, choose an **agent** such as Claude Code or Codex. If you prefer to stay in control and accept suggestions as you type, an **AI editor** like Cursor or Copilot in VS Code will feel more natural. Many developers use one of each.
+
+### Check how usage is measured
+
+Every tool now meters usage differently: Copilot uses AI credits, Cursor shares a usage pool with Grok, and Claude, ChatGPT and Google plans use rolling limits. Start on the cheapest plan and upgrade only when you hit limits.
+
+### Privacy and company code
+
+Before using any assistant on work code, check your employer's policy and the vendor's data-retention terms. Business and Enterprise plans usually add admin controls, SSO and stricter data handling.
+
+## Final verdict
+
+<Verdict
+  rating={4.8}
+  title="Our top pick"
+  bestFor="Developers who want an agent that can finish real tasks"
+  ctaText="See Claude plans"
+  ctaHref="https://claude.com/pricing"
+>
+  **Claude Code** is our top pick for serious agentic coding, with **Codex** a close equal if you
+  already pay for ChatGPT. Prefer an AI editor? Choose **Cursor**. On a budget, **GitHub Copilot
+  Pro** at $10/month is the best value, and **Google Antigravity** is the best way to start for
+  free.
+</Verdict>
+
+## FAQ
+
+### What is the best AI coding assistant in 2026?
+
+For agentic work across many files, Claude Code and OpenAI Codex are the strongest options. Cursor is the best AI-native editor, and GitHub Copilot offers the best value at $10/month.
+
+### Is there a free AI coding assistant?
+
+Yes. Google Antigravity, GitHub Copilot Free, Cursor Free and Devin Desktop Free all have free tiers with usage limits. Antigravity's free tier is the most generous for agent-style work.
+
+### Is GitHub Copilot better than Cursor?
+
+Copilot is cheaper and works in more editors. Cursor offers a more deeply integrated AI editing experience. If you use JetBrains IDEs or want the lowest price, choose Copilot; if you are happy in a VS Code-based editor and want the most polished AI editor, choose Cursor.
+
+### Do I need ChatGPT Plus to use Codex?
+
+For the full experience, yes. Codex is included with ChatGPT Plus ($20/month) and Pro. You can also use the Codex CLI with an API key, billed per token.
+
+## Sources
+
+- [Claude plans and pricing](https://claude.com/pricing) (Anthropic)
+- [Cursor pricing](https://cursor.com/pricing) (Cursor)
+- [GitHub Copilot plans](https://github.com/features/copilot/plans) (GitHub)
+- [Devin Desktop](https://devin.ai/desktop) (Cognition)
+- [Google AI plans](https://gemini.google/subscriptions/) (Google)
+- [Codex pricing in 2026](https://eesel.ai/blog/codex-pricing) (eesel AI)
+- [Google Antigravity pricing](https://www.cloudzero.com/blog/google-antigravity-pricing/) (CloudZero)
+- [Best AI coding assistants 2026](https://scrimba.com/articles/best-ai-coding-assistants-2026/) (Scrimba)
+- [Cursor (company)](<https://en.wikipedia.org/wiki/Cursor_(company)>) (Wikipedia)

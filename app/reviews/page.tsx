@@ -3,27 +3,30 @@ import PostExplorer from '@/components/PostExplorer'
 import { genPageMetadata } from 'app/seo'
 import { getCards } from '@/lib/posts'
 
+// Everything that evaluates tools: single-product reviews, head-to-head comparisons and "best of" lists
+const reviewFormats = ['review', 'comparison', 'listicle']
+
 export const metadata = genPageMetadata({
-  title: 'In-Depth Software Reviews',
+  title: 'Software Reviews & Comparisons',
   description:
-    'Every hands-on review we have published, with scores, pros and cons, pricing and a clear verdict.',
+    'Every review, head-to-head comparison and best-of list we have published, with pros and cons, pricing and a clear verdict.',
   path: '/reviews',
 })
 
 export default function ReviewsPage() {
-  const posts = getCards((p) => p.format === 'review')
+  const posts = getCards((p) => reviewFormats.includes(p.format))
   return (
     <>
       <PageHero
         eyebrow="Reviews"
-        title="In-depth reviews"
-        description="Scored, hands-on reviews with pros and cons, pricing and a clear verdict. Sort by top rated to see our favourites."
+        title="Reviews & comparisons"
+        description="Product reviews, head-to-head comparisons and best-of lists with pros and cons, pricing and a clear verdict."
         breadcrumb={[
           { name: 'Home', href: '/' },
           { name: 'Reviews', href: '/reviews' },
         ]}
       />
-      <PostExplorer posts={posts} showTypeFilter={false} />
+      <PostExplorer posts={posts} />
     </>
   )
 }
