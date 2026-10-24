@@ -9,7 +9,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   // Change this when you add a custom domain (or set NEXT_PUBLIC_SITE_URL on Vercel)
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://techtoolhub.vercel.app',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://techtoolhub-phi.vercel.app',
   siteRepo: 'https://github.com/sameerajayakodi/techtoolhub',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/opengraph-image`,

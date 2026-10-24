@@ -162,7 +162,7 @@ git push -u origin main
 
 1. Go to <https://vercel.com/new> → **Import** the `techtoolhub` repo.
 2. Framework preset: **Next.js** (auto-detected). Keep the default build command and output.
-3. **Project name: `techtoolhub`**. This gives you `https://techtoolhub.vercel.app` (if the name is taken, pick another and update `NEXT_PUBLIC_SITE_URL`).
+3. **Project name: `techtoolhub`**. `techtoolhub.vercel.app` was already taken, so Vercel assigned `https://techtoolhub-phi.vercel.app` (the default `siteUrl` in `data/siteMetadata.js`).
 4. Optional: add environment variables from `.env.example`.
 5. Click **Deploy**. Every `git push` to `main` now redeploys automatically, and pull requests get preview URLs (previews are `noindex` automatically).
 
@@ -177,7 +177,7 @@ vercel --prod
 
 ### 4.3 After the first deploy
 
-1. **Google Search Console** → add the property `https://techtoolhub.vercel.app` → HTML-tag method → put the token in `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` on Vercel → redeploy → verify → submit `https://techtoolhub.vercel.app/sitemap.xml`.
+1. **Google Search Console** → add the property `https://techtoolhub-phi.vercel.app` → HTML-tag method → put the token in `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` on Vercel → redeploy → verify → submit `https://techtoolhub-phi.vercel.app/sitemap.xml`.
 2. **Google AdSense** (apply once you have ~15–20 quality articles plus the About, Contact and Privacy pages, which are already built):
    - Set `NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX` on Vercel and redeploy. That loads the script, the `google-adsense-account` meta tag and `/ads.txt`.
    - Optionally create display ad units and set the `NEXT_PUBLIC_ADSENSE_SLOT_*` variables to fill the top, in-article, bottom, sidebar and home slots. Without slot IDs, turn on **Auto ads** in AdSense.
