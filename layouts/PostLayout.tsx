@@ -4,6 +4,7 @@ import type { Blog, Authors } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import Image from '@/components/Image'
+import NextImage from 'next/image'
 import Tag from '@/components/Tag'
 import AdSense from '@/components/AdSense'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
@@ -15,7 +16,7 @@ import CTAButton from '@/components/mdx/CTAButton'
 import { ClockIcon, InfoIcon, ShieldIcon } from '@/components/icons'
 import siteMetadata from '@/data/siteMetadata'
 import { getCategory } from '@/data/categories'
-import type { PostCardData } from '@/lib/posts'
+import { getPostImage, type PostCardData } from '@/lib/posts'
 import type { Product } from '@/lib/structured-data'
 
 const dateFmt: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' }
@@ -87,6 +88,7 @@ export default function PostLayout({
   const cat = getCategory(category)
   const isReview = format === 'review' && typeof content.rating === 'number'
   const tocItems = (toc ?? []) as TocItem[]
+  const cover = getPostImage(content.images)
 
   return (
     <>
@@ -171,6 +173,18 @@ export default function PostLayout({
             )}
           </div>
           {isReview && <ReviewSummary content={content} />}
+          {cover && (
+            <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
+              <NextImage
+                src={cover}
+                alt={title}
+                fill
+                priority
+                sizes="(min-width: 1152px) 1088px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          )}
         </header>
 
         {content.affiliate && (

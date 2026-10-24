@@ -1,8 +1,17 @@
 {
-  "ai-writing": 1,
-  "content-marketing": 1,
-  "novawrite": 1,
   "ai-coding": 1,
   "developer-productivity": 1,
-  "best-of": 1
+  "claude-code": 1,
+  "cursor": 1,
+  "github-copilot": 1,
+  "best-of": 2,
+  "note-taking": 1,
+  "notion": 1,
+  "obsidian": 1,
+  "productivity-apps": 1,
+  "chatgpt": 1,
+  "claude": 1,
+  "gemini": 1,
+  "ai-assistants": 1,
+  "comparison": 1
 }

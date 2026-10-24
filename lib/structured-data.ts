@@ -2,6 +2,7 @@ import type { Blog, Authors } from 'contentlayer/generated'
 import type { CoreContent } from 'pliny/utils/contentlayer'
 import siteMetadata from '@/data/siteMetadata'
 import { getCategory } from '@/data/categories'
+import { getPostImage } from '@/lib/posts'
 
 const siteUrl = siteMetadata.siteUrl.replace(/\/$/, '')
 const abs = (path: string) => (path.startsWith('http') ? path : `${siteUrl}${path}`)
@@ -61,7 +62,9 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
  */
 export function postJsonLd(post: CoreContent<Blog>, authors: CoreContent<Authors>[]) {
   const url = abs(`/${post.path}`)
-  const image = abs(`/og/${post.slug}`)
+  // Cover image first (Google Discover prefers large images), then the branded social card
+  const cover = getPostImage(post.images)
+  const image = [cover && abs(cover), abs(`/og/${post.slug}`)].filter(Boolean)
   const category = getCategory(post.category)
   const author = authors.map((a) => ({
     '@type': 'Person',

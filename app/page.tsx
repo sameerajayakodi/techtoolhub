@@ -1,4 +1,5 @@
 import Link from '@/components/Link'
+import Image from 'next/image'
 import { ArticleGrid } from '@/components/ArticleCard'
 import AdSense from '@/components/AdSense'
 import { KBarButton } from 'pliny/search/KBarButton'
@@ -47,40 +48,54 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative -mx-4 overflow-hidden px-4 pt-16 pb-14 sm:-mx-6 sm:px-6 sm:pt-24 sm:pb-20 lg:-mx-8 lg:px-8">
+      <section className="relative -mx-4 overflow-hidden px-4 pt-14 pb-14 sm:-mx-6 sm:px-6 sm:pt-20 sm:pb-20 lg:-mx-8 lg:px-8">
         <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
         <div className="from-primary-400/25 absolute top-0 left-1/2 -z-10 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-gradient-to-r via-cyan-400/20 to-fuchsia-400/20 blur-3xl" />
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/70 px-3 py-1 text-xs font-medium text-gray-600 backdrop-blur dark:border-gray-800 dark:bg-gray-900/70 dark:text-gray-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Independent reviews ·
-            Tested hands-on
-          </p>
-          <h1 className="font-display mt-6 text-4xl leading-[1.1] font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
-            Find the right tech tools,{' '}
-            <span className="from-primary-600 bg-gradient-to-r via-violet-500 to-cyan-500 bg-clip-text text-transparent">
-              without the guesswork
-            </span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
-            {siteMetadata.description}
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <KBarButton
-              aria-label="Search articles"
-              className="hover:border-primary-400 flex w-full max-w-md items-center gap-3 rounded-2xl border border-gray-300 bg-white px-4 py-3.5 text-left text-gray-500 shadow-sm transition hover:shadow-md sm:w-96 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400"
-            >
-              <SearchIcon className="h-5 w-5" />
-              <span className="flex-1 text-sm">Search reviews, e.g. “AI writing”</span>
-              <kbd className="rounded border border-gray-200 px-1.5 text-[11px] dark:border-gray-700">
-                Ctrl K
-              </kbd>
-            </KBarButton>
-            <Link
-              href="/reviews"
-              className="inline-flex items-center gap-2 rounded-2xl bg-gray-900 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
-            >
-              Browse reviews <ArrowRightIcon className="h-4 w-4" />
-            </Link>
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
+          <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left">
+            <p className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/70 px-3 py-1 text-xs font-medium text-gray-600 backdrop-blur dark:border-gray-800 dark:bg-gray-900/70 dark:text-gray-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Independent reviews · No
+              paid rankings
+            </p>
+            <h1 className="font-display mt-6 text-4xl leading-[1.1] font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl dark:text-white">
+              Find the right tech tools,{' '}
+              <span className="from-primary-600 bg-gradient-to-r via-violet-500 to-cyan-500 bg-clip-text text-transparent">
+                without the guesswork
+              </span>
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+              {siteMetadata.description}
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+              <KBarButton
+                aria-label="Search articles"
+                className="hover:border-primary-400 flex w-full max-w-md items-center gap-3 rounded-2xl border border-gray-300 bg-white px-4 py-3.5 text-left text-gray-500 shadow-sm transition hover:shadow-md sm:w-80 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400"
+              >
+                <SearchIcon className="h-5 w-5" />
+                <span className="flex-1 truncate text-sm">Search reviews, e.g. “AI writing”</span>
+                <kbd className="rounded border border-gray-200 px-1.5 text-[11px] dark:border-gray-700">
+                  Ctrl K
+                </kbd>
+              </KBarButton>
+              <Link
+                href="/reviews"
+                className="inline-flex items-center gap-2 rounded-2xl bg-gray-900 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+              >
+                Browse reviews <ArrowRightIcon className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
+            <div className="from-primary-500/30 absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr to-cyan-400/20 blur-2xl" />
+            <Image
+              src="/static/images/site/hero.webp"
+              alt="Illustration of a TechToolHub review dashboard with ratings, a comparison table and top picks by category"
+              width={1867}
+              height={1307}
+              priority
+              sizes="(min-width: 1024px) 520px, (min-width: 640px) 576px, 100vw"
+              className="h-auto w-full rounded-3xl shadow-2xl ring-1 shadow-gray-900/20 ring-gray-900/10 dark:ring-white/10"
+            />
           </div>
         </div>
       </section>
