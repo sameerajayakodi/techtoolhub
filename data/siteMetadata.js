@@ -48,10 +48,11 @@ const siteMetadata = {
   },
 
   analytics: {
-    // Loads in production only, and only when the env variable is set.
+    // Google Analytics 4 (gtag.js). Loads in production builds only, so local dev visits aren't counted.
+    // Override with NEXT_PUBLIC_GA_ID; set it to "off" to disable.
     // If you add another provider, also allow its domain in the CSP in `next.config.js`.
-    ...(process.env.NEXT_PUBLIC_GA_ID && {
-      googleAnalytics: { googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID }, // e.g. G-XXXXXXX
+    ...((process.env.NEXT_PUBLIC_GA_ID || 'G-4KV56L6QE8') !== 'off' && {
+      googleAnalytics: { googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID || 'G-4KV56L6QE8' },
     }),
   },
 
