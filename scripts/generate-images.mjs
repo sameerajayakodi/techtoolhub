@@ -351,6 +351,138 @@ const images = {
       { glows: [[1450, 120, 260, C.emerald, 0.3], [150, 820, 260, C.lime, 0.22]] }
     ),
 
+  // November 2026 trending articles ─────────────────────────────────────────
+  'blog/gpt-6-chatgpt-whats-new/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'GPT-6 · INTELLIGENT UI', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${windowCard(150, 160, 1300, 660, { title: 'ChatGPT', accent: C.emerald })}
+      ${rect(1050, 250, 360, 64, C.emerald, 18, 'fill-opacity="0.22"')}
+      ${lines(1076, 268, [300, 190], { fill: C.emerald, op: 0.9 })}
+      <g filter="url(#soft)">${rect(200, 350, 560, 420, C.card2, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
+      ${text(232, 400, 'Price vs features', { size: 24, weight: 700 })}
+      ${[0.45, 0.7, 0.55, 0.9, 0.8].map((v, i) => rect(250 + i * 96, 720 - v * 260, 60, v * 260, [C.emerald, C.teal, C.sky, C.emerald, C.lime][i], 10)).join('')}
+      <path d="M232 722 H730" stroke="${C.line}" stroke-width="2"/>
+      <g filter="url(#soft)">${rect(800, 350, 610, 200, C.card2, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
+      ${text(832, 398, 'Plan your trip', { size: 24, weight: 700 })}
+      <path d="M840 500 C 920 430 1000 520 1080 450 S 1240 470 1360 420" stroke="${C.sky}" stroke-width="5" fill="none" stroke-dasharray="2 12" stroke-linecap="round"/>
+      <circle cx="840" cy="500" r="12" fill="${C.emerald}"/><circle cx="1360" cy="420" r="12" fill="${C.rose}"/>
+      <g filter="url(#soft)">${rect(800, 580, 610, 190, C.card2, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
+      ${text(832, 628, 'Quick actions', { size: 24, weight: 700 })}
+      ${['Compare', 'Book', 'Save'].map((b, i) => `${rect(832 + i * 190, 660, 170, 64, i === 0 ? C.emerald : '#0f1529', 16, i === 0 ? '' : `stroke="${C.line}" stroke-width="2"`)}${text(917 + i * 190, 701, b, { size: 22, weight: 700, anchor: 'middle', fill: i === 0 ? '#04291d' : C.text })}`).join('')}`,
+      { glows: [[1400, 120, 320, C.emerald, 0.45], [200, 820, 300, C.teal, 0.35]] }
+    ),
+
+  'blog/gemini-4-argon-explained/cover': () =>
+    frame(
+      1600,
+      900,
+      `${windowCard(250, 130, 1100, 680, { title: 'Gemini', accent: C.blue })}
+      ${rect(300, 220, 420, 64, '#0f1529', 32, `stroke="${C.line}" stroke-width="2"`)}
+      ${rect(306, 226, 204, 52, C.blue, 26)}${text(408, 260, 'Chat', { size: 22, weight: 700, anchor: 'middle', fill: '#fff' })}
+      ${text(615, 260, 'Tasks', { size: 22, weight: 600, anchor: 'middle', fill: C.muted })}
+      <g filter="url(#soft)">${rect(900, 214, 400, 76, C.card2, 18, `stroke="${C.blue}" stroke-opacity="0.6" stroke-width="2"`)}</g>
+      <circle cx="944" cy="252" r="16" fill="url(#brand)"/>
+      ${text(972, 260, 'Gemini 4 Argon', { size: 24, weight: 700 })}
+      <path d="M1262 246 l10 10 l10 -10" stroke="${C.muted}" stroke-width="3" fill="none" stroke-linecap="round"/>
+      ${text(300, 360, 'Task: plan a dinner for six', { size: 26, weight: 700 })}
+      ${[
+        ['Find a recipe for six people', true],
+        ['Add ingredients to grocery order', true],
+        ['Book a table for Saturday', true],
+        ['Send the plan to the group', false],
+      ]
+        .map(([t, done], i) => `${rect(300, 400 + i * 88, 1000, 70, C.card2, 16)}
+          ${done ? check(340, 435 + i * 88, 16, C.blue) : `<circle cx="340" cy="${435 + i * 88}" r="16" fill="none" stroke="${C.blue}" stroke-width="3" stroke-dasharray="6 5"/>`}
+          ${text(376, 443 + i * 88, t, { size: 22, weight: 500, fill: done ? C.text : C.muted })}`)
+        .join('')}
+      ${text(300, 780, 'Works in the background · 40+ connected apps', { size: 20, fill: C.muted, weight: 500 })}`,
+      { glows: [[1350, 120, 320, C.blue, 0.5], [250, 800, 300, C.violet, 0.4]] }
+    ),
+
+  'blog/google-antigravity-free-tier-changes/cover': () =>
+    frame(
+      1600,
+      900,
+      `${windowCard(220, 140, 860, 640, { title: 'Models · Free plan', accent: C.sky })}
+      ${[
+        ['Gemini 3.8 Flash', 'keep'],
+        ['Claude Sonnet 4.6', 'gone'],
+        ['Claude Opus 4.6', 'gone'],
+        ['GPT-OSS-120b', 'gone'],
+        ['Gemini 4 Argon', 'paid'],
+      ]
+        .map(([m, s], i) => `${rect(260, 230 + i * 104, 780, 82, C.card2, 16)}
+          ${s === 'keep' ? check(304, 271 + i * 104, 17) : s === 'gone' ? cross(304, 271 + i * 104, 17) : `<circle cx="304" cy="${271 + i * 104}" r="17" fill="${C.amber}"/>${text(304, 279 + i * 104, '$', { size: 20, weight: 800, anchor: 'middle', fill: '#1f1300' })}`}
+          ${text(340, 280 + i * 104, m, { size: 26, weight: 600, fill: s === 'gone' ? C.muted : C.text, extra: s === 'gone' ? 'text-decoration="line-through"' : '' })}
+          ${pill(s === 'keep' ? 880 : s === 'paid' ? 890 : 840, 251 + i * 104, s === 'keep' ? 'Stays' : s === 'paid' ? 'Paid' : 'Removed', { fill: s === 'keep' ? 'rgba(16,185,129,0.18)' : s === 'paid' ? 'rgba(245,158,11,0.18)' : 'rgba(244,63,94,0.18)', color: s === 'keep' ? '#34d399' : s === 'paid' ? C.amber : '#fb7185', size: 17, h: 40, padX: 14 })}`)
+        .join('')}
+      <g filter="url(#shadow)">${rect(1150, 230, 280, 300, '#ffffff', 28)}</g>
+      ${rect(1150, 230, 280, 90, C.rose, 28)}${rect(1150, 290, 280, 30, C.rose)}
+      ${text(1290, 290, 'NOV', { size: 38, weight: 800, anchor: 'middle', fill: '#fff' })}
+      ${text(1290, 470, '2', { size: 150, weight: 800, anchor: 'middle', fill: C.bg1 })}
+      ${text(1290, 600, '2026', { size: 30, weight: 700, anchor: 'middle', fill: C.muted })}`,
+      { glows: [[1350, 150, 320, C.sky, 0.45], [200, 800, 300, C.rose, 0.3]] }
+    ),
+
+  'blog/cursor-new-pricing-explained/cover': () => {
+    const tiers = [
+      ['Free', '$0', 0.18, C.dim],
+      ['Plus', '$8', 0.3, C.sky],
+      ['Premium', '$30', 0.5, C.indigo],
+      ['Super', '$100', 0.72, C.violet],
+      ['Ultra', '$200', 0.95, C.pink],
+    ]
+    return frame(
+      1600,
+      900,
+      `${pill(170, 80, 'CURSOR PRICING · 2026', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${text(170, 190, 'Free → Ultra', { size: 56, weight: 800 })}
+      <path d="M170 790 H1430" stroke="${C.line}" stroke-width="3"/>
+      ${tiers
+        .map(([n, p, v, c], i) => {
+          const x = 190 + i * 250
+          const h = v * 520
+          return `<g filter="url(#soft)">${rect(x, 790 - h, 200, h, c, 22, i === 2 ? 'stroke="#fff" stroke-width="4"' : '')}</g>
+          ${text(x + 100, 790 - h + 62, p, { size: 40, weight: 800, anchor: 'middle', fill: '#fff' })}
+          ${text(x + 100, 830, n, { size: 26, weight: 700, anchor: 'middle' })}
+          ${i === 2 ? pill(x + 8, 790 - h - 60, 'Most popular', { fill: '#fff', color: C.bg1, size: 17, h: 38, padX: 14 }) : ''}`
+        })
+        .join('')}`,
+      { glows: [[1350, 150, 320, C.violet, 0.45], [200, 800, 300, C.sky, 0.35]] }
+    )
+  },
+
+  'blog/chatgpt-ads-how-to-turn-off/cover': () =>
+    frame(
+      1600,
+      900,
+      `${windowCard(150, 140, 780, 660, { title: 'ChatGPT', accent: C.emerald })}
+      ${rect(510, 230, 380, 64, C.emerald, 18, 'fill-opacity="0.22"')}${lines(536, 252, [320, 200], { fill: C.emerald, op: 0.9 })}
+      ${rect(190, 330, 640, 150, C.card2, 18)}${lines(220, 362, [560, 520, 580, 300], { gap: 26 })}
+      <g filter="url(#soft)">${rect(190, 510, 700, 230, '#0f1529', 20, `stroke="${C.amber}" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="10 8"`)}</g>
+      ${pill(214, 532, 'Sponsored', { fill: 'rgba(245,158,11,0.18)', color: C.amber, size: 17, h: 36, padX: 14 })}
+      ${rect(214, 594, 120, 120, C.card2, 16)}
+      ${lines(360, 610, [440, 380, 300], { gap: 30, h: 12 })}
+      ${rect(360, 690, 170, 40, C.amber, 12)}
+      ${[0, 1, 2].map((i) => `<circle cx="${830 + i * 16}" cy="550" r="4" fill="${C.muted}"/>`).join('')}
+      <g filter="url(#shadow)">${rect(990, 230, 470, 470, C.card, 24, `stroke="${C.line}" stroke-width="2"`)}</g>
+      ${text(1030, 296, 'Manage ads', { size: 28, weight: 800 })}
+      ${[
+        ['Ad personalization', false],
+        ['Use past chats & memory', false],
+        ['Ad-free (fewer messages)', true],
+      ]
+        .map(([t, on], i) => `${text(1030, 380 + i * 96, t, { size: 21, weight: 500 })}
+          ${rect(1350, 356 + i * 96, 72, 38, on ? C.emerald : C.line, 19)}
+          <circle cx="${on ? 1403 : 1369}" cy="${375 + i * 96}" r="15" fill="#fff"/>`)
+        .join('')}
+      ${rect(1030, 610, 390, 56, '#2a1520', 14, 'stroke="#fb7185" stroke-opacity="0.5" stroke-width="2"')}
+      ${text(1225, 646, 'Delete ad data', { size: 21, weight: 700, anchor: 'middle', fill: '#fb7185' })}`,
+      { glows: [[1350, 150, 320, C.amber, 0.3], [200, 800, 300, C.emerald, 0.35]] }
+    ),
+
   // Site images ───────────────────────────────────────────────────────────────
   'site/hero': () => {
     const tile = (x, y, name, cat, score, c) => `<g filter="url(#soft)">${rect(x, y, 300, 200, C.card, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
