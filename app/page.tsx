@@ -1,7 +1,7 @@
 import Link from '@/components/Link'
 import Image from 'next/image'
 import { ArticleGrid } from '@/components/ArticleCard'
-import AdSense from '@/components/AdSense'
+import AdSlot from '@/components/AdSlot'
 import { KBarButton } from 'pliny/search/KBarButton'
 import { categories } from '@/data/categories'
 import siteMetadata from '@/data/siteMetadata'
@@ -162,7 +162,7 @@ export default function Home() {
         </section>
       )}
 
-      <AdSense placement="home" className="mt-16" />
+      <AdSlot position="home" className="mt-16" />
 
       {latest.length > 0 && (
         <section className="mt-16">

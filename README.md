@@ -115,21 +115,21 @@ draft: false
 
 ### MDX components (no import needed)
 
-| Component                                                                        | Use for                                                                                   |
-| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `<ProsCons pros={[...]} cons={[...]} />`                                         | Pros & cons boxes                                                                         |
-| `<Verdict rating={4.5} bestFor="..." ctaText="..." ctaHref="...">text</Verdict>` | Final verdict box with score gauge                                                        |
-| `<RatingBadge rating={4.5} />` · `<Stars rating={4.5} />`                        | Inline rating badges                                                                      |
-| `<ScoreBreakdown scores={{ 'Ease of use': 4.5 }} />`                             | Per-criterion score bars                                                                  |
-| `<SpecsTable specs={{ Developer: '...', 'Free plan': 'Yes' }} />`                | Key specs card                                                                            |
-| `<ComparisonTable columns={[...]} rows={[[...]]} highlight={1} />`               | Responsive "X vs Y" table (`true`/`false` → ✓/✗). Use `highlightRow={0}` for ranked lists |
-| `<ProductCard rank={1} name="..." rating={4.7} ... />`                           | Ranked entry in a Top 10 list                                                             |
-| `<CTAButton href="...">Try it</CTAButton>`                                       | Plain outbound button (adds `rel="sponsored nofollow"`)                                   |
-| `<AffiliateButton tool="cursor">Try Cursor</AffiliateButton>`                    | Affiliate button via `/go/cursor` (slugs in `lib/affiliates.ts`)                          |
-| `<ToolCard tool="notion" badge="..." />`                                         | Tool box: name, summary, price, affiliate button                                          |
-| `<VerdictBox picks={[{ who, pick, tool, why }]} />`                              | "Who should pick what" box for the top of buyer-intent articles                           |
-| `<Callout type="info\|tip\|warning\|success" title="...">`                       | Highlighted note                                                                          |
-| `<AdSense placement="inArticle" />`                                              | Manual in-article ad                                                                      |
+| Component                                                                        | Use for                                                                                                      |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `<ProsCons pros={[...]} cons={[...]} />`                                         | Pros & cons boxes                                                                                            |
+| `<Verdict rating={4.5} bestFor="..." ctaText="..." ctaHref="...">text</Verdict>` | Final verdict box with score gauge                                                                           |
+| `<RatingBadge rating={4.5} />` · `<Stars rating={4.5} />`                        | Inline rating badges                                                                                         |
+| `<ScoreBreakdown scores={{ 'Ease of use': 4.5 }} />`                             | Per-criterion score bars                                                                                     |
+| `<SpecsTable specs={{ Developer: '...', 'Free plan': 'Yes' }} />`                | Key specs card                                                                                               |
+| `<ComparisonTable columns={[...]} rows={[[...]]} highlight={1} />`               | Responsive "X vs Y" table (`true`/`false` → ✓/✗). Use `highlightRow={0}` for ranked lists                    |
+| `<ProductCard rank={1} name="..." rating={4.7} ... />`                           | Ranked entry in a Top 10 list                                                                                |
+| `<CTAButton href="...">Try it</CTAButton>`                                       | Plain outbound button (adds `rel="sponsored nofollow"`)                                                      |
+| `<AffiliateButton tool="cursor">Try Cursor</AffiliateButton>`                    | Affiliate button via `/go/cursor` (slugs in `lib/affiliates.ts`)                                             |
+| `<ToolCard tool="notion" badge="..." />`                                         | Tool box: name, summary, price, affiliate button                                                             |
+| `<VerdictBox picks={[{ who, pick, tool, why }]} />`                              | "Who should pick what" box for the top of buyer-intent articles                                              |
+| `<Callout type="info\|tip\|warning\|success" title="...">`                       | Highlighted note                                                                                             |
+| `<AdSlot position="afterIntro\|midArticle" />`                                   | Manual ad slot (renders nothing until AdSense + slot ID are set; never above a VerdictBox or inside a table) |
 
 Plain markdown tables, GitHub alerts (`> [!TIP]`) and fenced code blocks with syntax highlighting also work.
 
@@ -196,7 +196,8 @@ vercel --prod
 1. **Google Search Console** → add the domain property `techtoolhub.online` (DNS verification), or a URL-prefix property `https://www.techtoolhub.online` with the HTML-tag method (put the token in `GOOGLE_SITE_VERIFICATION` on Vercel and redeploy) → submit `https://www.techtoolhub.online/sitemap.xml`.
 2. **Google AdSense** (apply once you have ~15–20 quality articles plus the About, Contact and Privacy pages, which are already built):
    - Set `NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX` on Vercel and redeploy. That loads the script, the `google-adsense-account` meta tag and `/ads.txt`.
-   - Optionally create display ad units and set the `NEXT_PUBLIC_ADSENSE_SLOT_*` variables to fill the top, in-article, bottom, sidebar and home slots. Without slot IDs, turn on **Auto ads** in AdSense.
+   - Optionally create display ad units and set the `NEXT_PUBLIC_ADSENSE_SLOT_*` variables (after intro, mid-article, end of article, sidebar, home). Each `<AdSlot />` reserves its height to avoid layout shift and renders nothing until its slot ID is set. Without slot IDs, turn on **Auto ads** in AdSense.
+   - `/ads.txt` is generated from the client ID; set `ADS_TXT` to override the whole file.
    - In AdSense → _Privacy & messaging_, enable the free **GDPR consent message** (required for EEA/UK visitors).
 3. **Domain:** in Vercel → Project → _Settings → Domains_, keep `www.techtoolhub.online` as the primary domain and `techtoolhub.online` redirecting to it. If the domain ever changes, update `SITE_URL` in `data/siteMetadata.js` (or set `NEXT_PUBLIC_SITE_URL`) and the host redirect in `vercel.json`; canonicals, sitemap, OG URLs, RSS and JSON-LD all follow.
 

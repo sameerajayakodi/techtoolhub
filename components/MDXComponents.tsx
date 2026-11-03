@@ -4,7 +4,7 @@ import type { MDXComponents } from 'mdx/types'
 import Image from './Image'
 import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
-import AdSense from './AdSense'
+import AdSlot from './AdSlot'
 import ProsCons from './mdx/ProsCons'
 import ComparisonTable from './mdx/ComparisonTable'
 import Verdict from './mdx/Verdict'
@@ -26,7 +26,7 @@ export const components: MDXComponents = {
   a: CustomLink,
   pre: Pre,
   table: TableWrapper,
-  AdSense,
+  AdSlot,
   ProsCons,
   ComparisonTable,
   Verdict,

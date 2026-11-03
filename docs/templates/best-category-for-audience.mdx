@@ -47,6 +47,9 @@ draft: true
   caption="Prices in [USD], checked [MONTH YEAR]. Excludes tax."
 />
 
+{/* Ad (renders only once AdSense is configured). Keep it below the VerdictBox and outside tables. */}
+<AdSlot position="afterIntro" />
+
 ## Who this list is for
 
 [Describe the audience: their budget, skill level, team size and the job they need done. Say who should NOT use any of these tools.]
@@ -74,6 +77,8 @@ draft: true
 [Why it made the list.]
 
 <ProsCons pros={['[pro]', '[pro]']} cons={['[con]', '[con]']} />
+
+<AdSlot position="midArticle" />
 
 ## Pricing compared
 

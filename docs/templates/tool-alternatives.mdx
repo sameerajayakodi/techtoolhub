@@ -53,6 +53,9 @@ alternative in the first 100 words. */}
   caption="Checked [MONTH YEAR]. Prices exclude tax."
 />
 
+{/* Ad (renders only once AdSense is configured). Keep it below the VerdictBox and outside tables. */}
+<AdSlot position="afterIntro" />
+
 ## 1. [Alternative 1]
 
 <ToolCard tool="alt-1-slug" badge="Best overall" />
@@ -76,6 +79,8 @@ alternative in the first 100 words. */}
 [What it does better/worse than [Tool].]
 
 <ProsCons pros={['[pro]', '[pro]']} cons={['[con]', '[con]']} />
+
+<AdSlot position="midArticle" />
 
 ## Pricing compared
 

@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react'
 import Script from 'next/script'
 import Link from 'next/link'
+import { CONSENT_STORAGE_KEY as STORAGE_KEY } from '@/lib/consent'
 
 type Choice = 'granted' | 'denied'
 
-const STORAGE_KEY = 'tth-cookie-consent'
 const OPEN_EVENT = 'tth:open-cookie-settings'
 
 /** Re-opens the consent banner (used by the "Cookie settings" link in the footer) */
@@ -41,12 +41,19 @@ function clearAnalyticsCookies() {
 /**
  * GDPR cookie banner + consent-gated Google Analytics 4.
  *
- * gtag.js is only loaded after the visitor accepts ("basic" Google Consent Mode v2):
- * nothing is sent to Google before that. Ad-related consent signals stay denied because the
- * site shows no personalised ads yet. When AdSense is enabled, use Google's certified CMP
- * (AdSense → Privacy & messaging) for ad consent.
+ * Consent Mode v2 defaults (all denied) are set in <head> by lib/consent.ts. gtag.js is only
+ * loaded after the visitor accepts ("basic" consent mode): nothing is sent to Google Analytics
+ * before that. This banner only asks about analytics. When AdSense is enabled (`adsEnabled`),
+ * Google's certified consent message (AdSense → Privacy & messaging) asks EEA/UK/Swiss visitors
+ * about ad cookies separately.
  */
-export default function CookieConsent({ gaId }: { gaId?: string }) {
+export default function CookieConsent({
+  gaId,
+  adsEnabled = false,
+}: {
+  gaId?: string
+  adsEnabled?: boolean
+}) {
   const [choice, setChoice] = useState<Choice | null>(null)
   const [open, setOpen] = useState(false)
 
@@ -84,17 +91,9 @@ export default function CookieConsent({ gaId }: { gaId?: string }) {
       {loadAnalytics && (
         <>
           <Script id="ga-consent-init" strategy="afterInteractive">
-            {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-window.gtag = gtag;
-gtag('consent', 'default', {
-  analytics_storage: 'granted',
-  ad_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied'
-});
-gtag('js', new Date());
-gtag('config', '${gaId}', { anonymize_ip: true });`}
+            {/* Consent defaults + the "granted" update already ran in <head> (lib/consent.ts) */}
+            {`window.gtag('js', new Date());
+window.gtag('config', '${gaId}', { anonymize_ip: true });`}
           </Script>
           <Script
             id="ga-gtag"
@@ -124,9 +123,12 @@ gtag('config', '${gaId}', { anonymize_ip: true });`}
               className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400"
             >
               We&apos;d like to use Google Analytics cookies to understand which articles are
-              useful. They are only set if you accept. We don&apos;t use advertising cookies. You
-              can change your choice at any time via &ldquo;Cookie settings&rdquo; in the footer.
-              See our{' '}
+              useful. They are only set if you accept.{' '}
+              {adsEnabled
+                ? 'Ads are served by Google AdSense; where required, Google asks about ad cookies separately.'
+                : 'We don’t use advertising cookies.'}{' '}
+              You can change your choice at any time via &ldquo;Cookie settings&rdquo; in the
+              footer. See our{' '}
               <Link
                 href="/privacy-policy"
                 className="text-primary-600 dark:text-primary-400 font-medium underline"

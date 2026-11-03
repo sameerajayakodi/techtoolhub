@@ -45,14 +45,14 @@ const siteMetadata = {
    *    That alone loads the AdSense script, the verification meta tag and /ads.txt, which is
    *    all "Auto ads" needs.
    * 2. Optional: create display ad units in AdSense and set their slot IDs below to get
-   *    fixed placements at the top, middle and bottom of articles.
+   *    fixed placements (components/AdSlot.tsx). Without slot IDs only Auto ads run.
    */
   adsense: {
     client: process.env.NEXT_PUBLIC_ADSENSE_CLIENT || '',
     slots: {
-      articleTop: process.env.NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE_TOP || '',
-      inArticle: process.env.NEXT_PUBLIC_ADSENSE_SLOT_IN_ARTICLE || '',
-      articleBottom: process.env.NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE_BOTTOM || '',
+      afterIntro: process.env.NEXT_PUBLIC_ADSENSE_SLOT_AFTER_INTRO || '',
+      midArticle: process.env.NEXT_PUBLIC_ADSENSE_SLOT_MID_ARTICLE || '',
+      endOfArticle: process.env.NEXT_PUBLIC_ADSENSE_SLOT_END_OF_ARTICLE || '',
       sidebar: process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR || '',
       home: process.env.NEXT_PUBLIC_ADSENSE_SLOT_HOME || '',
     },

@@ -12,6 +12,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { SITE_URL } from '@/lib/site'
 import CookieConsent from '@/components/CookieConsent'
 import AffiliateClickTracker from '@/components/AffiliateClickTracker'
+import { consentDefaultsScript } from '@/lib/consent'
 import { ThemeProviders } from './theme-providers'
 import { Metadata, Viewport } from 'next'
 
@@ -91,6 +92,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
+        {/* Google Consent Mode v2 defaults: must run before any Google tag (GA4, AdSense) */}
+        {(siteMetadata.googleAnalyticsId || adsenseClient) && (
+          <script
+            id="consent-defaults"
+            dangerouslySetInnerHTML={{ __html: consentDefaultsScript }}
+          />
+        )}
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -123,7 +131,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <CookieConsent gaId={siteMetadata.googleAnalyticsId} />
+          <CookieConsent
+            gaId={siteMetadata.googleAnalyticsId}
+            adsEnabled={Boolean(adsenseClient)}
+          />
           <AffiliateClickTracker />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
             <a

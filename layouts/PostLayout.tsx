@@ -6,7 +6,7 @@ import Link from '@/components/Link'
 import Image from '@/components/Image'
 import NextImage from 'next/image'
 import Tag from '@/components/Tag'
-import AdSense from '@/components/AdSense'
+import AdSlot from '@/components/AdSlot'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import TableOfContents, { type TocItem } from '@/components/TableOfContents'
 import { CategoryBadge, TypeBadge } from '@/components/CategoryBadge'
@@ -205,8 +205,6 @@ export default function PostLayout({
           </p>
         )}
 
-        <AdSense placement="articleTop" />
-
         <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_260px]">
           <div className="min-w-0">
             {tocItems.length > 2 && (
@@ -234,7 +232,7 @@ export default function PostLayout({
               {children}
             </div>
 
-            <AdSense placement="articleBottom" />
+            <AdSlot position="endOfArticle" />
 
             {tags && tags.length > 0 && (
               <div className="mt-10 flex flex-wrap gap-2">
@@ -311,7 +309,7 @@ export default function PostLayout({
           <aside className="hidden lg:block">
             <div className="sticky top-24 space-y-8">
               <TableOfContents toc={tocItems} />
-              <AdSense placement="sidebar" format="vertical" className="my-0!" />
+              <AdSlot position="sidebar" className="my-0!" />
             </div>
           </aside>
         </div>
