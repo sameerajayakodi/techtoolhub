@@ -6,6 +6,8 @@ import { KBarButton } from 'pliny/search/KBarButton'
 import { categories } from '@/data/categories'
 import siteMetadata from '@/data/siteMetadata'
 import { getCards } from '@/lib/posts'
+import { SITE_URL } from '@/lib/site'
+import type { Metadata } from 'next'
 import {
   ArrowRightIcon,
   SearchIcon,
@@ -16,6 +18,13 @@ import {
 } from '@/components/icons'
 
 const LATEST = 6
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+    types: { 'application/rss+xml': `${SITE_URL}/feed.xml` },
+  },
+}
 
 function SectionHeading({ title, href, cta }: { title: string; href?: string; cta?: string }) {
   return (

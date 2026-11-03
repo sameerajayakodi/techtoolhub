@@ -9,6 +9,7 @@ import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
+import { SITE_URL } from '@/lib/site'
 import { websiteJsonLd, toJsonLd } from '@/lib/structured-data'
 import CookieConsent from '@/components/CookieConsent'
 import { ThemeProviders } from './theme-providers'
@@ -30,7 +31,7 @@ const space_grotesk = Space_Grotesk({
 const adsenseClient = siteMetadata.adsense.client
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteMetadata.siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${siteMetadata.title}: ${siteMetadata.tagline}`,
     template: `%s | ${siteMetadata.title}`,
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
     types: {
-      'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
+      'application/rss+xml': `${SITE_URL}/feed.xml`,
     },
   },
   robots: {

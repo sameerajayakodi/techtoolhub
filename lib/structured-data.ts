@@ -1,11 +1,9 @@
 import type { Blog, Authors } from 'contentlayer/generated'
 import type { CoreContent } from 'pliny/utils/contentlayer'
 import siteMetadata from '@/data/siteMetadata'
+import { SITE_URL as siteUrl, absoluteUrl as abs } from '@/lib/site'
 import { getCategory } from '@/data/categories'
 import { getPostImage } from '@/lib/posts'
-
-const siteUrl = siteMetadata.siteUrl.replace(/\/$/, '')
-const abs = (path: string) => (path.startsWith('http') ? path : `${siteUrl}${path}`)
 
 export interface Product {
   name: string

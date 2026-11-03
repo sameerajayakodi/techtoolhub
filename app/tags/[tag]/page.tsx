@@ -2,6 +2,7 @@ import { slug } from 'github-slugger'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
+import { SITE_URL } from '@/lib/site'
 import PageHero from '@/components/PageHero'
 import { ArticleGrid } from '@/components/ArticleCard'
 import tagData from 'app/tag-data.json'
@@ -20,7 +21,7 @@ export async function generateMetadata(props: {
     alternates: {
       canonical: `/tags/${tag}`,
       types: {
-        'application/rss+xml': `${siteMetadata.siteUrl}/tags/${tag}/feed.xml`,
+        'application/rss+xml': `${SITE_URL}/tags/${tag}/feed.xml`,
       },
     },
   })

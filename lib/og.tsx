@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { readFile } from 'fs/promises'
 import path from 'path'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_URL } from '@/lib/site'
 
 export const ogSize = { width: 1200, height: 630 }
 
@@ -37,7 +37,7 @@ interface OgOptions {
 export async function renderOgImage({ title, eyebrow, category, rating, footer }: OgOptions) {
   const [from, to] = gradients[category ?? 'default'] ?? gradients.default
   const fontSize = title.length > 80 ? 54 : title.length > 50 ? 64 : 76
-  const host = siteMetadata.siteUrl.replace(/^https?:\/\//, '')
+  const host = SITE_URL.replace(/^https?:\/\/(www\.)?/, '')
 
   return new ImageResponse(
     <div

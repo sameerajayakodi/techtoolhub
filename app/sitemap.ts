@@ -1,13 +1,12 @@
 import { MetadataRoute } from 'next'
 import { allBlogs, allPages } from 'contentlayer/generated'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_URL as siteUrl } from '@/lib/site'
 import { categories } from '@/data/categories'
 import tagData from 'app/tag-data.json'
 
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = siteMetadata.siteUrl.replace(/\/$/, '')
   const published = allBlogs.filter((post) => !post.draft)
   const latest = published
     .map((p) => p.lastmod || p.date)

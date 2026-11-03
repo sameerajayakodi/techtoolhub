@@ -1,10 +1,9 @@
 import { MetadataRoute } from 'next'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_URL as siteUrl } from '@/lib/site'
 
 export const dynamic = 'force-static'
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = siteMetadata.siteUrl.replace(/\/$/, '')
   // Keep Vercel preview deployments out of Google; only production is indexable
   const isPreview = process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production'
 

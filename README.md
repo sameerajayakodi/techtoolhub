@@ -162,7 +162,7 @@ git push -u origin main
 
 1. Go to <https://vercel.com/new> → **Import** the `techtoolhub` repo.
 2. Framework preset: **Next.js** (auto-detected). Keep the default build command and output.
-3. **Project name: `techtoolhub`**. `techtoolhub.vercel.app` was already taken, so Vercel assigned `https://techtoolhub-phi.vercel.app` (the default `siteUrl` in `data/siteMetadata.js`).
+3. **Project name: `techtoolhub`**. Vercel assigned `https://techtoolhub-phi.vercel.app`; the live site is the custom domain **`https://www.techtoolhub.online`** (the default `SITE_URL` in `data/siteMetadata.js`). `vercel.json` 308-redirects the `techtoolhub-phi.vercel.app` host to it; preview URLs are not redirected.
 4. Optional: add environment variables from `.env.example`.
 5. Click **Deploy**. Every `git push` to `main` now redeploys automatically, and pull requests get preview URLs (previews are `noindex` automatically).
 
@@ -177,13 +177,12 @@ vercel --prod
 
 ### 4.3 After the first deploy
 
-1. **Google Search Console** → add the property `https://techtoolhub-phi.vercel.app` → HTML-tag method → put the token in `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` on Vercel → redeploy → verify → submit `https://techtoolhub-phi.vercel.app/sitemap.xml`.
+1. **Google Search Console** → add the domain property `techtoolhub.online` (DNS verification), or a URL-prefix property `https://www.techtoolhub.online` with the HTML-tag method (put the token in `GOOGLE_SITE_VERIFICATION` on Vercel and redeploy) → submit `https://www.techtoolhub.online/sitemap.xml`.
 2. **Google AdSense** (apply once you have ~15–20 quality articles plus the About, Contact and Privacy pages, which are already built):
    - Set `NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX` on Vercel and redeploy. That loads the script, the `google-adsense-account` meta tag and `/ads.txt`.
    - Optionally create display ad units and set the `NEXT_PUBLIC_ADSENSE_SLOT_*` variables to fill the top, in-article, bottom, sidebar and home slots. Without slot IDs, turn on **Auto ads** in AdSense.
    - In AdSense → _Privacy & messaging_, enable the free **GDPR consent message** (required for EEA/UK visitors).
-   - ⚠️ AdSense usually does **not** approve `*.vercel.app` subdomains. You will need your custom domain first (see below).
-3. **Custom domain later:** Vercel → Project → _Settings → Domains_ → add `yourdomain.com`, then set `NEXT_PUBLIC_SITE_URL=https://yourdomain.com` and redeploy. Canonicals, sitemap, OG URLs and JSON-LD all follow automatically.
+3. **Domain:** in Vercel → Project → _Settings → Domains_, keep `www.techtoolhub.online` as the primary domain and `techtoolhub.online` redirecting to it. If the domain ever changes, update `SITE_URL` in `data/siteMetadata.js` (or set `NEXT_PUBLIC_SITE_URL`) and the host redirect in `vercel.json`; canonicals, sitemap, OG URLs, RSS and JSON-LD all follow.
 
 ---
 

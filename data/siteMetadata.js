@@ -1,3 +1,13 @@
+/**
+ * Canonical origin of the site: https, www, no trailing slash.
+ * This is the single source of truth for every absolute URL the site outputs (metadataBase,
+ * canonicals, Open Graph, sitemap, robots, RSS and JSON-LD). Override with NEXT_PUBLIC_SITE_URL.
+ */
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.techtoolhub.online').replace(
+  /\/+$/,
+  ''
+)
+
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'TechToolHub',
@@ -8,12 +18,12 @@ const siteMetadata = {
     'Independent, hands-on reviews and comparisons of the best AI tools, developer tools and productivity software, so you can pick the right tool faster.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  // Change this when you add a custom domain (or set NEXT_PUBLIC_SITE_URL on Vercel)
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://techtoolhub-phi.vercel.app',
+  siteUrl: SITE_URL,
   siteRepo: 'https://github.com/sameerajayakodi/techtoolhub',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/opengraph-image`,
-  email: 'hello@techtoolhub.com',
+  // TODO: create this mailbox (or a forwarding address) on techtoolhub.online, or replace it
+  email: 'hello@techtoolhub.online',
   // Leave a social link empty ('') to hide its icon in the footer
   github: '',
   x: '',
