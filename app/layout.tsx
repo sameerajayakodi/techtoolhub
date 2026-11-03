@@ -11,6 +11,7 @@ import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { SITE_URL } from '@/lib/site'
 import CookieConsent from '@/components/CookieConsent'
+import AffiliateClickTracker from '@/components/AffiliateClickTracker'
 import { ThemeProviders } from './theme-providers'
 import { Metadata, Viewport } from 'next'
 
@@ -123,6 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <CookieConsent gaId={siteMetadata.googleAnalyticsId} />
+          <AffiliateClickTracker />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
             <a
               href="#main"

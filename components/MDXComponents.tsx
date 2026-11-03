@@ -13,6 +13,9 @@ import ProductCard from './mdx/ProductCard'
 import CTAButton from './mdx/CTAButton'
 import Callout from './mdx/Callout'
 import ContactForm from './mdx/ContactForm'
+import AffiliateButton from './mdx/AffiliateButton'
+import ToolCard from './mdx/ToolCard'
+import VerdictBox from './mdx/VerdictBox'
 import { RatingBadge, ScoreBreakdown, Stars } from './mdx/Rating'
 
 /** Everything here can be used directly inside .mdx files without importing it */
@@ -31,6 +34,9 @@ export const components: MDXComponents = {
   CTAButton,
   Callout,
   ContactForm,
+  AffiliateButton,
+  ToolCard,
+  VerdictBox,
   RatingBadge,
   ScoreBreakdown,
   Stars,

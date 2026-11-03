@@ -37,6 +37,10 @@ const icon = fromHtmlIsomorphic(
   { fragment: true }
 )
 
+// Affiliate components (<VerdictBox> only when a pick has a tool) or Markdown/HTML links to /go/<tool>
+const AFFILIATE_PATTERN =
+  /<(AffiliateButton|ToolCard)\b|<VerdictBox[^>]*?\btool:|\]\(\/go\/|href="\/go\//
+
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
@@ -52,6 +56,11 @@ const computedFields: ComputedFields = {
     resolve: (doc) => doc._raw.sourceFilePath,
   },
   toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
+  // true when the body uses an affiliate component or links to /go/<tool> (shows the disclosure)
+  hasAffiliateLinks: {
+    type: 'boolean',
+    resolve: (doc) => AFFILIATE_PATTERN.test(doc.body.raw),
+  },
 }
 
 /**

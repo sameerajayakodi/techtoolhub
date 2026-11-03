@@ -187,7 +187,7 @@ export default function PostLayout({
           )}
         </header>
 
-        {content.affiliate && (
+        {(content.affiliate || content.hasAffiliateLinks) && (
           <p className="mt-6 flex gap-2 rounded-xl bg-gray-50 px-4 py-3 text-xs leading-5 text-gray-600 dark:bg-gray-900 dark:text-gray-400">
             <InfoIcon className="h-4 w-4 shrink-0" />
             <span>

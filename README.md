@@ -106,7 +106,8 @@ product: # reviews: powers the Review / SoftwareApplication JSON-LD
   platforms: 'Web, macOS, Windows'
   appCategory: BusinessApplication
 featured: true # homepage "Editor's picks"
-affiliate: true # shows the affiliate disclosure notice
+affiliate: true # shows the affiliate disclosure (automatic when the article uses AffiliateButton/ToolCard or /go/ links)
+handsOn: false # true only if the article includes your own testing: shows the "Hands-on tested" badge
 images: ['/static/images/notion-ai-cover.jpg'] # optional 16:9 cover; otherwise a branded cover is generated
 authors: ['default']
 draft: false
@@ -123,11 +124,20 @@ draft: false
 | `<SpecsTable specs={{ Developer: '...', 'Free plan': 'Yes' }} />`                | Key specs card                                                                            |
 | `<ComparisonTable columns={[...]} rows={[[...]]} highlight={1} />`               | Responsive "X vs Y" table (`true`/`false` → ✓/✗). Use `highlightRow={0}` for ranked lists |
 | `<ProductCard rank={1} name="..." rating={4.7} ... />`                           | Ranked entry in a Top 10 list                                                             |
-| `<CTAButton href="...">Try it</CTAButton>`                                       | Affiliate button (adds `rel="sponsored nofollow"`)                                        |
+| `<CTAButton href="...">Try it</CTAButton>`                                       | Plain outbound button (adds `rel="sponsored nofollow"`)                                   |
+| `<AffiliateButton tool="cursor">Try Cursor</AffiliateButton>`                    | Affiliate button via `/go/cursor` (slugs in `lib/affiliates.ts`)                          |
+| `<ToolCard tool="notion" badge="..." />`                                         | Tool box: name, summary, price, affiliate button                                          |
+| `<VerdictBox picks={[{ who, pick, tool, why }]} />`                              | "Who should pick what" box for the top of buyer-intent articles                           |
 | `<Callout type="info\|tip\|warning\|success" title="...">`                       | Highlighted note                                                                          |
 | `<AdSense placement="inArticle" />`                                              | Manual in-article ad                                                                      |
 
 Plain markdown tables, GitHub alerts (`> [!TIP]`) and fenced code blocks with syntax highlighting also work.
+
+---
+
+### Affiliate links
+
+All affiliate links live in **`lib/affiliates.ts`** (tool slug → name, `affiliateUrl`, official `fallbackUrl`, program, commission note, summary, price). Articles link to `/go/<slug>`, which 302-redirects to your affiliate URL once you paste it in, and to the official site until then. `/go/` is disallowed in `robots.txt`, links open in a new tab with `rel="sponsored nofollow noopener"`, and clicks are sent to GA4 as an `affiliate_click` event (only for visitors who accepted analytics cookies).
 
 ---
 
