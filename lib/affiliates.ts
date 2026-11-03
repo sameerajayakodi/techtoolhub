@@ -211,10 +211,11 @@ export const affiliates = {
   },
   onlyoffice: {
     name: 'ONLYOFFICE',
-    affiliateUrl: TODO,
-    fallbackUrl: 'https://www.onlyoffice.com/docspace-prices.aspx',
-    program: TODO,
-    commissionNote: TODO,
+    affiliateUrl: 'https://www.onlyoffice.com/pricing?via=sameera',
+    fallbackUrl: 'https://www.onlyoffice.com/pricing',
+    program: 'Rewardful (direct, joined 2026-11-03)',
+    commissionNote:
+      '18% on all payments (Rewardful dashboard). TODO: check the payout method works from Sri Lanka',
     summary: 'Microsoft Office-compatible document editors in the cloud or self-hosted.',
     pricingFrom: 'Free (3 admins) · Business $20/admin/mo',
     pricingCheckedOn: '2026-11',

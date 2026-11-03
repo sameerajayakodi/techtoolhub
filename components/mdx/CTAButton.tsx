@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { AFFILIATE_REL } from '@/lib/affiliates'
 import { ArrowRightIcon, ExternalIcon } from '../icons'
 
 interface CTAButtonProps {
@@ -10,7 +11,8 @@ interface CTAButtonProps {
 }
 
 /**
- * Call-to-action button for affiliate or product links.
+ * Call-to-action button for affiliate or product links. /go/<tool> hrefs are treated as
+ * outbound affiliate links (new tab, rel="sponsored nofollow noopener", click tracking).
  * MDX: <CTAButton href="https://example.com/?ref=you">Try Example free</CTAButton>
  */
 export default function CTAButton({
@@ -19,17 +21,21 @@ export default function CTAButton({
   variant = 'primary',
   sponsored,
 }: CTAButtonProps) {
-  const external = /^https?:\/\//.test(href)
+  const goTool = href.startsWith('/go/') ? href.slice('/go/'.length) : undefined
+  const external = Boolean(goTool) || /^https?:\/\//.test(href)
   const isSponsored = sponsored ?? external
-  const rel = external
-    ? ['noopener', 'noreferrer', isSponsored && 'sponsored nofollow'].filter(Boolean).join(' ')
-    : undefined
+  const rel = goTool
+    ? AFFILIATE_REL
+    : external
+      ? ['noopener', 'noreferrer', isSponsored && 'sponsored nofollow'].filter(Boolean).join(' ')
+      : undefined
 
   return (
     <a
       href={href}
       target={external ? '_blank' : undefined}
       rel={rel}
+      data-affiliate={goTool}
       className={`not-prose group inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold no-underline! shadow-sm transition-all ${
         variant === 'primary'
           ? 'bg-primary-600 hover:bg-primary-700 hover:shadow-primary-600/20 text-white! hover:shadow-md'

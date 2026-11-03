@@ -37,9 +37,10 @@ const icon = fromHtmlIsomorphic(
   { fragment: true }
 )
 
-// Affiliate components (<VerdictBox> only when a pick has a tool) or Markdown/HTML links to /go/<tool>
+// Affiliate components (<VerdictBox> only when a pick has a tool), Markdown/HTML links to
+// /go/<tool>, or <ProductCard url="/go/...">
 const AFFILIATE_PATTERN =
-  /<(AffiliateButton|ToolCard)\b|<VerdictBox[^>]*?\btool:|\]\(\/go\/|href="\/go\//
+  /<(AffiliateButton|ToolCard)\b|<VerdictBox[^>]*?\btool:|\]\(\/go\/|(href|url)="\/go\//
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
