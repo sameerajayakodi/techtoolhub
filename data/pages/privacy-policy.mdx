@@ -22,7 +22,7 @@ Cookies are small files stored on your device. We and our partners use them to:
 - measure traffic and how the Site is used (analytics);
 - show and measure advertising.
 
-**Your consent.** Analytics cookies (Google Analytics) are only set **after you accept** them in our cookie banner. If you reject them, Google Analytics is not loaded at all. You can change or withdraw your choice at any time using the **Cookie settings** link at the bottom of every page; withdrawing removes the analytics cookies we set. Strictly necessary storage (for example, remembering your light/dark theme and your cookie choice) does not require consent.
+**Your consent.** Analytics cookies (Google Analytics) are only set **after you accept** them in our cookie banner. If you reject them, Google Analytics is not loaded at all. Our cookieless page-view counter (Vercel Web Analytics, see [Analytics](#analytics)) runs for every visitor and sets no cookies. You can change or withdraw your choice at any time using the **Cookie settings** link at the bottom of every page; withdrawing removes the analytics cookies we set. Strictly necessary storage (for example, remembering your light/dark theme and your cookie choice) does not require consent.
 
 You can also block or delete cookies in your browser settings. Some features may not work correctly without them.
 
@@ -38,7 +38,10 @@ Visitors in the European Economic Area, the UK and Switzerland are shown a conse
 
 ## Analytics
 
-We may use Google Analytics or a similar privacy-friendly analytics service to understand aggregate usage. These services may set cookies and collect the technical data described above. You can opt out of Google Analytics with the [Google Analytics opt-out browser add-on](https://tools.google.com/dlpage/gaoptout).
+We use two analytics services to understand aggregate usage:
+
+- **Vercel Web Analytics** counts page views for every visitor without cookies. Instead of a cookie, visitors are identified by a hash created from the incoming request, so it can't recognise you across websites. See [Vercel's Web Analytics privacy information](https://vercel.com/docs/analytics/privacy-policy).
+- **Google Analytics** loads only if you accept analytics cookies in our cookie banner. It may set cookies and collect the technical data described above. You can opt out with the [Google Analytics opt-out browser add-on](https://tools.google.com/dlpage/gaoptout).
 
 ## Affiliate links
 
