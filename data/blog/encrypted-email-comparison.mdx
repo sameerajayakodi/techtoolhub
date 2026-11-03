@@ -1,0 +1,182 @@
+---
+# DRAFT, not published. Research done 2026-11-03 from the official pricing and encryption pages
+# (see Sources). Before publishing:
+#   1. Fill every TODO (Tuta prices, IMAP/Bridge, your own test notes, final verdict wording).
+#   2. Re-check prices on both pricing pages and update `lastmod`.
+#   3. Set `handsOn: true` only if you used both services yourself and "How I tested" shows it.
+# URL note: Proton's partner terms ban Proton trademarks in page URLs, so this file name (= URL)
+# must not contain "proton".
+title: 'Proton Mail vs Tuta (2026): Which Encrypted Email Should You Choose?'
+date: '2026-11-03'
+lastmod: '2026-11-03'
+summary: 'Proton Mail vs Tuta compared on price, storage, encryption, custom domains and extras, so you can pick the right private email for you.'
+category: productivity
+format: comparison
+tags: ['privacy', 'email', 'comparison', 'europe']
+verdict: 'Proton Mail is better if you want a full private suite (VPN, passwords, cloud storage); Tuta is better if you want the most encrypted metadata and quantum-resistant encryption.'
+featured: false
+handsOn: false
+authors: ['default']
+draft: true
+---
+
+Proton Mail and Tuta are the two best-known end-to-end encrypted email services. Both are based in Europe, have a free plan and can't read your messages. The difference is in what else you get: Proton bundles a whole privacy suite, while Tuta focuses on email and calendar with more of your data encrypted. Here's how they compare, checked on **3 November 2026**.
+
+<VerdictBox
+  picks={[
+    {
+      who: 'Choose Proton Mail if',
+      pick: 'you want email plus a VPN, password manager and cloud storage in one account',
+      tool: 'proton',
+    },
+    {
+      who: 'Choose Tuta if',
+      pick: 'you want encrypted subject lines and quantum-resistant encryption at a low price',
+      tool: 'tuta',
+    },
+  ]}
+>
+  {/* TODO: your one-sentence bottom line after using both. */}
+  Both are trustworthy choices; pick by the extras you need, not by encryption alone.
+</VerdictBox>
+
+## Proton Mail vs Tuta at a glance
+
+<ComparisonTable
+  columns={['', 'Proton Mail', 'Tuta']}
+  rows={[
+    ['Based in', 'Geneva, Switzerland', 'Germany (servers in Germany)'],
+    ['Free plan storage', '500 MB, up to 1 GB', '1 GB'],
+    ['Cheapest paid plan', 'Mail Plus: $3.99/mo (billed yearly)', 'Revolutionary: TODO price'],
+    ['Paid plan storage', '15 GB (Mail Plus)', '20 GB (Revolutionary)'],
+    ['Extra addresses (cheapest plan)', '10', '15'],
+    ['Custom domains (cheapest plan)', '1', '3'],
+    ['Encrypted subject lines', 'TODO: check', true],
+    ['Quantum-resistant encryption', 'TODO: check', true],
+    ['VPN, password manager, cloud drive', 'In Proton Unlimited', false],
+  ]}
+  caption="Checked November 2026 on proton.me and tuta.com. Prices exclude tax."
+/>
+
+<AdSlot position="afterIntro" />
+
+## Who each service is for
+
+**Proton Mail** is for people who want to move most of their digital life away from Google in one go: email, calendar, files, passwords and VPN under one Swiss account. **Tuta** is for people who mainly want private email and calendar, with as much of their data encrypted as possible, and lots of addresses and custom domains on a cheap plan.
+
+{/* TODO: add 1–2 sentences on who should use neither (e.g. people who need IMAP with Outlook, or businesses with compliance needs). */}
+
+## Pricing
+
+| Plan   | Proton Mail                                                            | Tuta                                              |
+| ------ | ---------------------------------------------------------------------- | ------------------------------------------------- |
+| Free   | 500 MB (1 GB after setup checklist), 1 address, 150 messages a day     | 1 GB, 1 calendar, 3 labels, no custom domain      |
+| Entry  | Mail Plus: $3.99/mo billed yearly ($47.88), 15 GB, 10 addresses        | Revolutionary: TODO price, 20 GB, 15 addresses    |
+| Top    | Proton Unlimited: $9.99/mo billed yearly ($119.88), 500 GB + VPN, Pass | Legend: TODO price, 500 GB, 30 addresses          |
+| Family | Proton Duo / Family: TODO price (up to 6 people, up to 3 TB)           | +€3 (Revolutionary) or +€8 (Legend) per member/mo |
+
+{/* TODO: Tuta's plan prices are rendered by JavaScript and weren't readable in our research. Copy them from tuta.com/pricing. Proton's monthly-billing prices also need checking: the page shows $4.99 (Mail Plus) and $12.99 (Unlimited) struck through, which are probably the monthly prices. */}
+
+Proton's free plan is limited to 150 messages a day, 3 folders, 3 labels and 1 filter. Tuta's free plan has 1 calendar and 3 labels, and no extra addresses or custom domains.
+
+## Encryption and privacy
+
+Both services use end-to-end encryption, so the provider can't read your messages.
+
+- **Proton Mail** says it uses end-to-end and zero-access encryption and that "not even Proton" can read your emails. Proton is in Switzerland and says it only responds to official requests from Swiss authorities.
+- **Tuta** encrypts emails "including subject lines and all attachments". Sender and recipient addresses and email dates are not encrypted. Since March 2024 it has been rolling out TutaCrypt, a post-quantum protocol using Kyber-1024. Tuta doesn't use PGP, but you can send a password-protected encrypted email to anyone.
+
+{/* TODO: check Proton's support docs for (a) whether subject lines are end-to-end encrypted and (b) its post-quantum status, then fill the two TODO cells in the table above. */}
+
+**Winner:** Tuta, for encrypting more metadata and for quantum-resistant encryption by default. {/* TODO: confirm after the Proton check above. */}
+
+## Features and extras
+
+Proton is the bigger ecosystem. Proton Unlimited adds Proton VPN, Proton Pass (password manager) and Proton Drive (500 GB shared storage), and unlimited hide-my-email aliases. Mail Plus includes 10 hide-my-email aliases.
+
+Tuta gives you more for less on email itself: its cheapest paid plan has 15 extra addresses and 3 custom domains (Proton Mail Plus: 10 and 1), unlimited calendars and labels, catch-all addresses and shared mailboxes on paid plans.
+
+{/* TODO: IMAP / desktop clients. Proton offers Proton Mail Bridge for Outlook/Thunderbird on paid plans and Tuta has its own desktop apps but no IMAP. Verify both on the official support pages before publishing. */}
+
+**Winner:** Proton for extras, Tuta for addresses and domains per dollar.
+
+<AdSlot position="midArticle" />
+
+## Pros and cons
+
+<ProsCons
+  prosTitle="Proton Mail strengths"
+  consTitle="Proton Mail weaknesses"
+  pros={[
+    'VPN, password manager and 500 GB drive in Proton Unlimited',
+    'Swiss jurisdiction',
+    'Hide-my-email aliases on paid plans',
+  ]}
+  cons={['Free plan starts at 500 MB and 150 messages a day', 'Only 1 custom domain on Mail Plus']}
+/>
+
+<ProsCons
+  prosTitle="Tuta strengths"
+  consTitle="Tuta weaknesses"
+  pros={[
+    'Encrypts subject lines and attachments',
+    'Quantum-resistant encryption (TutaCrypt)',
+    '15 addresses and 3 custom domains on the cheapest paid plan',
+  ]}
+  cons={['Email and calendar only: no VPN, password manager or office suite', 'Doesn’t use PGP']}
+/>
+
+## How I tested
+
+{/* TODO: write this from your own use. If you only compared official pages, say so and keep `handsOn: false`. */}
+
+- **What I did:** TODO (e.g. used both free plans for two weeks: sending, receiving, search, calendar, mobile apps)
+- **Plans used:** TODO
+- **Date:** TODO
+
+{/* TODO SCREENSHOTS: save WebP files in public/static/images/blog/encrypted-email-comparison/ (e.g. proton-inbox.webp, tuta-inbox.webp) and add them here with descriptive alt text. */}
+
+TODO: your own observations: sign-up, speed, search, mobile apps, anything that annoyed you.
+
+## Which should you choose?
+
+| If you…                                             | Choose          |
+| --------------------------------------------------- | --------------- |
+| want email, VPN, passwords and storage in one place | **Proton Mail** |
+| want the most encrypted metadata                    | **Tuta**        |
+| need several custom domains on a small budget       | **Tuta**        |
+| want hide-my-email aliases                          | **Proton Mail** |
+
+<AffiliateButton tool="proton">Try Proton Mail</AffiliateButton>
+<AffiliateButton tool="tuta" variant="secondary">
+  Try Tuta
+</AffiliateButton>
+
+## FAQ
+
+### Is Proton Mail better than Tuta?
+
+For an all-in-one privacy suite, yes. For encrypting more of your email metadata and getting more addresses and domains on a cheap plan, Tuta is the better fit.
+
+### Is Proton Mail cheaper than Tuta?
+
+Proton Mail Plus costs $3.99 a month billed yearly (checked November 2026). TODO: add Tuta Revolutionary's price and answer directly.
+
+### Are Proton Mail and Tuta free?
+
+Both have free plans: Proton Mail with 500 MB (up to 1 GB) and Tuta with 1 GB. Custom domains and extra addresses need a paid plan on both.
+
+### Can I move from Gmail to Proton Mail or Tuta?
+
+TODO: check each service's import tools on its support pages. Tuta's desktop apps can import EML and MBOX files.
+
+## Related reading
+
+- [Best European alternatives to Google and Microsoft](/blog/european-alternatives-google-microsoft)
+
+## Sources
+
+- [Proton Mail pricing](https://proton.me/mail/pricing) (Proton)
+- [Proton plans and comparison](https://proton.me/pricing) (Proton)
+- [Tuta pricing](https://tuta.com/pricing) (Tuta)
+- [Tuta encryption](https://tuta.com/encryption) (Tuta)
