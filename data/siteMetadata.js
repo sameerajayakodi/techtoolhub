@@ -16,7 +16,7 @@ const siteMetadata = {
   headerTitle: 'TechToolHub',
   tagline: 'Honest reviews of AI, developer & productivity tools',
   description:
-    'Independent, hands-on reviews and comparisons of the best AI tools, developer tools and productivity software, so you can pick the right tool faster.',
+    'Independent research, comparisons and reviews of AI tools, developer tools and productivity software, so you can pick the right tool faster.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: SITE_URL,

@@ -20,7 +20,8 @@ const columns = [
     links: [
       { href: '/about', title: 'About Us' },
       { href: '/contact', title: 'Contact Us' },
-      { href: '/how-we-review', title: 'How We Review' },
+      { href: '/author', title: 'About the Author' },
+      { href: '/how-we-review', title: 'How I Review' },
       { href: '/affiliate-disclosure', title: 'Affiliate Disclosure' },
     ],
   },
@@ -107,7 +108,7 @@ export default function Footer() {
             <CookieSettingsButton className="hover:text-primary-600 underline" />
           </p>
           <p>
-            Some links are affiliate links. We may earn a commission at no extra cost to you.{' '}
+            Some links are affiliate links. I may earn a commission at no extra cost to you.{' '}
             <Link href="/affiliate-disclosure" className="hover:text-primary-600 underline">
               Learn more
             </Link>

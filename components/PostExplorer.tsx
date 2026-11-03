@@ -213,7 +213,7 @@ export default function PostExplorer({
           </p>
           <p className="mt-1 text-sm text-gray-500">
             {posts.length === 0
-              ? 'Check back shortly, we are testing tools right now.'
+              ? 'Check back shortly, new articles are on the way.'
               : 'Try a different keyword or clear the filters.'}
           </p>
         </div>

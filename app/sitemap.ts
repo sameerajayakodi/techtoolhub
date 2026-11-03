@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...categories.map((c) => ({ path: `/${c.slug}`, priority: 0.9 })),
     { path: '/reviews', priority: 0.9 },
     { path: '/blog', priority: 0.7 },
+    { path: '/author', priority: 0.5 },
     { path: '/tags', priority: 0.4 },
   ].map(({ path, priority }) => ({
     url: `${siteUrl}${path}`,

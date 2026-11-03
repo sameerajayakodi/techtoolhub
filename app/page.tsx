@@ -150,10 +150,8 @@ export default function Home() {
 
       {posts.length === 0 && (
         <div className="mt-16 rounded-2xl border border-dashed border-gray-300 px-6 py-16 text-center dark:border-gray-700">
-          <p className="font-display text-xl font-semibold">Our first reviews are on the way</p>
-          <p className="mt-2 text-gray-500">
-            We are testing tools right now. Check back very soon.
-          </p>
+          <p className="font-display text-xl font-semibold">The first articles are on the way</p>
+          <p className="mt-2 text-gray-500">Check back very soon.</p>
         </div>
       )}
 
@@ -179,17 +177,17 @@ export default function Home() {
           {
             icon: ShieldIcon,
             title: 'Independent',
-            text: 'No vendor pays for a verdict. Affiliate links never change our scores.',
+            text: 'No vendor pays for a verdict. Affiliate links never change my recommendations.',
           },
           {
             icon: TrophyIcon,
-            title: 'Tested hands-on',
-            text: 'Every tool is used on real work and compared with its alternatives.',
+            title: 'Researched & sourced',
+            text: 'Every article lists its sources. Articles marked “Hands-on tested” include my own testing and screenshots.',
           },
           {
             icon: ClockIcon,
             title: 'Kept up to date',
-            text: 'We revisit articles when pricing or features change.',
+            text: 'I revisit articles when pricing or features change.',
           },
         ].map(({ icon: Icon, title, text }) => (
           <div key={title} className="flex gap-4">

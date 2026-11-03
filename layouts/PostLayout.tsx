@@ -13,6 +13,8 @@ import { CategoryBadge, TypeBadge } from '@/components/CategoryBadge'
 import { ArticleGrid } from '@/components/ArticleCard'
 import { ScoreRing, Stars, ratingLabel, ratingTone } from '@/components/mdx/Rating'
 import CTAButton from '@/components/mdx/CTAButton'
+import HandsOnBadge from '@/components/HandsOnBadge'
+import AuthorBox from '@/components/AuthorBox'
 import { ClockIcon, InfoIcon, ShieldIcon } from '@/components/icons'
 import siteMetadata from '@/data/siteMetadata'
 import { getCategory } from '@/data/categories'
@@ -122,6 +124,7 @@ export default function PostLayout({
           <div className="flex flex-wrap items-center gap-2">
             <CategoryBadge category={category} />
             <TypeBadge type={format} />
+            {content.handsOn && <HandsOnBadge />}
           </div>
           <h1 className="font-display mt-4 max-w-4xl text-3xl leading-tight font-bold tracking-tight text-gray-900 sm:text-4xl md:text-[2.75rem] dark:text-white">
             {title}
@@ -151,7 +154,7 @@ export default function PostLayout({
               <span>
                 By{' '}
                 <Link
-                  href="/about"
+                  href="/author"
                   className="hover:text-primary-600 font-semibold text-gray-900 dark:text-white"
                 >
                   {authorDetails.map((a) => a.name).join(', ')}
@@ -192,8 +195,8 @@ export default function PostLayout({
             <InfoIcon className="h-4 w-4 shrink-0" />
             <span>
               <strong className="font-semibold">Disclosure:</strong> This article contains affiliate
-              links. If you buy through them we may earn a commission at no extra cost to you. It
-              never affects our verdicts.{' '}
+              links. If you buy through them I may earn a commission at no extra cost to you. It
+              never affects my recommendations.{' '}
               <Link href="/affiliate-disclosure" className="underline">
                 Learn more
               </Link>
@@ -244,20 +247,26 @@ export default function PostLayout({
             <div className="mt-10 flex gap-4 rounded-2xl border border-gray-200 p-5 dark:border-gray-800">
               <ShieldIcon className="text-primary-600 dark:text-primary-400 h-6 w-6 shrink-0" />
               <div className="text-sm leading-6 text-gray-600 dark:text-gray-400">
-                <p className="font-semibold text-gray-900 dark:text-white">How we test</p>
+                <p className="font-semibold text-gray-900 dark:text-white">
+                  {content.handsOn ? 'How this was tested' : 'How this was researched'}
+                </p>
                 <p>
-                  We use every tool we review on real projects, compare it with its closest
-                  alternatives and update articles when pricing or features change.{' '}
+                  {content.handsOn
+                    ? 'This article includes my own hands-on testing and screenshots, plus the official documentation and pricing pages listed in the sources.'
+                    : 'This article is based on official documentation, pricing pages and the other sources listed in the article. It does not include my own hands-on testing.'}{' '}
+                  I update articles when pricing or features change.{' '}
                   <Link
                     href="/how-we-review"
                     className="text-primary-600 dark:text-primary-400 font-medium hover:underline"
                   >
-                    Read our review process
+                    Read my review process
                   </Link>
                   .
                 </p>
               </div>
             </div>
+
+            <AuthorBox slug={authorDetails[0]?.slug} />
 
             {siteMetadata.comments && (
               <div className="pt-8 text-center text-gray-700 dark:text-gray-300" id="comment">

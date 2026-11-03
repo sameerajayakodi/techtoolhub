@@ -5,6 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getCategory, articleTypes } from '@/data/categories'
 import type { PostCardData } from '@/lib/posts'
 import { CategoryBadge } from './CategoryBadge'
+import HandsOnBadge from './HandsOnBadge'
 import { RatingBadge } from './mdx/Rating'
 import { categoryIcons, ClockIcon } from './icons'
 
@@ -57,6 +58,7 @@ export default function ArticleCard({
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex items-center gap-2">
           <CategoryBadge category={post.category} link={false} />
+          {post.handsOn && <HandsOnBadge />}
         </div>
         <h3 className="font-display text-lg leading-snug font-bold text-gray-900 dark:text-white">
           <Link

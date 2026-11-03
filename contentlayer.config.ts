@@ -207,8 +207,17 @@ export default makeSource({
     ],
   },
   onSuccess: async (importData) => {
-    const { allBlogs } = await importData()
+    const { allBlogs, allAuthors } = await importData()
     createTagCount(allBlogs)
     createSearchIndex(allBlogs)
+    // The author name/bio are shown on every article and in its JSON-LD: don't ship placeholders
+    const todo = allAuthors.filter((a) => /TODO/.test(`${a.name} ${a.occupation} ${a.body.raw}`))
+    if (todo.length > 0) {
+      console.warn(
+        `
+⚠️  Fill in the TODO placeholders in ${todo.map((a) => a._raw.sourceFilePath).join(', ')} before deploying.
+`
+      )
+    }
   },
 })

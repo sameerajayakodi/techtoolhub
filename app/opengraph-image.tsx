@@ -7,7 +7,7 @@ export const alt = `${siteMetadata.title}: ${siteMetadata.tagline}`
 
 export default async function Image() {
   return renderOgImage({
-    title: 'Honest, hands-on reviews of AI, developer & productivity tools',
+    title: 'Honest, well-researched reviews of AI, developer & productivity tools',
     eyebrow: 'Independent reviews',
   })
 }

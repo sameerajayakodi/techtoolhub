@@ -8,7 +8,7 @@ export const categories = [
     slug: 'ai-tools',
     title: 'AI Tools',
     description:
-      'Hands-on reviews of AI writing, image, video and chat assistants — what they are actually good at, and what they cost.',
+      'Reviews and comparisons of AI writing, image, video and chat assistants: what they are actually good at, and what they cost.',
     icon: 'sparkles',
     gradient: 'from-violet-500 via-fuchsia-500 to-pink-500',
     accent: 'text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-500/10',
@@ -17,7 +17,7 @@ export const categories = [
     slug: 'developer-tools',
     title: 'Developer Tools',
     description:
-      'IDEs, AI coding assistants, hosting, databases and DevOps tools tested by working developers.',
+      'IDEs, AI coding assistants, hosting, databases and DevOps tools, compared on features, limits and price.',
     icon: 'code',
     gradient: 'from-sky-500 via-cyan-500 to-teal-400',
     accent: 'text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-500/10',

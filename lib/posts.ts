@@ -19,6 +19,7 @@ export interface PostCardData {
   image?: string
   readingTime: string
   featured: boolean
+  handsOn: boolean
 }
 
 /** Published posts, newest first (drafts are included in development only) */
@@ -48,6 +49,7 @@ export function toCard(post: CoreContent<Blog>): PostCardData {
     image: getPostImage(post.images),
     readingTime: post.readingTime?.text ?? '',
     featured: Boolean(post.featured),
+    handsOn: Boolean(post.handsOn),
   }
 }
 
