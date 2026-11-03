@@ -82,7 +82,7 @@ techtoolhub/
 
 ### Publishing an article
 
-1. Copy a template from `data/blog/_templates/` to `data/blog/your-slug.mdx`.
+1. Copy a template from `docs/templates/` to `data/blog/your-slug.mdx`.
 2. Fill in the frontmatter and content. Set `draft: false`.
 3. Preview with `npm run dev`, then `git commit` + `git push`. Vercel rebuilds automatically.
 
@@ -143,10 +143,16 @@ All affiliate links live in **`lib/affiliates.ts`** (tool slug → name, `affili
 
 ## Step 3: Templates
 
-- `data/blog/_templates/product-review-template.mdx`: specs, features, pricing, pros/cons, score breakdown, vs-table, verdict, FAQ.
-- `data/blog/_templates/top-10-listicle-template.mdx`: top picks, comparison table, 10 ranked product cards, buying guide, verdict, FAQ.
+Templates live in `docs/templates/` (outside `data/`, so they are never built or published). Copy one to `data/blog/<slug>.mdx`, replace every `[BRACKET]` and TODO, then set `draft: false`.
 
-Both are `draft: true`, so you can preview them locally at `/blog/_templates/...`, but they never go live.
+Buyer-intent formats (VerdictBox at the top, comparison table, who it's for, pricing, pros/cons, "How I tested" with screenshot placeholders, FAQ, related reading):
+
+- `best-category-for-audience.mdx`: "Best [category] for [audience] in 2026"
+- `tool-a-vs-tool-b.mdx`: "[Tool A] vs [Tool B]"
+- `tool-alternatives.mdx`: "[Tool] alternatives"
+- `tool-pricing-explained.mdx`: "[Tool] pricing explained / is it worth it?"
+
+Also: `product-review.mdx` (single-product review with a score) and `top-10-listicle.mdx` (ranked list). Only set `rating` and `handsOn: true` when the score comes from your own testing.
 
 ---
 

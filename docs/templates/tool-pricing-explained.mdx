@@ -1,0 +1,123 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: "[Tool] pricing explained / is it worth it?"
+# 1. Copy to data/blog/<tool>-pricing.mdx (the file name becomes the URL).
+# 2. Replace every [BRACKET] and TODO. Tool slugs must exist in lib/affiliates.ts.
+# 3. Set `draft: false` to publish. Copy prices from the official pricing page only, and date them.
+# ─────────────────────────────────────────────────────────────────────────────
+title: '[Tool] Pricing (2026): Every Plan Explained. Is It Worth It?'
+date: 'YYYY-MM-DD'
+lastmod: 'YYYY-MM-DD' # update every time you re-check prices
+summary: '[Tool] pricing in plain English: Free vs [Plan] vs [Plan], what each includes, hidden limits and which plan is worth it for [audience]. ≈ 150 characters.'
+category: ai-tools # ai-tools | developer-tools | productivity
+format: guide
+tags: ['[tool]', 'pricing']
+verdict: '[Plan] is the best value for most people; stay on Free if [condition].'
+featured: false
+handsOn: false # true ONLY if you used the paid plan yourself and the article shows it
+authors: ['default']
+# images: ['/static/images/blog/<slug>/cover.webp']
+draft: true
+---
+
+{/_ INTRO: the price of the main plan, what changed recently (if anything) and your
+"worth it?" answer in the first 100 words. _/}
+
+[Tool] costs **[$X/month]** for [main plan], with a free plan that [limits]. Here's what every plan includes and whether it's worth paying for. Prices were checked on **[DATE]** on the [official pricing page](https://example.com/pricing).
+
+<VerdictBox
+  title="Is [Tool] worth it?"
+  picks={[
+    { who: 'Stay on Free if', pick: '[you only need X]' },
+    { who: 'Pay for [Plan] if', pick: '[you need Y]', tool: 'tool-slug' },
+    { who: 'Consider [Alternative] if', pick: '[price matters most]', tool: 'alternative-slug' },
+  ]}
+/>
+
+## [Tool] plans at a glance
+
+<ComparisonTable
+  columns={['', 'Free', '[Plan 1]', '[Plan 2]', '[Plan 3]']}
+  highlight={2}
+  highlightLabel="Best value"
+  rows={[
+    ['Price (monthly)', '$0', '[$X]', '[$X]', '[$X]'],
+    ['Price (yearly, per month)', '$0', '[$X]', '[$X]', '[$X]'],
+    ['[Key limit]', '[limit]', '[limit]', '[limit]', '[limit]'],
+    ['[Key feature]', false, true, true, true],
+  ]}
+  caption="Official prices in [USD], checked [DATE]. Taxes and regional prices may differ."
+/>
+
+## Who each plan is for
+
+- **Free:** [who]
+- **[Plan 1]:** [who]
+- **[Plan 2]:** [who]
+
+## What changed recently
+
+[Any price increase, new plan or limit change, with the date and a source link. Delete this section if nothing changed.]
+
+## Hidden costs and limits
+
+[Usage caps, overage fees, seats, add-ons, annual-only discounts, VAT.]
+
+## Pros and cons of paying
+
+<ProsCons
+  prosTitle="Worth paying for"
+  consTitle="Watch out for"
+  pros={['[benefit]', '[benefit]']}
+  cons={['[drawback]', '[drawback]']}
+/>
+
+## How I tested
+
+{/_ If you have not paid for the plan yourself, say the article is based on the official
+pricing page and documentation, and keep `handsOn: false`. _/}
+
+- **Plan I used:** [plan, monthly or yearly, since when]
+- **What I used it for:** [real tasks]
+- **Date:** [MONTH YEAR]
+
+{/_ SCREENSHOTS: save as WebP in public/static/images/blog/<slug>/, then uncomment:
+![TODO: [Tool] billing page showing the [Plan] usage limits](/static/images/blog/<slug>/usage.webp)
+_/}
+
+[Your notes: did you hit the limits? Was the upgrade noticeable?]
+
+## Cheaper alternatives
+
+<ToolCard tool="alternative-slug" />
+
+[1–2 sentences on when the alternative makes more sense.]
+
+## Is [Tool] worth it?
+
+[Your bottom line in 2–3 sentences.]
+
+<AffiliateButton tool="tool-slug">See [Tool] plans</AffiliateButton>
+
+## FAQ
+
+### How much does [Tool] cost per month?
+
+[Direct answer with date.]
+
+### Is there a free version of [Tool]?
+
+[Direct answer with limits.]
+
+### Does [Tool] offer a student or annual discount?
+
+[Direct answer.]
+
+## Related reading
+
+- [[Tool] vs [Alternative]](/blog/tool-vs-alternative)
+- [[Tool] alternatives](/blog/tool-alternatives)
+
+## Sources
+
+- [[Tool] pricing](https://example.com/pricing) ([Vendor])

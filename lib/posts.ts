@@ -56,15 +56,18 @@ export function getCards(filter?: (post: CoreContent<Blog>) => boolean): PostCar
   return (filter ? posts.filter(filter) : posts).map(toCard)
 }
 
-/** Posts in the same category first, then by shared tags */
+/**
+ * Posts in the same category first, then by shared tags, topped up with the newest posts so
+ * every article ends with a full "Related articles" block.
+ */
 export function getRelated(post: CoreContent<Blog>, limit = 3): PostCardData[] {
   const others = getPosts().filter((p) => p.slug !== post.slug)
   const score = (p: CoreContent<Blog>) =>
     (p.category === post.category ? 10 : 0) +
     (p.tags ?? []).filter((t) => post.tags?.includes(t)).length
+  // Array.sort is stable, so equal scores keep newest-first order
   return others
     .map((p) => ({ p, s: score(p) }))
-    .filter(({ s }) => s > 0)
     .sort((a, b) => b.s - a.s)
     .slice(0, limit)
     .map(({ p }) => toCard(p))

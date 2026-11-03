@@ -1,0 +1,127 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: "Best [category] for [audience] in 2026"
+# 1. Copy to data/blog/best-<category>-for-<audience>.mdx (the file name becomes the URL).
+# 2. Replace every [BRACKET] and TODO. Tool slugs must exist in lib/affiliates.ts.
+# 3. Set `draft: false` to publish. Never invent prices, test results or ratings.
+# ─────────────────────────────────────────────────────────────────────────────
+title: 'Best [Category] for [Audience] in 2026' # ≈ 50–60 characters
+date: 'YYYY-MM-DD'
+lastmod: 'YYYY-MM-DD' # update every time you re-check prices or picks
+summary: '[Who it is for] + [how you chose] + [what the reader gets]. ≈ 150 characters.'
+category: ai-tools # ai-tools | developer-tools | productivity
+format: listicle
+tags: ['[category]', '[audience]', 'best of']
+verdict: '[One-line bottom line: the overall pick and why]'
+featured: false
+handsOn: false # true ONLY if you tested the tools yourself and the article shows it
+authors: ['default']
+# images: ['/static/images/blog/<slug>/cover.webp']
+draft: true
+---
+
+{/_ INTRO: 2–3 short paragraphs. Name the #1 pick in the first 100 words. Say how you chose:
+"I compared [N] tools on [criteria] using [their pricing pages / my own use for X weeks]". _/}
+
+[Opening sentence about the problem this audience has.] I compared **[N] [category] tools** on [criteria 1], [criteria 2] and price. Prices were checked on **[DATE]**.
+
+<VerdictBox
+  picks={[
+    { who: 'Best overall', pick: '[Tool A]', tool: 'tool-a-slug', why: '[short reason]' },
+    { who: 'Best free option', pick: '[Tool B]', tool: 'tool-b-slug', why: '[short reason]' },
+    { who: 'Best for [use case]', pick: '[Tool C]', tool: 'tool-c-slug', why: '[short reason]' },
+  ]}
+/>
+
+## Quick comparison
+
+<ComparisonTable
+  columns={['Tool', 'Best for', 'Free plan', 'Paid from']}
+  highlightRow={0}
+  highlightLabel="Top pick"
+  rows={[
+    ['1. [Tool A]', '[use case]', true, '[$X/mo]'],
+    ['2. [Tool B]', '[use case]', true, '[$X/mo]'],
+    ['3. [Tool C]', '[use case]', false, '[$X/mo]'],
+  ]}
+  caption="Prices in [USD], checked [MONTH YEAR]. Excludes tax."
+/>
+
+## Who this list is for
+
+[Describe the audience: their budget, skill level, team size and the job they need done. Say who should NOT use any of these tools.]
+
+## 1. [Tool A]: best overall
+
+<ToolCard tool="tool-a-slug" badge="Best overall" />
+
+[2–4 short paragraphs: what it is, why it is #1 for this audience, what it costs, the main catch.]
+
+<ProsCons pros={['[pro]', '[pro]', '[pro]']} cons={['[con]', '[con]']} />
+
+## 2. [Tool B]: best free option
+
+<ToolCard tool="tool-b-slug" badge="Best free option" />
+
+[Why it made the list and who should pick it over #1.]
+
+<ProsCons pros={['[pro]', '[pro]']} cons={['[con]', '[con]']} />
+
+## 3. [Tool C]: best for [use case]
+
+<ToolCard tool="tool-c-slug" />
+
+[Why it made the list.]
+
+<ProsCons pros={['[pro]', '[pro]']} cons={['[con]', '[con]']} />
+
+## Pricing compared
+
+| Plan       | [Tool A] | [Tool B] | [Tool C] |
+| ---------- | -------- | -------- | -------- |
+| Free       | [limits] | [limits] | [limits] |
+| Individual | [$X/mo]  | [$X/mo]  | [$X/mo]  |
+| Team       | [$X/mo]  | [$X/mo]  | [$X/mo]  |
+
+[Note billing quirks: yearly vs monthly, VAT, usage limits.]
+
+## How I tested
+
+{/_ Be specific and honest. If you only researched (no hands-on use), say so and keep
+`handsOn: false`. If you used the tools, set `handsOn: true` and show evidence. _/}
+
+- **What I did:** [e.g. used each tool for X days on Y real tasks / compared official docs and pricing pages]
+- **Plans used:** [Free / Pro, and whether you paid or got a vendor account (disclose it)]
+- **Criteria:** [criteria 1], [criteria 2], [criteria 3], price
+- **Date:** [MONTH YEAR]
+
+{/_ SCREENSHOTS: save them as WebP in public/static/images/blog/<slug>/, then uncomment:
+![TODO: describe what the screenshot shows](/static/images/blog/<slug>/screenshot-1.webp)
+_/}
+
+[Your own notes: what surprised you, what broke, what you would choose and why.]
+
+## FAQ
+
+### What is the best [category] for [audience]?
+
+[Direct answer in 1–2 sentences.]
+
+### Is there a free [category] for [audience]?
+
+[Direct answer.]
+
+### [Another question people search for]
+
+[Direct answer.]
+
+## Related reading
+
+{/* Link 2–4 of your own related articles. The automatic "Related articles" block also appears below. */}
+
+- [Related article title](/blog/related-slug)
+- [Related article title](/blog/related-slug)
+
+## Sources
+
+- [Official pricing page](https://example.com/pricing) ([Vendor])

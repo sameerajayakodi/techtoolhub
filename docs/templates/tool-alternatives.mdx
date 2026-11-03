@@ -1,0 +1,128 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: "[Tool] alternatives"
+# 1. Copy to data/blog/<tool>-alternatives.mdx (the file name becomes the URL).
+# 2. Replace every [BRACKET] and TODO. Tool slugs must exist in lib/affiliates.ts.
+# 3. Set `draft: false` to publish. Never invent prices, test results or ratings.
+# ─────────────────────────────────────────────────────────────────────────────
+title: '[N] Best [Tool] Alternatives in 2026 (Free & Paid)'
+date: 'YYYY-MM-DD'
+lastmod: 'YYYY-MM-DD'
+summary: 'Looking for a [Tool] alternative? [N] options compared on price, [criteria] and [key reason people switch]. ≈ 150 characters.'
+category: ai-tools # ai-tools | developer-tools | productivity
+format: listicle
+tags: ['[tool]', 'alternatives', 'best of']
+verdict: '[Best alternative] is the best [Tool] alternative for most people; [free option] is the best free one.'
+featured: false
+handsOn: false # true ONLY if you tested the alternatives yourself and the article shows it
+authors: ['default']
+# images: ['/static/images/blog/<slug>/cover.webp']
+draft: true
+---
+
+{/_ INTRO: why people leave [Tool] (price change, missing feature, privacy...) and your top
+alternative in the first 100 words. _/}
+
+[Why people look for alternatives: price rise / limits / missing feature.] These are the best [Tool] alternatives for [audience], checked on **[DATE]**.
+
+<VerdictBox
+  title="Best alternatives at a glance"
+  picks={[
+    { who: 'Best overall', pick: '[Alternative 1]', tool: 'alt-1-slug', why: '[reason]' },
+    { who: 'Best free', pick: '[Alternative 2]', tool: 'alt-2-slug', why: '[reason]' },
+    { who: 'Best for [use case]', pick: '[Alternative 3]', tool: 'alt-3-slug', why: '[reason]' },
+  ]}
+/>
+
+## Why switch from [Tool]?
+
+[2–4 honest reasons, plus when you should stay with [Tool].]
+
+## [Tool] alternatives compared
+
+<ComparisonTable
+  columns={['Tool', 'Best for', 'Free plan', 'Paid from', 'Import from [Tool]']}
+  highlightRow={0}
+  highlightLabel="Top pick"
+  rows={[
+    ['[Alternative 1]', '[use case]', true, '[$X/mo]', true],
+    ['[Alternative 2]', '[use case]', true, '[$X/mo]', false],
+    ['[Alternative 3]', '[use case]', false, '[$X/mo]', null],
+    ['[Tool] (for reference)', '[use case]', true, '[$X/mo]', null],
+  ]}
+  caption="Checked [MONTH YEAR]. Prices exclude tax."
+/>
+
+## 1. [Alternative 1]
+
+<ToolCard tool="alt-1-slug" badge="Best overall" />
+
+[What it does better than [Tool], what it does worse, who should pick it.]
+
+<ProsCons pros={['[pro]', '[pro]']} cons={['[con]', '[con]']} />
+
+## 2. [Alternative 2]
+
+<ToolCard tool="alt-2-slug" badge="Best free" />
+
+[What it does better/worse than [Tool].]
+
+<ProsCons pros={['[pro]', '[pro]']} cons={['[con]', '[con]']} />
+
+## 3. [Alternative 3]
+
+<ToolCard tool="alt-3-slug" />
+
+[What it does better/worse than [Tool].]
+
+<ProsCons pros={['[pro]', '[pro]']} cons={['[con]', '[con]']} />
+
+## Pricing compared
+
+| Plan       | [Tool]  | [Alternative 1] | [Alternative 2] | [Alternative 3] |
+| ---------- | ------- | --------------- | --------------- | --------------- |
+| Free       | [limit] | [limit]         | [limit]         | [limit]         |
+| Individual | [$X]    | [$X]            | [$X]            | [$X]            |
+
+## How I tested
+
+{/* If this list is based on research only, say so and keep `handsOn: false`. */}
+
+- **What I did:** [e.g. moved my own [data] from [Tool] into each alternative and used it for X days]
+- **Plans used:** [plans; paid myself / vendor-provided (disclose)]
+- **Date:** [MONTH YEAR]
+
+{/_ SCREENSHOTS: save as WebP in public/static/images/blog/<slug>/, then uncomment:
+![TODO: importing data from [Tool] into [Alternative 1]](/static/images/blog/<slug>/import.webp)
+_/}
+
+[Your notes: migration pain points, what you missed from [Tool], what you liked more.]
+
+## How to switch from [Tool]
+
+1. [Export step]
+2. [Import step]
+3. [What doesn't carry over]
+
+## FAQ
+
+### What is the best free alternative to [Tool]?
+
+[Direct answer.]
+
+### Is there an alternative to [Tool] that [does X]?
+
+[Direct answer.]
+
+### Can I import my [data] from [Tool]?
+
+[Direct answer per alternative.]
+
+## Related reading
+
+- [[Tool] vs [Alternative 1]](/blog/tool-vs-alternative-1)
+- [[Tool] pricing explained](/blog/tool-pricing)
+
+## Sources
+
+- [[Alternative 1] pricing](https://example.com/pricing) ([Vendor])

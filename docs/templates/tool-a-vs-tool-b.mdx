@@ -1,0 +1,139 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: "[Tool A] vs [Tool B]"
+# 1. Copy to data/blog/<tool-a>-vs-<tool-b>.mdx (the file name becomes the URL).
+# 2. Replace every [BRACKET] and TODO. Tool slugs must exist in lib/affiliates.ts.
+# 3. Set `draft: false` to publish. Never invent prices, test results or ratings.
+# ─────────────────────────────────────────────────────────────────────────────
+title: '[Tool A] vs [Tool B] (2026): Which Should You Choose?'
+date: 'YYYY-MM-DD'
+lastmod: 'YYYY-MM-DD'
+summary: '[Tool A] vs [Tool B] compared on [criteria], price and [key difference]. Which one fits [audience] best. ≈ 150 characters.'
+category: ai-tools # ai-tools | developer-tools | productivity
+format: comparison
+tags: ['[tool a]', '[tool b]', 'comparison']
+verdict: '[Tool A] is better for [X]; [Tool B] is better for [Y].'
+featured: false
+handsOn: false # true ONLY if you used both tools yourself and the article shows it
+authors: ['default']
+# images: ['/static/images/blog/<slug>/cover.webp']
+draft: true
+---
+
+{/* INTRO: 2 short paragraphs. State the core difference and who wins for whom in the first 100 words. */}
+
+[Tool A] and [Tool B] both [do the job], but they suit different people. Here's how they compare on [criteria 1], [criteria 2] and price, checked on **[DATE]**.
+
+<VerdictBox
+  picks={[
+    { who: 'Choose [Tool A] if', pick: '[you want X]', tool: 'tool-a-slug' },
+    { who: 'Choose [Tool B] if', pick: '[you want Y]', tool: 'tool-b-slug' },
+  ]}
+>
+  [One-sentence bottom line.]
+</VerdictBox>
+
+## [Tool A] vs [Tool B] at a glance
+
+<ComparisonTable
+  columns={['', '[Tool A]', '[Tool B]']}
+  rows={[
+    ['Best for', '[audience]', '[audience]'],
+    ['Free plan', true, true],
+    ['Paid from', '[$X/mo]', '[$X/mo]'],
+    ['[Key feature 1]', true, false],
+    ['[Key feature 2]', '[detail]', '[detail]'],
+    ['Platforms', '[Web, Mac, Windows]', '[Web]'],
+  ]}
+  caption="Checked [MONTH YEAR]. Prices exclude tax."
+/>
+
+## Who each tool is for
+
+**[Tool A]** is for [audience and job]. **[Tool B]** is for [audience and job]. [Who should use neither.]
+
+## Pricing
+
+[Plans side by side, what each paid tier unlocks, monthly vs yearly, hidden limits.]
+
+| Plan       | [Tool A]     | [Tool B]     |
+| ---------- | ------------ | ------------ |
+| Free       | [limits]     | [limits]     |
+| Individual | [$X/mo]      | [$X/mo]      |
+| Team       | [$X/user/mo] | [$X/user/mo] |
+
+## [Criterion 1, e.g. Features]
+
+[Compare honestly. Give the winner for this criterion.]
+
+## [Criterion 2, e.g. Ease of use]
+
+[Compare honestly. Give the winner for this criterion.]
+
+## Pros and cons
+
+<ProsCons
+  prosTitle="[Tool A] strengths"
+  consTitle="[Tool A] weaknesses"
+  pros={['[pro]', '[pro]']}
+  cons={['[con]', '[con]']}
+/>
+
+<ProsCons
+  prosTitle="[Tool B] strengths"
+  consTitle="[Tool B] weaknesses"
+  pros={['[pro]', '[pro]']}
+  cons={['[con]', '[con]']}
+/>
+
+## How I tested
+
+{/* If you only compared documentation and pricing pages, say so and keep `handsOn: false`. */}
+
+- **What I did:** [e.g. ran the same 5 tasks in both tools over X days]
+- **Plans used:** [plan names; paid myself / vendor-provided (disclose)]
+- **Date:** [MONTH YEAR]
+
+{/_ SCREENSHOTS: save as WebP in public/static/images/blog/<slug>/, then uncomment:
+![TODO: [Tool A] doing [task]](/static/images/blog/<slug>/tool-a-task.webp)
+![TODO: [Tool B] doing the same task](/static/images/blog/<slug>/tool-b-task.webp)
+_/}
+
+[Your own observations: results of the same task in both tools, speed, quality, frustrations.]
+
+## Which should you choose?
+
+| If you…           | Choose       |
+| ----------------- | ------------ |
+| [need X]          | **[Tool A]** |
+| [need Y]          | **[Tool B]** |
+| [are on a budget] | **[Tool]**   |
+
+<AffiliateButton tool="tool-a-slug">Try [Tool A]</AffiliateButton>
+<AffiliateButton tool="tool-b-slug" variant="secondary">
+  Try [Tool B]
+</AffiliateButton>
+
+## FAQ
+
+### Is [Tool A] better than [Tool B]?
+
+[Direct answer: "for X yes, for Y no".]
+
+### Is [Tool A] cheaper than [Tool B]?
+
+[Direct answer with prices and date.]
+
+### Can I switch from [Tool A] to [Tool B]?
+
+[Import/export options.]
+
+## Related reading
+
+- [[Tool A] alternatives](/blog/tool-a-alternatives)
+- [[Tool A] pricing explained](/blog/tool-a-pricing)
+
+## Sources
+
+- [[Tool A] pricing](https://example.com/pricing) ([Vendor])
+- [[Tool B] pricing](https://example.com/pricing) ([Vendor])
