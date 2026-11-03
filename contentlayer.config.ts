@@ -127,6 +127,9 @@ export const Blog = defineDocumentType(() => ({
     featured: { type: 'boolean', default: false },
     // Shows the affiliate disclosure notice at the top of the article
     affiliate: { type: 'boolean', default: false },
+    // true only when the article includes the author's own testing (notes, screenshots). Enables the
+    // "Hands-on tested" badge and, for reviews with a rating, Review star markup
+    handsOn: { type: 'boolean', default: false },
     draft: { type: 'boolean' },
     images: { type: 'json' },
     authors: { type: 'list', of: { type: 'string' } },

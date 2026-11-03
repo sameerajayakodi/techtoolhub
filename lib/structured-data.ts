@@ -23,7 +23,7 @@ export const organization = {
   logo: { '@type': 'ImageObject', url: abs('/static/images/logo.png'), width: 512, height: 512 },
 }
 
-/** Site-wide WebSite + Organization graph (rendered in the root layout) */
+/** WebSite + Organization graph (rendered on the homepage) */
 export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -37,6 +37,12 @@ export function websiteJsonLd() {
         description: siteMetadata.description,
         inLanguage: siteMetadata.language,
         publisher: { '@id': `${siteUrl}/#organization` },
+        // /blog reads ?q= and filters the article list (components/PostExplorer.tsx)
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: { '@type': 'EntryPoint', urlTemplate: `${siteUrl}/blog?q={search_term_string}` },
+          'query-input': 'required name=search_term_string',
+        },
       },
     ],
   }
@@ -54,9 +60,24 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   }
 }
 
+/** schema.org Person for an author (data/authors/*.mdx) */
+export function personJsonLd(a: CoreContent<Authors>) {
+  const sameAs = [a.linkedin, a.twitter, a.github, a.bluesky].filter(Boolean)
+  return {
+    '@type': 'Person',
+    '@id': `${siteUrl}/author#${a.slug}`,
+    name: a.name,
+    url: abs('/author'),
+    ...(a.occupation && { jobTitle: a.occupation }),
+    ...(a.avatar && { image: abs(a.avatar) }),
+    ...(sameAs.length > 0 && { sameAs }),
+  }
+}
+
 /**
- * Article JSON-LD for every post, plus a Review (with SoftwareApplication + Rating) when the
- * post is a review that has `rating` and `product.name` in its frontmatter.
+ * Article JSON-LD for every post. A Review (with SoftwareApplication + Rating) is only added when
+ * the post is a review with `handsOn: true`, a `rating` and `product.name` in its frontmatter,
+ * i.e. a score the author gave after testing the tool. Never mark up research-only ratings.
  */
 export function postJsonLd(post: CoreContent<Blog>, authors: CoreContent<Authors>[]) {
   const url = abs(`/${post.path}`)
@@ -64,11 +85,7 @@ export function postJsonLd(post: CoreContent<Blog>, authors: CoreContent<Authors
   const cover = getPostImage(post.images)
   const image = [cover && abs(cover), abs(`/og/${post.slug}`)].filter(Boolean)
   const category = getCategory(post.category)
-  const author = authors.map((a) => ({
-    '@type': 'Person',
-    name: a.name,
-    ...(a.linkedin || a.twitter ? { sameAs: [a.linkedin, a.twitter].filter(Boolean) } : {}),
-  }))
+  const author = authors.map(personJsonLd)
 
   const article = {
     '@type': post.format === 'news' ? 'NewsArticle' : 'BlogPosting',
@@ -97,7 +114,12 @@ export function postJsonLd(post: CoreContent<Blog>, authors: CoreContent<Authors
   ]
 
   const product = post.product as Product | undefined
-  if (post.format === 'review' && typeof post.rating === 'number' && product?.name) {
+  if (
+    post.format === 'review' &&
+    post.handsOn === true &&
+    typeof post.rating === 'number' &&
+    product?.name
+  ) {
     graph.push({
       '@type': 'Review',
       '@id': `${url}#review`,

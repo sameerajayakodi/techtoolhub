@@ -7,6 +7,7 @@ import { categories } from '@/data/categories'
 import siteMetadata from '@/data/siteMetadata'
 import { getCards } from '@/lib/posts'
 import { SITE_URL } from '@/lib/site'
+import { websiteJsonLd, toJsonLd } from '@/lib/structured-data'
 import type { Metadata } from 'next'
 import {
   ArrowRightIcon,
@@ -56,6 +57,10 @@ export default function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(websiteJsonLd()) }}
+      />
       {/* Hero: full-bleed banner that breaks out of the page container (main clips the overflow) */}
       <section className="from-primary-50/80 relative isolate mb-14 ml-[calc(50%-50vw)] w-screen overflow-hidden border-b border-gray-200 bg-gradient-to-b via-white to-white dark:border-gray-800 dark:from-gray-900 dark:via-gray-950 dark:to-gray-950">
         <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black_35%,transparent_80%)]" />

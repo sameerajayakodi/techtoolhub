@@ -6,7 +6,8 @@ import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({
   title: 'Topics',
-  description: 'Browse every topic we cover.',
+  description:
+    'Browse every topic TechToolHub covers, from AI assistants and coding tools to privacy and productivity apps.',
   path: '/tags',
 })
 

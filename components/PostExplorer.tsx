@@ -218,11 +218,15 @@ export default function PostExplorer({
           </p>
         </div>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.slice(0, visible).map((post, i) => (
-            <ArticleCard key={post.path} post={post} priority={i < 3} />
-          ))}
-        </div>
+        <>
+          {/* Keeps the heading outline h1 → h2 → h3 (card titles are h3) */}
+          <h2 className="sr-only">Articles</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.slice(0, visible).map((post, i) => (
+              <ArticleCard key={post.path} post={post} priority={i < 3} />
+            ))}
+          </div>
+        </>
       )}
 
       {filtered.length > visible && (

@@ -11,7 +11,8 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.techtoolhub.o
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'TechToolHub',
-  author: 'TechToolHub Editorial Team',
+  // TODO: your name (also set it in data/authors/default.mdx). Used in the RSS feed
+  author: 'TODO: Your Name',
   headerTitle: 'TechToolHub',
   tagline: 'Honest reviews of AI, developer & productivity tools',
   description:

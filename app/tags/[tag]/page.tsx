@@ -16,7 +16,7 @@ export async function generateMetadata(props: {
   const tag = decodeURI(params.tag)
   return genPageMetadata({
     title: `#${tag}`,
-    description: `${siteMetadata.title} reviews and guides about ${tag}.`,
+    description: `Reviews, comparisons and guides about ${tag} on ${siteMetadata.title}, newest first.`,
     path: `/tags/${tag}`,
     alternates: {
       canonical: `/tags/${tag}`,
@@ -51,6 +51,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
           { name: `#${tag}`, href: `/tags/${tag}` },
         ]}
       />
+      <h2 className="sr-only">Articles tagged {tag}</h2>
       <ArticleGrid posts={posts} />
     </>
   )

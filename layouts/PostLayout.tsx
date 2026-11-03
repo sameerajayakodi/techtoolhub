@@ -159,10 +159,10 @@ export default function PostLayout({
               </span>
             </div>
             <span>
-              <time dateTime={date}>{fmt(date)}</time>
+              Last updated <time dateTime={lastmod || date}>{fmt(lastmod || date)}</time>
               {lastmod && lastmod !== date && (
                 <>
-                  {' · '}Updated <time dateTime={lastmod}>{fmt(lastmod)}</time>
+                  {' · '}Published <time dateTime={date}>{fmt(date)}</time>
                 </>
               )}
             </span>

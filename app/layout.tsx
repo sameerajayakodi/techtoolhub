@@ -10,7 +10,6 @@ import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { SITE_URL } from '@/lib/site'
-import { websiteJsonLd, toJsonLd } from '@/lib/structured-data'
 import CookieConsent from '@/components/CookieConsent'
 import { ThemeProviders } from './theme-providers'
 import { Metadata, Viewport } from 'next'
@@ -29,6 +28,8 @@ const space_grotesk = Space_Grotesk({
 })
 
 const adsenseClient = siteMetadata.adsense.client
+const googleSiteVerification =
+  process.env.GOOGLE_SITE_VERIFICATION || process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -67,10 +68,8 @@ export const metadata: Metadata = {
     title: siteMetadata.title,
     card: 'summary_large_image',
   },
-  // Paste your Google Search Console HTML-tag token into NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  // Google Search Console HTML-tag token (only the content="..." value). Rendered only when set.
+  verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
   other: adsenseClient ? { 'google-adsense-account': adsenseClient } : undefined,
 }
 
@@ -110,10 +109,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <link rel="manifest" href={`${basePath}/static/favicons/site.webmanifest`} />
         <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: toJsonLd(websiteJsonLd()) }}
-        />
       </head>
       <body className="bg-white text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100">
         {adsenseClient && (
