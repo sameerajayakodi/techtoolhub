@@ -483,6 +483,97 @@ const images = {
       { glows: [[1350, 150, 320, C.amber, 0.3], [200, 800, 300, C.emerald, 0.35]] }
     ),
 
+  // Europe-focused articles (November 2026) ─────────────────────────────────
+  'blog/eu-ai-act-2026-deadlines/cover': () => {
+    const euStars = (cx, cy, R, r = 16) =>
+      Array.from({ length: 12 }, (_, i) => {
+        const a = (Math.PI / 6) * i - Math.PI / 2
+        return star(cx + R * Math.cos(a), cy + R * Math.sin(a), r, '#facc15')
+      }).join('')
+    const steps = [
+      ['Feb 2025', 'Bans + AI literacy', true],
+      ['Aug 2025', 'General-purpose AI', true],
+      ['Aug 2026', 'Transparency', true],
+      ['Dec 2026', 'Deepfake ban', false],
+      ['Dec 2027', 'High-risk AI', false],
+      ['Aug 2028', 'AI in products', false],
+    ]
+    return frame(
+      1600,
+      900,
+      `<g filter="url(#shadow)"><circle cx="300" cy="300" r="180" fill="#1e3a8a"/></g>
+      ${euStars(300, 300, 120)}
+      ${text(300, 312, 'AI ACT', { size: 34, weight: 800, anchor: 'middle', fill: '#fff' })}
+      ${text(560, 250, 'EU AI Act', { size: 76, weight: 800 })}
+      ${text(560, 320, 'What applies when', { size: 40, weight: 600, fill: C.muted })}
+      ${pill(560, 360, 'UPDATED NOVEMBER 2026', { fill: 'rgba(250,204,21,0.15)', color: '#facc15', size: 18 })}
+      <path d="M150 690 H1450" stroke="${C.line}" stroke-width="6" stroke-linecap="round"/>
+      <path d="M150 690 H${150 + 2.5 * 260}" stroke="#facc15" stroke-width="6" stroke-linecap="round"/>
+      ${steps
+        .map(([d, l, done], i) => {
+          const x = 150 + i * 260
+          return `<circle cx="${x}" cy="690" r="18" fill="${done ? '#facc15' : C.bg2}" stroke="#facc15" stroke-width="5"/>
+          ${text(x, 640, d, { size: 24, weight: 800, anchor: i === 0 ? 'start' : i === 5 ? 'end' : 'middle', fill: done ? '#facc15' : C.text })}
+          ${text(x, 750, l, { size: 20, weight: 500, anchor: i === 0 ? 'start' : i === 5 ? 'end' : 'middle', fill: C.muted })}`
+        })
+        .join('')}
+      ${text(150 + 2.5 * 260, 800, 'You are here', { size: 18, weight: 700, anchor: 'middle', fill: '#facc15' })}`,
+      { glows: [[300, 300, 300, C.blue, 0.45], [1400, 150, 300, C.indigo, 0.35]] }
+    )
+  },
+
+  'blog/mistral-vibe-vs-chatgpt/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(190, 80, 'AI ASSISTANTS FOR EUROPE', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${chatWindow(250, 190, 'Mistral Vibe', C.orange, 1)}
+      ${chatWindow(950, 190, 'ChatGPT', C.emerald, 0)}
+      ${vs(800, 450)}
+      <g filter="url(#soft)">${rect(330, 740, 240, 52, '#1e3a8a', 26)}</g>
+      ${Array.from({ length: 12 }, (_, i) => {
+        const a = (Math.PI / 6) * i - Math.PI / 2
+        return star(364 + 15 * Math.cos(a), 766 + 15 * Math.sin(a), 3.6, '#facc15')
+      }).join('')}
+      ${text(396, 774, 'Hosted in EU', { size: 20, weight: 700, fill: '#fff' })}`,
+      { glows: [[300, 200, 300, C.orange, 0.35], [1350, 750, 300, C.emerald, 0.3]] }
+    ),
+
+  'blog/european-alternatives-google-microsoft/cover': () => {
+    const apps = [
+      ['Mail', C.violet],
+      ['Drive', C.sky],
+      ['Docs', C.blue],
+      ['Calendar', C.emerald],
+      ['Translate', C.teal],
+      ['AI chat', C.orange],
+    ]
+    return frame(
+      1600,
+      900,
+      `${text(160, 200, 'Made in Europe', { size: 72, weight: 800 })}
+      ${text(160, 262, 'Swap Big Tech apps for European ones', { size: 32, weight: 500, fill: C.muted })}
+      ${apps
+        .map(([n, c], i) => {
+          const x = 160 + (i % 3) * 300
+          const y = 340 + Math.floor(i / 3) * 250
+          return `<g filter="url(#soft)">${rect(x, y, 260, 210, C.card, 28, `stroke="${C.line}" stroke-width="2"`)}</g>
+          ${rect(x + 30, y + 30, 72, 72, c, 20)}
+          ${lines(x + 30, y + 130, [180, 130], { gap: 22 })}
+          ${text(x + 120, y + 78, n, { size: 26, weight: 700 })}`
+        })
+        .join('')}
+      <g filter="url(#shadow)"><circle cx="1260" cy="560" r="220" fill="#1e3a8a"/></g>
+      ${Array.from({ length: 12 }, (_, i) => {
+        const a = (Math.PI / 6) * i - Math.PI / 2
+        return star(1260 + 150 * Math.cos(a), 560 + 150 * Math.sin(a), 20, '#facc15')
+      }).join('')}
+      ${text(1260, 548, 'GDPR', { size: 44, weight: 800, anchor: 'middle', fill: '#fff' })}
+      ${text(1260, 594, 'friendly', { size: 28, weight: 600, anchor: 'middle', fill: '#bfdbfe' })}`,
+      { glows: [[1300, 500, 340, C.blue, 0.45], [200, 820, 300, C.violet, 0.3]] }
+    )
+  },
+
   // Site images ───────────────────────────────────────────────────────────────
   'site/hero': () => {
     const tile = (x, y, name, cat, score, c) => `<g filter="url(#soft)">${rect(x, y, 300, 200, C.card, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
