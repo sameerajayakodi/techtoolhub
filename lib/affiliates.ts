@@ -10,6 +10,9 @@
  *   2. Paste it into `affiliateUrl` (must start with https://) and fill `program` and
  *      `commissionNote`, so you know where the money comes from.
  *   3. Never invent links: leave `affiliateUrl: TODO` until you have a real one.
+ *   4. If the program's terms ban redirect links (Proton's do), set `directLink: true`: buttons
+ *      then link straight to the affiliate URL instead of /go/<slug>. Link to such a tool with
+ *      <AffiliateButton> or <ToolCard>, never a Markdown /go/ link.
  *
  * `pricingFrom` is shown on <ToolCard />. The values below were copied from our articles (see
  * `pricingCheckedOn`); re-check them on the vendor's pricing page before relying on them.
@@ -34,6 +37,8 @@ export interface AffiliateTool {
   pricingFrom?: string
   /** When pricingFrom was last checked (YYYY-MM) */
   pricingCheckedOn?: string
+  /** Link buttons straight to the outbound URL instead of /go/<slug> (program bans redirects) */
+  directLink?: boolean
 }
 
 export const affiliates = {
@@ -181,6 +186,8 @@ export const affiliates = {
     summary: 'Encrypted Mail, Drive, Calendar, Pass and VPN from Switzerland.',
     pricingFrom: 'Free · Mail Plus $3.99/mo (yearly)',
     pricingCheckedOn: '2026-11',
+    // Proton's partner terms ban "deceptive redirecting links" and Proton trademarks in page URLs
+    directLink: true,
   },
   tuta: {
     name: 'Tuta',
@@ -245,8 +252,14 @@ export const hasAffiliateUrl = (tool: AffiliateTool) => /^https:\/\//.test(tool.
 export const outboundUrl = (tool: AffiliateTool) =>
   hasAffiliateUrl(tool) ? tool.affiliateUrl : tool.fallbackUrl
 
-/** Internal path every affiliate button links to */
+/** Internal path affiliate buttons link to */
 export const goPath = (slug: string) => `/go/${slug}`
+
+/** Where an affiliate button for this tool points: /go/<slug>, or the outbound URL for directLink tools */
+export const toolHref = (slug: string) => {
+  const tool = requireTool(slug)
+  return tool.directLink ? outboundUrl(tool) : goPath(slug)
+}
 
 /** rel for every outbound affiliate link (Google: rel="sponsored" for paid links) */
 export const AFFILIATE_REL = 'sponsored nofollow noopener'

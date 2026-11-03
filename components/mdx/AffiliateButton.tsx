@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { AFFILIATE_REL, goPath, requireTool } from '@/lib/affiliates'
+import { AFFILIATE_REL, requireTool, toolHref } from '@/lib/affiliates'
 import { ExternalIcon } from '../icons'
 
 interface AffiliateButtonProps {
@@ -14,7 +14,8 @@ interface AffiliateButtonProps {
 
 /**
  * Outbound button that goes through /go/<tool> (your affiliate link once you have one, the
- * official site until then). Opens in a new tab with rel="sponsored nofollow noopener".
+ * official site until then), or straight to that URL for `directLink` tools. Opens in a new tab
+ * with rel="sponsored nofollow noopener".
  *
  * MDX: <AffiliateButton tool="cursor">Try Cursor free</AffiliateButton>
  */
@@ -27,7 +28,7 @@ export default function AffiliateButton({
   const info = requireTool(tool)
   return (
     <a
-      href={goPath(tool)}
+      href={toolHref(tool)}
       target="_blank"
       rel={AFFILIATE_REL}
       data-affiliate={tool}
