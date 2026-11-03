@@ -47,13 +47,20 @@ const siteMetadata = {
     },
   },
 
+  /**
+   * Google Analytics 4 measurement ID. GA only loads after a visitor accepts the cookie banner
+   * (components/CookieConsent.tsx) and only in production builds.
+   * Override with NEXT_PUBLIC_GA_ID; set it to "off" to disable analytics and the banner.
+   */
+  googleAnalyticsId:
+    (process.env.NEXT_PUBLIC_GA_ID || 'G-4KV56L6QE8') === 'off'
+      ? ''
+      : process.env.NEXT_PUBLIC_GA_ID || 'G-4KV56L6QE8',
+
   analytics: {
-    // Google Analytics 4 (gtag.js). Loads in production builds only, so local dev visits aren't counted.
-    // Override with NEXT_PUBLIC_GA_ID; set it to "off" to disable.
+    // Other providers supported by pliny (Plausible, Umami, ...) can go here. They load without
+    // the cookie banner, so only add cookieless ones or gate them on consent.
     // If you add another provider, also allow its domain in the CSP in `next.config.js`.
-    ...((process.env.NEXT_PUBLIC_GA_ID || 'G-4KV56L6QE8') !== 'off' && {
-      googleAnalytics: { googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID || 'G-4KV56L6QE8' },
-    }),
   },
 
   // Comments are optional. Fill the NEXT_PUBLIC_GISCUS_* variables (https://giscus.app) to enable them.

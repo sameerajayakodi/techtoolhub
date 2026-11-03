@@ -10,6 +10,7 @@ import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { websiteJsonLd, toJsonLd } from '@/lib/structured-data'
+import CookieConsent from '@/components/CookieConsent'
 import { ThemeProviders } from './theme-providers'
 import { Metadata, Viewport } from 'next'
 
@@ -125,6 +126,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+          <CookieConsent gaId={siteMetadata.googleAnalyticsId} />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
             <a
               href="#main"

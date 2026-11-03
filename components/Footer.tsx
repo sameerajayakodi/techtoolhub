@@ -4,6 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { categories } from '@/data/categories'
 import SocialIcon from '@/components/social-icons'
 import { RssIcon } from './icons'
+import CookieSettingsButton from './CookieSettingsButton'
 
 const columns = [
   {
@@ -102,7 +103,8 @@ export default function Footer() {
       <div className="border-t border-gray-200 dark:border-gray-800">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8 dark:text-gray-400">
           <p>
-            © {new Date().getFullYear()} {siteMetadata.title}. All rights reserved.
+            © {new Date().getFullYear()} {siteMetadata.title}. All rights reserved. ·{' '}
+            <CookieSettingsButton className="hover:text-primary-600 underline" />
           </p>
           <p>
             Some links are affiliate links. We may earn a commission at no extra cost to you.{' '}
