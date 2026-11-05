@@ -50,3 +50,6 @@ yarn-error.log*
 # Next.js
 next-env.d.ts.bak
 *.tsbuildinfo
+
+# Raw screenshots for the Office compatibility test (see docs/compat-test/checklist.md)
+/compat-screenshots/

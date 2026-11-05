@@ -1,0 +1,93 @@
+---
+title: 'Office Compatibility Test: 5 Free Suites vs Word, Excel & PowerPoint'
+date: '2026-11-05'
+lastmod: '2026-11-05'
+summary: 'I opened the same Word, Excel and PowerPoint test files in ONLYOFFICE, LibreOffice, Google Docs, WPS Office and FreeOffice and scored 39 features. Download the files and see what breaks.'
+category: productivity
+format: comparison
+tags: ['office-suite', 'comparison', 'onlyoffice', 'libreoffice']
+verdict: 'TODO: one sentence with the winner, written after the results are in.'
+featured: false
+handsOn: false
+authors: ['default']
+draft: true
+---
+
+{/* TODO (Sameera): this draft has no results yet. Fill every TODO from docs/compat-test/results.csv after testing, then set handsOn: true, write the verdict, and set draft: false. Never fill a result from research. */}
+
+Every free office suite says it "opens Microsoft Office files". The question is how well: do tracked changes survive, does XLOOKUP calculate, does the chart stay editable? To find out, I built three test files that pack **39 common Word, Excel and PowerPoint features** into one place, opened them in five free suites, and scored each feature against Microsoft 365 as the baseline.
+
+You can [download the same test files](#download-the-test-files) and run the test yourself.
+
+{/* TODO: VerdictBox with best overall, best for Excel files, best for Word files, once results are in */}
+
+## Results at a glance
+
+{/* TODO: fill from results.csv. Score = Pass counts as 1, Partial as 0.5, Fail as 0, out of the codes that applied. */}
+
+<ComparisonTable
+  columns={['Suite (version)', 'Word (15)', 'Excel (14)', 'PowerPoint (10)', 'Total (39)']}
+  rows={[
+    ['ONLYOFFICE (TODO)', 'TODO', 'TODO', 'TODO', 'TODO'],
+    ['LibreOffice (TODO)', 'TODO', 'TODO', 'TODO', 'TODO'],
+    ['Google Docs, Sheets, Slides', 'TODO', 'TODO', 'TODO', 'TODO'],
+    ['WPS Office (TODO)', 'TODO', 'TODO', 'TODO', 'TODO'],
+    ['FreeOffice (TODO)', 'TODO', 'TODO', 'TODO', 'TODO'],
+  ]}
+  caption="Tested by me on Windows, TODO date. Microsoft 365 for the web was the baseline."
+/>
+
+<AdSlot position="afterIntro" />
+
+## How I tested
+
+- **The files:** one .docx, one .xlsx and one .pptx, each section labelled with a code (D1–D15, X1–X14, P1–P10) and a note saying what should appear. The Excel file lists the result Excel gives for every formula, so a wrong value is easy to spot.
+- **The baseline:** I opened every file in Microsoft 365 for the web first. Anything that also looked wrong there was treated as a problem with the test file and left out.
+- **The scoring:** Pass (same as the baseline), Partial (content there but something off, such as a substituted font or a chart that can't be edited) or Fail (missing, broken or a wrong value).
+- **The round trip:** I saved each file from each suite and reopened the copy in Microsoft 365, because some suites open files well but change them on save.
+- **The setup:** TODO (Windows version, PC, test date, exact app versions).
+
+What the files don't cover: macros, pivot tables, dynamic-array formulas, animations and SmartArt. If you rely on those, test your own files before switching.
+
+## Word documents (.docx)
+
+{/* TODO: table of D1–D15 per suite (Pass/Partial/Fail), then 2–4 short paragraphs on what broke, each with a screenshot from compat-screenshots */}
+
+## Excel spreadsheets (.xlsx)
+
+{/* TODO: table of X1–X14 per suite, then notes. Call out XLOOKUP, conditional formatting and charts in particular. */}
+
+<AdSlot position="midArticle" />
+
+## PowerPoint presentations (.pptx)
+
+{/* TODO: table of P1–P10 per suite, then notes on charts, transitions and fonts */}
+
+## What happens when you save the file back
+
+{/* TODO: round-trip findings per suite from results.csv (roundtrip_notes) */}
+
+## Which suite should you use?
+
+{/* TODO: recommendations by need (Word-heavy, Excel-heavy, presentations, Linux, online), based only on the results above. Keep the ONLYOFFICE button only if it earns it in the results. */}
+
+<AffiliateButton tool="onlyoffice">Get ONLYOFFICE</AffiliateButton>
+
+## Download the test files
+
+Use them to check any office app, and tell me if your results differ:
+
+- [Word test file (.docx)](/downloads/office-compat-test/techtoolhub-compat-test.docx)
+- [Excel test file (.xlsx)](/downloads/office-compat-test/techtoolhub-compat-test.xlsx)
+- [PowerPoint test file (.pptx)](/downloads/office-compat-test/techtoolhub-compat-test.pptx)
+
+They're free to use and share. Please link back to this page if you publish results.
+
+## FAQ
+
+{/* TODO: 4–5 questions answered from the results, e.g. "Which free office suite is most compatible with Microsoft Word?", "Does LibreOffice support XLOOKUP?", "Can Google Docs keep tracked changes?" */}
+
+## Related reading
+
+- [Best Free Microsoft Office Alternatives in 2026](/blog/best-free-microsoft-office-alternatives)
+- [Best European Alternatives to Google & Microsoft Apps](/blog/european-alternatives-google-microsoft)
