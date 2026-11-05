@@ -59,6 +59,25 @@ const siteMetadata = {
   },
 
   /**
+   * Adsterra banner ads (keys from the Adsterra dashboard → Websites → Get code).
+   * <AdSlot> shows these wherever no AdSense slot is configured, picking the largest banner
+   * that fits the space. Popunder and Social Bar formats are deliberately not used.
+   * Set NEXT_PUBLIC_ADSTERRA=off on Vercel to switch them off without a code change.
+   * The script host (bicea.org) is set in public/ads/banner.html.
+   */
+  adsterra: {
+    enabled: process.env.NEXT_PUBLIC_ADSTERRA !== 'off',
+    banners: {
+      leaderboard: { key: '40310757c5f736e567adcc360cec0351', width: 728, height: 90 },
+      banner: { key: '2ed823eedea4033b0d3fe507ec3a6bbc', width: 468, height: 60 },
+      rectangle: { key: '458987c07b8e61ff615850c35cb422bc', width: 300, height: 250 },
+      mobile: { key: '68414f1e1249c13e7fd8942790dc5eea', width: 320, height: 50 },
+      skyscraper: { key: 'd0eb61100ef6c4b4b46088eec2d8d0fd', width: 160, height: 600 },
+      halfSkyscraper: { key: 'de35529f430b9580dd4c67d23afa3fc6', width: 160, height: 300 },
+    },
+  },
+
+  /**
    * Google Analytics 4 measurement ID. GA only loads after a visitor accepts the cookie banner
    * (components/CookieConsent.tsx) and only in production builds.
    * Override with NEXT_PUBLIC_GA_ID; set it to "off" to disable analytics and the banner.

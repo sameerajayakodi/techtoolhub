@@ -43,16 +43,17 @@ function clearAnalyticsCookies() {
  *
  * Consent Mode v2 defaults (all denied) are set in <head> by lib/consent.ts. gtag.js is only
  * loaded after the visitor accepts ("basic" consent mode): nothing is sent to Google Analytics
- * before that. This banner only asks about analytics. When AdSense is enabled (`adsEnabled`),
- * Google's certified consent message (AdSense → Privacy & messaging) asks EEA/UK/Swiss visitors
- * about ad cookies separately.
+ * before that. This banner only asks about analytics. When AdSense is enabled
+ * (`adNetwork="adsense"`), Google's certified consent message (AdSense → Privacy & messaging)
+ * asks EEA/UK/Swiss visitors about ad cookies separately. Adsterra banners (`"adsterra"`) are
+ * disclosed here and in the privacy policy.
  */
 export default function CookieConsent({
   gaId,
-  adsEnabled = false,
+  adNetwork,
 }: {
   gaId?: string
-  adsEnabled?: boolean
+  adNetwork?: 'adsense' | 'adsterra'
 }) {
   const [choice, setChoice] = useState<Choice | null>(null)
   const [open, setOpen] = useState(false)
@@ -124,9 +125,11 @@ window.gtag('config', '${gaId}', { anonymize_ip: true });`}
             >
               We&apos;d like to use Google Analytics cookies to understand which articles are
               useful. They are only set if you accept.{' '}
-              {adsEnabled
+              {adNetwork === 'adsense'
                 ? 'Ads are served by Google AdSense; where required, Google asks about ad cookies separately.'
-                : 'We don’t use advertising cookies.'}{' '}
+                : adNetwork === 'adsterra'
+                  ? 'Banner ads are served by Adsterra, which may use cookies to show and measure ads.'
+                  : 'We don’t use advertising cookies.'}{' '}
               You can change your choice at any time via &ldquo;Cookie settings&rdquo; in the
               footer. See our{' '}
               <Link

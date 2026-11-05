@@ -139,7 +139,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <VercelAnalytics />
           <CookieConsent
             gaId={siteMetadata.googleAnalyticsId}
-            adsEnabled={Boolean(adsenseClient)}
+            adNetwork={
+              adsenseClient ? 'adsense' : siteMetadata.adsterra.enabled ? 'adsterra' : undefined
+            }
           />
           <AffiliateClickTracker />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>

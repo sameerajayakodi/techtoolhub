@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import siteMetadata from '@/data/siteMetadata'
+import AdsterraBanner, { AdsterraBannerSize } from './AdsterraBanner'
 
 declare global {
   interface Window {
@@ -24,12 +25,30 @@ const reservedHeight: Record<AdPosition, string> = {
   home: 'min-h-[250px]',
 }
 
+const banners = siteMetadata.adsterra.banners
+
+/** Adsterra banner sizes per position, largest first (the first that fits is shown) */
+const adsterraSizes: Record<AdPosition, AdsterraBannerSize[]> = {
+  afterIntro: [banners.leaderboard, banners.banner, banners.rectangle],
+  midArticle: [banners.rectangle],
+  endOfArticle: [banners.leaderboard, banners.banner, banners.rectangle],
+  sidebar: [banners.halfSkyscraper],
+  home: [banners.leaderboard, banners.banner, banners.mobile],
+}
+
+/** Approximate Adsterra banner height at each breakpoint (article column / home width) */
+const adsterraReservedHeight: Record<AdPosition, string> = {
+  afterIntro: 'min-h-[250px] sm:min-h-[60px] xl:min-h-[90px]',
+  midArticle: 'min-h-[250px]',
+  endOfArticle: 'min-h-[250px] sm:min-h-[60px] xl:min-h-[90px]',
+  sidebar: 'min-h-[300px]',
+  home: 'min-h-[50px] sm:min-h-[60px] lg:min-h-[90px]',
+}
+
 /**
- * A fixed Google AdSense placement.
- *
- * Renders nothing at all until NEXT_PUBLIC_ADSENSE_CLIENT and the slot ID for this position
- * (NEXT_PUBLIC_ADSENSE_SLOT_*) are set, so no empty boxes appear before AdSense is approved.
- * Without slot IDs, Auto ads (turned on in the AdSense dashboard) decide placements instead.
+ * A fixed ad placement: Google AdSense when its client and slot ID for this position are set
+ * (NEXT_PUBLIC_ADSENSE_CLIENT, NEXT_PUBLIC_ADSENSE_SLOT_*), otherwise an Adsterra banner
+ * (siteMetadata.adsterra). Renders nothing when neither is configured.
  *
  * Placement rules:
  * - afterIntro: in MDX, after the intro and the VerdictBox/quick-comparison table. Never above
@@ -63,25 +82,32 @@ export default function AdSlot({
     }
   }, [client, slot, pathname])
 
-  if (!client || !slot) return null
+  const useAdSense = Boolean(client && slot)
+  if (!useAdSense && !siteMetadata.adsterra.enabled) return null
 
   return (
     <aside className={`not-prose my-10 ${className}`} aria-label="Advertisement">
       <p className="mb-1 text-center text-[10px] tracking-widest text-gray-400 uppercase">
         Advertisement
       </p>
-      <div className={reservedHeight[position]}>
-        <ins
-          key={pathname}
-          ref={ref}
-          className="adsbygoogle block"
-          style={{ display: 'block' }}
-          data-ad-client={client}
-          data-ad-slot={slot}
-          data-ad-format={position === 'sidebar' ? 'vertical' : 'auto'}
-          data-full-width-responsive="true"
-        />
-      </div>
+      {useAdSense ? (
+        <div className={reservedHeight[position]}>
+          <ins
+            key={pathname}
+            ref={ref}
+            className="adsbygoogle block"
+            style={{ display: 'block' }}
+            data-ad-client={client}
+            data-ad-slot={slot}
+            data-ad-format={position === 'sidebar' ? 'vertical' : 'auto'}
+            data-full-width-responsive="true"
+          />
+        </div>
+      ) : (
+        <div className={adsterraReservedHeight[position]}>
+          <AdsterraBanner sizes={adsterraSizes[position]} />
+        </div>
+      )}
     </aside>
   )
 }
