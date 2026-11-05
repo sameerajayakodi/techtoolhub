@@ -73,7 +73,10 @@ export const metadata: Metadata = {
   },
   // Google Search Console HTML-tag token (only the content="..." value). Rendered only when set.
   verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
-  other: adsenseClient ? { 'google-adsense-account': adsenseClient } : undefined,
+  other: {
+    'adsterra-verification': 'A7B2C9D',
+    ...(adsenseClient ? { 'google-adsense-account': adsenseClient } : {}),
+  },
 }
 
 export const viewport: Viewport = {

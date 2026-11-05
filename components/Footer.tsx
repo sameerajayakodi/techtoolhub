@@ -105,7 +105,9 @@ export default function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8 dark:text-gray-400">
           <p>
             © {new Date().getFullYear()} {siteMetadata.title}. All rights reserved. ·{' '}
-            <CookieSettingsButton className="hover:text-primary-600 underline" />
+            <CookieSettingsButton className="hover:text-primary-600 underline" />{' '}
+            {/* Adsterra domain verification code (also in the <head> meta tags) */}
+            <span className="text-[10px] text-gray-400 dark:text-gray-600">A7B2C9D</span>
           </p>
           <p>
             Some links are affiliate links. I may earn a commission at no extra cost to you.{' '}
