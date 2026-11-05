@@ -63,7 +63,7 @@ export default function AuthorPage() {
               alt={`Photo of ${author.name}`}
               width={160}
               height={160}
-              className="h-40 w-40 shrink-0 rounded-2xl object-cover"
+              className="h-40 w-40 shrink-0 rounded-full object-cover"
             />
           )}
           <div className="min-w-0">
