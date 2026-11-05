@@ -3,6 +3,7 @@ import { allBlogs, allPages } from 'contentlayer/generated'
 import { SITE_URL as siteUrl } from '@/lib/site'
 import { categories } from '@/data/categories'
 import tagData from 'app/tag-data.json'
+import { isIndexableTag } from '@/lib/tags'
 
 export const dynamic = 'force-static'
 
@@ -42,12 +43,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   }))
 
-  const tagRoutes: MetadataRoute.Sitemap = Object.keys(tagData).map((tag) => ({
-    url: `${siteUrl}/tags/${tag}`,
-    lastModified: latest || today,
-    changeFrequency: 'weekly',
-    priority: 0.4,
-  }))
+  const tagRoutes: MetadataRoute.Sitemap = Object.keys(tagData)
+    .filter(isIndexableTag)
+    .map((tag) => ({
+      url: `${siteUrl}/tags/${tag}`,
+      lastModified: latest || today,
+      changeFrequency: 'weekly',
+      priority: 0.4,
+    }))
 
   return [...hubRoutes, ...blogRoutes, ...pageRoutes, ...tagRoutes]
 }

@@ -8,6 +8,7 @@ import { ArticleGrid } from '@/components/ArticleCard'
 import tagData from 'app/tag-data.json'
 import { genPageMetadata } from 'app/seo'
 import { getCards } from '@/lib/posts'
+import { isIndexableTag } from '@/lib/tags'
 
 export async function generateMetadata(props: {
   params: Promise<{ tag: string }>
@@ -15,6 +16,8 @@ export async function generateMetadata(props: {
   const params = await props.params
   const tag = decodeURI(params.tag)
   return genPageMetadata({
+    // A tag with one article is a near-copy of that article's card: keep it out of the index
+    ...(isIndexableTag(tag) ? {} : { robots: { index: false, follow: true } }),
     title: `#${tag}`,
     description: `Reviews, comparisons and guides about ${tag} on ${siteMetadata.title}, newest first.`,
     path: `/tags/${tag}`,

@@ -9,7 +9,8 @@
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir layouts --dir scripts",
     "typecheck": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "indexnow": "node ./scripts/indexnow.mjs"
   },
   "dependencies": {
     "@headlessui/react": "2.2.9",

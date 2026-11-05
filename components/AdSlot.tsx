@@ -36,6 +36,13 @@ const adsterraSizes: Record<AdPosition, AdsterraBannerSize[]> = {
   home: [banners.leaderboard, banners.banner, banners.mobile],
 }
 
+/**
+ * Positions left out below the `sm` breakpoint. On a phone every banner is a 300x250 that fills
+ * the screen, so articles keep just two (after the intro and at the end). A hidden container
+ * has no width, so AdsterraBanner loads nothing there.
+ */
+const hiddenOnPhones = new Set<AdPosition>(['midArticle'])
+
 /** Approximate Adsterra banner height at each breakpoint (article column / home width) */
 const adsterraReservedHeight: Record<AdPosition, string> = {
   afterIntro: 'min-h-[250px] sm:min-h-[60px] xl:min-h-[90px]',
@@ -86,7 +93,10 @@ export default function AdSlot({
   if (!useAdSense && !siteMetadata.adsterra.enabled) return null
 
   return (
-    <aside className={`not-prose my-10 ${className}`} aria-label="Advertisement">
+    <aside
+      className={`not-prose my-10 ${hiddenOnPhones.has(position) ? 'hidden sm:block' : ''} ${className}`}
+      aria-label="Advertisement"
+    >
       <p className="mb-1 text-center text-[10px] tracking-widest text-gray-400 uppercase">
         Advertisement
       </p>
