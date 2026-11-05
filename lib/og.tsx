@@ -67,17 +67,12 @@ export async function renderOgImage({ title, eyebrow, category, rating, footer }
               backgroundImage: 'linear-gradient(135deg, #6366F1, #06B6D4)',
             }}
           >
-            <svg width="40" height="40" viewBox="0 0 32 32">
-              <path
-                d="M9 11h14M16 11v11"
-                stroke="#fff"
-                strokeWidth="3"
-                strokeLinecap="round"
-                fill="none"
-              />
-              <circle cx="9" cy="11" r="2.2" fill="#fff" />
-              <circle cx="23" cy="11" r="2.2" fill="#fff" />
-              <circle cx="16" cy="22.5" r="2.6" fill="#fff" />
+            {/* Same tool-grid mark as components/Logo.tsx, on the tile above */}
+            <svg width="56" height="56" viewBox="0 0 32 32">
+              <rect x="7" y="7" width="8" height="8" rx="2.25" fill="#fff" />
+              <rect x="17" y="7" width="8" height="8" rx="2.25" fill="#fff" fillOpacity="0.55" />
+              <rect x="7" y="17" width="8" height="8" rx="2.25" fill="#fff" fillOpacity="0.55" />
+              <rect x="17" y="17" width="8" height="8" rx="4" fill="#fff" />
             </svg>
           </div>
           <div style={{ display: 'flex', fontFamily: 'Space Grotesk', fontSize: 34 }}>

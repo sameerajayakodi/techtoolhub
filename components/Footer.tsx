@@ -112,7 +112,7 @@ export default function Footer() {
           <p>
             Some links are affiliate links. I may earn a commission at no extra cost to you.{' '}
             <Link href="/affiliate-disclosure" className="hover:text-primary-600 underline">
-              Learn more
+              Read the affiliate disclosure
             </Link>
           </p>
         </div>

@@ -108,6 +108,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           sizes="180x180"
           href={`${basePath}/static/favicons/apple-touch-icon.png`}
         />
+        {/* Google Search shows a favicon only if one is a multiple of 48px: keep 48/96/192 */}
+        <link rel="icon" type="image/svg+xml" href={`${basePath}/static/favicons/favicon.svg`} />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href={`${basePath}/static/favicons/android-chrome-192x192.png`}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href={`${basePath}/static/favicons/favicon-96x96.png`}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="48x48"
+          href={`${basePath}/static/favicons/favicon-48x48.png`}
+        />
         <link
           rel="icon"
           type="image/png"

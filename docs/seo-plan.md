@@ -64,6 +64,18 @@ AI tools stay as the second topic, but only evergreen comparisons. No new short-
 | 1.6 | Measure Core Web Vitals (PageSpeed Insights) for home + 2 articles and record the baseline here           | Claude  |
 | 1.7 | Author photo (optional but recommended)                                                                   | Sameera |
 | 1.8 | Request indexing for the remaining URLs (about 10 a day)                                                  | Sameera |
+| 1.9 | New logo (tool grid) and favicons at 48, 96 and 192px plus SVG, so Google can show the icon in results    | Claude  |
+
+**Status (2026-11-05):** 1.3–1.6 and 1.9 are done and live. IndexNow accepted all 40 sitemap URLs (202). Run `npm run indexnow` after each deploy.
+
+**Speed baseline (2026-11-05, Lighthouse mobile, run locally because the PageSpeed API quota was used up):**
+
+| Page                                    | Performance | LCP   | CLS | TBT    | SEO |
+| --------------------------------------- | ----------- | ----- | --- | ------ | --- |
+| Home                                    | 93          | 2.7 s | 0   | 150 ms | 92  |
+| Best free Microsoft Office alternatives | 96          | 2.0 s | 0   | 150 ms | 92  |
+
+SEO lost points only for "Learn more" link text, now fixed. Re-check with real-user data in Search Console (Core Web Vitals report) once there's enough traffic.
 
 ### Phase 2: content cluster (weeks 1–8, about 2 posts a week)
 

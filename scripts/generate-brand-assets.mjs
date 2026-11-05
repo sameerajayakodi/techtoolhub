@@ -13,9 +13,10 @@ const mark = (size, radius = 8) => `
     </linearGradient>
   </defs>
   <rect width="32" height="32" rx="${radius}" fill="url(#g)"/>
-  <path d="M9 11h14M16 11v11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <circle cx="9" cy="11" r="2.2" fill="#fff"/><circle cx="23" cy="11" r="2.2" fill="#fff"/>
-  <circle cx="16" cy="22.5" r="2.6" fill="#fff"/>
+  <rect x="7" y="7" width="8" height="8" rx="2.25" fill="#fff"/>
+  <rect x="17" y="7" width="8" height="8" rx="2.25" fill="#fff" fill-opacity="0.55"/>
+  <rect x="7" y="17" width="8" height="8" rx="2.25" fill="#fff" fill-opacity="0.55"/>
+  <rect x="17" y="17" width="8" height="8" rx="4" fill="#fff"/>
 </svg>`
 
 const avatar = `
@@ -59,18 +60,22 @@ const out = {
   'public/static/images/avatar.png': await png(avatar, 256),
   'public/static/favicons/favicon-16x16.png': await png(mark(16), 16),
   'public/static/favicons/favicon-32x32.png': await png(mark(32), 32),
+  // Google Search needs a favicon that is a multiple of 48px, so these are linked in app/layout.tsx
+  'public/static/favicons/favicon-48x48.png': await png(mark(48), 48),
+  'public/static/favicons/favicon-96x96.png': await png(mark(96), 96),
   'public/static/favicons/apple-touch-icon.png': await png(mark(180, 0), 180),
   'public/static/favicons/android-chrome-192x192.png': await png(mark(192), 192),
   'public/static/favicons/android-chrome-512x512.png': await png(mark(512), 512),
 }
 for (const [file, data] of Object.entries(out)) writeFileSync(file, data)
+writeFileSync('public/static/favicons/favicon.svg', mark(32).trim() + '\n')
 
 writeFileSync(
   'public/favicon.ico',
   ico([
     { size: 16, data: out['public/static/favicons/favicon-16x16.png'] },
     { size: 32, data: out['public/static/favicons/favicon-32x32.png'] },
-    { size: 48, data: await png(mark(48), 48) },
+    { size: 48, data: out['public/static/favicons/favicon-48x48.png'] },
   ])
 )
 

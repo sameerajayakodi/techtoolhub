@@ -198,7 +198,7 @@ export default function PostLayout({
               links. If you buy through them I may earn a commission at no extra cost to you. It
               never affects my recommendations.{' '}
               <Link href="/affiliate-disclosure" className="underline">
-                Learn more
+                How affiliate links work here
               </Link>
               .
             </span>
