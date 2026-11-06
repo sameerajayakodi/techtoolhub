@@ -31,6 +31,15 @@ export const categories = [
     gradient: 'from-emerald-500 via-teal-500 to-lime-400',
     accent: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10',
   },
+  {
+    slug: 'sri-lanka',
+    title: 'Sri Lanka',
+    description:
+      'Buying guides and comparisons for readers in Sri Lanka: what to buy, what it costs locally, and what to check first.',
+    icon: 'pin',
+    gradient: 'from-amber-500 via-orange-500 to-red-500',
+    accent: 'text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/10',
+  },
 ] as const
 
 export type CategorySlug = (typeof categories)[number]['slug']

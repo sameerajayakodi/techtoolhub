@@ -72,11 +72,29 @@ function frame(w, h, body, { glows = [], grid = true, bg = [C.bg1, C.bg2] } = {}
 const rect = (x, y, w, h, fill, rx = 0, extra = '') =>
   `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}" ${extra}/>`
 
-const text = (x, y, s, { size = 24, fill = C.text, weight = 600, anchor = 'start', font = FONT, extra = '' } = {}) =>
+const text = (
+  x,
+  y,
+  s,
+  { size = 24, fill = C.text, weight = 600, anchor = 'start', font = FONT, extra = '' } = {}
+) =>
   `<text x="${x}" y="${y}" font-family="${font}" font-size="${size}" font-weight="${weight}" fill="${fill}" text-anchor="${anchor}" ${extra}>${esc(s)}</text>`
 
 /** A rounded "app window" card with traffic-light dots and an optional title */
-function windowCard(x, y, w, h, { title = '', accent = C.indigo, fill = C.card, header = 56, titleColor = C.text, lineColor = C.line } = {}) {
+function windowCard(
+  x,
+  y,
+  w,
+  h,
+  {
+    title = '',
+    accent = C.indigo,
+    fill = C.card,
+    header = 56,
+    titleColor = C.text,
+    lineColor = C.line,
+  } = {}
+) {
   return `<g filter="url(#shadow)">
     ${rect(x, y, w, h, fill, 24, `stroke="${lineColor}" stroke-width="2"`)}
   </g>
@@ -91,7 +109,12 @@ function windowCard(x, y, w, h, { title = '', accent = C.indigo, fill = C.card, 
 const lines = (x, y, widths, { gap = 22, h = 10, fill = C.dim, op = 1 } = {}) =>
   widths.map((w, i) => rect(x, y + i * gap, w, h, fill, h / 2, `fill-opacity="${op}"`)).join('')
 
-const pill = (x, y, label, { fill = '#ffffff', color = C.bg1, size = 20, padX = 18, h = 40, weight = 700 } = {}) => {
+const pill = (
+  x,
+  y,
+  label,
+  { fill = '#ffffff', color = C.bg1, size = 20, padX = 18, h = 40, weight = 700 } = {}
+) => {
   const w = label.length * size * 0.58 + padX * 2
   return `${rect(x, y, w, h, fill, h / 2)}${text(x + w / 2, y + h / 2 + size * 0.36, label, { size, fill: color, weight, anchor: 'middle' })}`
 }
@@ -133,7 +156,15 @@ function arrow(x1, y1, x2, y2, color = C.muted, { width = 3, dash = '' } = {}) {
 }
 
 /** A rounded box with a heading and up to two lines of description */
-function box(x, y, w, h, title, desc = [], { accent = C.indigo, fill = C.card, titleSize = 28 } = {}) {
+function box(
+  x,
+  y,
+  w,
+  h,
+  title,
+  desc = [],
+  { accent = C.indigo, fill = C.card, titleSize = 28 } = {}
+) {
   return `<g filter="url(#soft)">${rect(x, y, w, h, fill, 20, `stroke="${C.line}" stroke-width="2"`)}</g>
   ${rect(x, y, 8, h, accent, 4)}
   ${text(x + 32, y + 50, title, { size: titleSize, weight: 700 })}
@@ -172,7 +203,13 @@ const images = {
       ${chatWindow(600, 170, 'Claude', C.orange, 1)}
       ${chatWindow(1030, 210, 'Gemini', C.blue, 2)}
       ${vs(585, 470)}${vs(1015, 470)}`,
-      { glows: [[1350, 120, 320, C.violet, 0.55], [200, 820, 300, C.pink, 0.4], [800, 450, 260, C.indigo, 0.25]] }
+      {
+        glows: [
+          [1350, 120, 320, C.violet, 0.55],
+          [200, 820, 300, C.pink, 0.4],
+          [800, 450, 260, C.indigo, 0.25],
+        ],
+      }
     ),
 
   'blog/best-ai-coding-assistants/cover': () => {
@@ -189,12 +226,37 @@ const images = {
         .join('')
     }
     const code = [
-      [[70, C.violet], [120, C.sky], [40, C.muted]],
-      [[40, C.dim], [90, C.violet], [160, C.emerald]],
-      [[40, C.dim], [60, C.violet], [110, C.sky], [80, C.amber]],
-      [[40, C.dim], [40, C.dim], [180, C.text], [70, C.emerald]],
-      [[40, C.dim], [130, C.sky], [60, C.muted]],
-      [[60, C.violet], [90, C.amber]],
+      [
+        [70, C.violet],
+        [120, C.sky],
+        [40, C.muted],
+      ],
+      [
+        [40, C.dim],
+        [90, C.violet],
+        [160, C.emerald],
+      ],
+      [
+        [40, C.dim],
+        [60, C.violet],
+        [110, C.sky],
+        [80, C.amber],
+      ],
+      [
+        [40, C.dim],
+        [40, C.dim],
+        [180, C.text],
+        [70, C.emerald],
+      ],
+      [
+        [40, C.dim],
+        [130, C.sky],
+        [60, C.muted],
+      ],
+      [
+        [60, C.violet],
+        [90, C.amber],
+      ],
       [],
     ]
     return frame(
@@ -205,8 +267,15 @@ const images = {
       ${[...code, 0, 0].map((_, i) => text(ex + 46, ey + 106 + i * 40, String(i + 1), { size: 16, fill: C.dim, anchor: 'end', font: MONO, weight: 400 })).join('')}
       ${code.map((parts, i) => tok(ex + 96, ey + 94 + i * 40, parts)).join('')}
       ${rect(ex + 88, ey + 374, 610, 76, C.sky, 10, 'fill-opacity="0.10" stroke="#38bdf8" stroke-opacity="0.5" stroke-dasharray="8 6" stroke-width="2"')}
-      ${tok(ex + 108, ey + 390, [[60, '#38bdf8'], [150, '#7dd3fc'], [90, '#38bdf8']])}
-      ${tok(ex + 108, ey + 420, [[40, '#38bdf8'], [200, '#7dd3fc']])}
+      ${tok(ex + 108, ey + 390, [
+        [60, '#38bdf8'],
+        [150, '#7dd3fc'],
+        [90, '#38bdf8'],
+      ])}
+      ${tok(ex + 108, ey + 420, [
+        [40, '#38bdf8'],
+        [200, '#7dd3fc'],
+      ])}
       ${pill(ex + 560, ey + 342, 'Tab to accept', { fill: C.sky, color: '#fff', size: 16, h: 30, padX: 12 })}
       ${rect(ex + 2, ey + 500, 760, 138, '#0c1224', 0)}
       <path d="M${ex} ${ey + 500} H${ex + 762}" stroke="${C.line}" stroke-width="2"/>
@@ -226,17 +295,38 @@ const images = {
       ${rect(ex + 792, ey + 520, 316, 10, C.line, 5)}${rect(ex + 792, ey + 520, 250, 10, 'url(#brand)', 5)}
       ${text(ex + 792, ey + 570, '80% complete', { size: 18, fill: C.muted, weight: 500 })}
       <g filter="url(#soft)">${pill(1230, 70, '6 tools compared', { fill: '#ffffff', color: C.bg1, size: 22, h: 48 })}</g>`,
-      { glows: [[1400, 150, 320, C.sky, 0.5], [150, 800, 300, C.teal, 0.45]] }
+      {
+        glows: [
+          [1400, 150, 320, C.sky, 0.5],
+          [150, 800, 300, C.teal, 0.45],
+        ],
+      }
     )
   },
 
   'blog/best-note-taking-apps/cover': () => {
     const node = (x, y, r, c) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`
     const nodes = [
-      [1250, 300, 18, C.emerald], [1150, 220, 11, C.lime], [1370, 230, 12, C.teal], [1340, 400, 14, C.lime],
-      [1160, 410, 12, C.teal], [1260, 520, 11, C.emerald], [1420, 330, 9, C.muted], [1100, 320, 9, C.muted],
+      [1250, 300, 18, C.emerald],
+      [1150, 220, 11, C.lime],
+      [1370, 230, 12, C.teal],
+      [1340, 400, 14, C.lime],
+      [1160, 410, 12, C.teal],
+      [1260, 520, 11, C.emerald],
+      [1420, 330, 9, C.muted],
+      [1100, 320, 9, C.muted],
     ]
-    const edges = [[0, 1], [0, 2], [0, 3], [0, 4], [3, 5], [4, 5], [2, 6], [1, 7], [3, 6]]
+    const edges = [
+      [0, 1],
+      [0, 2],
+      [0, 3],
+      [0, 4],
+      [3, 5],
+      [4, 5],
+      [2, 6],
+      [1, 7],
+      [3, 6],
+    ]
     return frame(
       1600,
       900,
@@ -271,7 +361,12 @@ const images = {
         ${rect(230, 680, 200, 170, '#f9a8d4', 10)}
         ${lines(256, 726, [140, 110, 130], { fill: '#9d174d', op: 0.4, gap: 28 })}
       </g>`,
-      { glows: [[1400, 140, 320, C.emerald, 0.45], [180, 780, 300, C.lime, 0.35]] }
+      {
+        glows: [
+          [1400, 140, 320, C.emerald, 0.45],
+          [180, 780, 300, C.lime, 0.35],
+        ],
+      }
     )
   },
 
@@ -299,7 +394,12 @@ const images = {
         )
         .join('')}
       ${text(800, 860, 'Prices checked October 2026 · techtoolhub', { size: 18, fill: C.dim, weight: 500, anchor: 'middle' })}`,
-      { glows: [[1400, 100, 260, C.violet, 0.3], [150, 850, 260, C.pink, 0.25]] }
+      {
+        glows: [
+          [1400, 100, 260, C.violet, 0.3],
+          [150, 850, 260, C.pink, 0.25],
+        ],
+      }
     ),
 
   'blog/best-ai-coding-assistants/agent-vs-editor': () => {
@@ -327,7 +427,12 @@ const images = {
       ${check(1490, 600, 16)}
       ${text(800, 790, 'Many developers use both: an editor for small edits, an agent for bigger tasks.', { size: 24, fill: C.text, weight: 500, anchor: 'middle' })}
       ${text(800, 860, 'techtoolhub', { size: 18, fill: C.dim, weight: 500, anchor: 'middle' })}`,
-      { glows: [[1450, 150, 260, C.sky, 0.3], [150, 820, 260, C.orange, 0.22]] }
+      {
+        glows: [
+          [1450, 150, 260, C.sky, 0.3],
+          [150, 820, 260, C.orange, 0.22],
+        ],
+      }
     )
   },
 
@@ -348,7 +453,12 @@ const images = {
       ${text(800, 703, 'Tip: keep the capture app on your home screen and move anything', { size: 24, weight: 500, anchor: 'middle' })}
       ${text(800, 741, 'worth keeping into your main app during a weekly review.', { size: 24, weight: 500, anchor: 'middle' })}
       ${text(800, 860, 'techtoolhub', { size: 18, fill: C.dim, weight: 500, anchor: 'middle' })}`,
-      { glows: [[1450, 120, 260, C.emerald, 0.3], [150, 820, 260, C.lime, 0.22]] }
+      {
+        glows: [
+          [1450, 120, 260, C.emerald, 0.3],
+          [150, 820, 260, C.lime, 0.22],
+        ],
+      }
     ),
 
   // November 2026 trending articles ─────────────────────────────────────────
@@ -371,7 +481,12 @@ const images = {
       <g filter="url(#soft)">${rect(800, 580, 610, 190, C.card2, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
       ${text(832, 628, 'Quick actions', { size: 24, weight: 700 })}
       ${['Compare', 'Book', 'Save'].map((b, i) => `${rect(832 + i * 190, 660, 170, 64, i === 0 ? C.emerald : '#0f1529', 16, i === 0 ? '' : `stroke="${C.line}" stroke-width="2"`)}${text(917 + i * 190, 701, b, { size: 22, weight: 700, anchor: 'middle', fill: i === 0 ? '#04291d' : C.text })}`).join('')}`,
-      { glows: [[1400, 120, 320, C.emerald, 0.45], [200, 820, 300, C.teal, 0.35]] }
+      {
+        glows: [
+          [1400, 120, 320, C.emerald, 0.45],
+          [200, 820, 300, C.teal, 0.35],
+        ],
+      }
     ),
 
   'blog/chatgpt-images-2-6/cover': () =>
@@ -400,7 +515,54 @@ const images = {
         .map((c, i) => `<circle cx="${1130 + i * 90}" cy="750" r="30" fill="${c}"/>`)
         .join('')}
       ${text(1130, 710, 'Saved references', { size: 20, weight: 600, fill: C.muted })}`,
-      { glows: [[1400, 120, 320, C.pink, 0.4], [200, 820, 300, C.violet, 0.35]] }
+      {
+        glows: [
+          [1400, 120, 320, C.pink, 0.4],
+          [200, 820, 300, C.violet, 0.35],
+        ],
+      }
+    ),
+
+  'blog/best-second-hand-iphone-sri-lanka/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'USED IPHONE GUIDE · SRI LANKA', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${[
+        ['11', 250, 250, C.sky],
+        ['12', 650, 170, C.amber],
+        ['13', 1050, 250, C.violet],
+      ]
+        .map(([label, x, y, c], i) => {
+          const w = 300
+          const h = 520
+          const hi = i === 1
+          return `<g filter="url(#shadow)">${rect(x, y, w, h, C.card2, 56, `stroke="${hi ? c : C.line}" stroke-width="${hi ? 5 : 3}"`)}</g>
+          ${rect(x + 18, y + 18, w - 36, h - 36, C.card, 40)}
+          ${rect(x + w / 2 - 50, y + 32, 100, 28, C.bg1, 14)}
+          <circle cx="${x + w / 2}" cy="${y + 250}" r="92" fill="${c}" fill-opacity="${hi ? 0.95 : 0.25}"/>
+          ${text(x + w / 2, y + 277, label, { size: 84, weight: 800, anchor: 'middle', fill: hi ? C.bg1 : c })}
+          ${rect(x + 70, y + h - 120, w - 140, 12, C.line, 6)}
+          ${rect(x + 70, y + h - 90, w - 220, 12, C.line, 6)}`
+        })
+        .join('')}
+      ${pill(655, 120, 'Best value', { fill: C.amber, color: C.bg1, size: 22, h: 44, padX: 22 })}
+      ${[
+        ['Activation Lock', 150],
+        ['Battery health', 530],
+        ['IMEI', 900],
+      ]
+        .map(
+          ([label, x]) =>
+            `${check(x + 22, 800, 18, C.emerald)}${text(x + 54, 808, label, { size: 26, weight: 600, fill: C.text })}`
+        )
+        .join('')}`,
+      {
+        glows: [
+          [1400, 120, 320, C.amber, 0.4],
+          [200, 820, 300, C.orange, 0.35],
+        ],
+      }
     ),
 
   'blog/gemini-4-argon-explained/cover': () =>
@@ -422,12 +584,19 @@ const images = {
         ['Book a table for Saturday', true],
         ['Send the plan to the group', false],
       ]
-        .map(([t, done], i) => `${rect(300, 400 + i * 88, 1000, 70, C.card2, 16)}
+        .map(
+          ([t, done], i) => `${rect(300, 400 + i * 88, 1000, 70, C.card2, 16)}
           ${done ? check(340, 435 + i * 88, 16, C.blue) : `<circle cx="340" cy="${435 + i * 88}" r="16" fill="none" stroke="${C.blue}" stroke-width="3" stroke-dasharray="6 5"/>`}
-          ${text(376, 443 + i * 88, t, { size: 22, weight: 500, fill: done ? C.text : C.muted })}`)
+          ${text(376, 443 + i * 88, t, { size: 22, weight: 500, fill: done ? C.text : C.muted })}`
+        )
         .join('')}
       ${text(300, 780, 'Works in the background · 40+ connected apps', { size: 20, fill: C.muted, weight: 500 })}`,
-      { glows: [[1350, 120, 320, C.blue, 0.5], [250, 800, 300, C.violet, 0.4]] }
+      {
+        glows: [
+          [1350, 120, 320, C.blue, 0.5],
+          [250, 800, 300, C.violet, 0.4],
+        ],
+      }
     ),
 
   'blog/google-antigravity-free-tier-changes/cover': () =>
@@ -442,17 +611,24 @@ const images = {
         ['GPT-OSS-120b', 'gone'],
         ['Gemini 4 Argon', 'paid'],
       ]
-        .map(([m, s], i) => `${rect(260, 230 + i * 104, 780, 82, C.card2, 16)}
+        .map(
+          ([m, s], i) => `${rect(260, 230 + i * 104, 780, 82, C.card2, 16)}
           ${s === 'keep' ? check(304, 271 + i * 104, 17) : s === 'gone' ? cross(304, 271 + i * 104, 17) : `<circle cx="304" cy="${271 + i * 104}" r="17" fill="${C.amber}"/>${text(304, 279 + i * 104, '$', { size: 20, weight: 800, anchor: 'middle', fill: '#1f1300' })}`}
           ${text(340, 280 + i * 104, m, { size: 26, weight: 600, fill: s === 'gone' ? C.muted : C.text, extra: s === 'gone' ? 'text-decoration="line-through"' : '' })}
-          ${pill(s === 'keep' ? 880 : s === 'paid' ? 890 : 840, 251 + i * 104, s === 'keep' ? 'Stays' : s === 'paid' ? 'Paid' : 'Removed', { fill: s === 'keep' ? 'rgba(16,185,129,0.18)' : s === 'paid' ? 'rgba(245,158,11,0.18)' : 'rgba(244,63,94,0.18)', color: s === 'keep' ? '#34d399' : s === 'paid' ? C.amber : '#fb7185', size: 17, h: 40, padX: 14 })}`)
+          ${pill(s === 'keep' ? 880 : s === 'paid' ? 890 : 840, 251 + i * 104, s === 'keep' ? 'Stays' : s === 'paid' ? 'Paid' : 'Removed', { fill: s === 'keep' ? 'rgba(16,185,129,0.18)' : s === 'paid' ? 'rgba(245,158,11,0.18)' : 'rgba(244,63,94,0.18)', color: s === 'keep' ? '#34d399' : s === 'paid' ? C.amber : '#fb7185', size: 17, h: 40, padX: 14 })}`
+        )
         .join('')}
       <g filter="url(#shadow)">${rect(1150, 230, 280, 300, '#ffffff', 28)}</g>
       ${rect(1150, 230, 280, 90, C.rose, 28)}${rect(1150, 290, 280, 30, C.rose)}
       ${text(1290, 290, 'NOV', { size: 38, weight: 800, anchor: 'middle', fill: '#fff' })}
       ${text(1290, 470, '2', { size: 150, weight: 800, anchor: 'middle', fill: C.bg1 })}
       ${text(1290, 600, '2026', { size: 30, weight: 700, anchor: 'middle', fill: C.muted })}`,
-      { glows: [[1350, 150, 320, C.sky, 0.45], [200, 800, 300, C.rose, 0.3]] }
+      {
+        glows: [
+          [1350, 150, 320, C.sky, 0.45],
+          [200, 800, 300, C.rose, 0.3],
+        ],
+      }
     ),
 
   'blog/cursor-new-pricing-explained/cover': () => {
@@ -479,7 +655,12 @@ const images = {
           ${i === 2 ? pill(x + 8, 790 - h - 60, 'Most popular', { fill: '#fff', color: C.bg1, size: 17, h: 38, padX: 14 }) : ''}`
         })
         .join('')}`,
-      { glows: [[1350, 150, 320, C.violet, 0.45], [200, 800, 300, C.sky, 0.35]] }
+      {
+        glows: [
+          [1350, 150, 320, C.violet, 0.45],
+          [200, 800, 300, C.sky, 0.35],
+        ],
+      }
     )
   },
 
@@ -503,13 +684,20 @@ const images = {
         ['Use past chats & memory', false],
         ['Ad-free (fewer messages)', true],
       ]
-        .map(([t, on], i) => `${text(1030, 380 + i * 96, t, { size: 21, weight: 500 })}
+        .map(
+          ([t, on], i) => `${text(1030, 380 + i * 96, t, { size: 21, weight: 500 })}
           ${rect(1350, 356 + i * 96, 72, 38, on ? C.emerald : C.line, 19)}
-          <circle cx="${on ? 1403 : 1369}" cy="${375 + i * 96}" r="15" fill="#fff"/>`)
+          <circle cx="${on ? 1403 : 1369}" cy="${375 + i * 96}" r="15" fill="#fff"/>`
+        )
         .join('')}
       ${rect(1030, 610, 390, 56, '#2a1520', 14, 'stroke="#fb7185" stroke-opacity="0.5" stroke-width="2"')}
       ${text(1225, 646, 'Delete ad data', { size: 21, weight: 700, anchor: 'middle', fill: '#fb7185' })}`,
-      { glows: [[1350, 150, 320, C.amber, 0.3], [200, 800, 300, C.emerald, 0.35]] }
+      {
+        glows: [
+          [1350, 150, 320, C.amber, 0.3],
+          [200, 800, 300, C.emerald, 0.35],
+        ],
+      }
     ),
 
   // Europe-focused articles (November 2026) ─────────────────────────────────
@@ -547,7 +735,12 @@ const images = {
         })
         .join('')}
       ${text(150 + 2.5 * 260, 800, 'You are here', { size: 18, weight: 700, anchor: 'middle', fill: '#facc15' })}`,
-      { glows: [[300, 300, 300, C.blue, 0.45], [1400, 150, 300, C.indigo, 0.35]] }
+      {
+        glows: [
+          [300, 300, 300, C.blue, 0.45],
+          [1400, 150, 300, C.indigo, 0.35],
+        ],
+      }
     )
   },
 
@@ -565,7 +758,12 @@ const images = {
         return star(364 + 15 * Math.cos(a), 766 + 15 * Math.sin(a), 3.6, '#facc15')
       }).join('')}
       ${text(396, 774, 'Hosted in EU', { size: 20, weight: 700, fill: '#fff' })}`,
-      { glows: [[300, 200, 300, C.orange, 0.35], [1350, 750, 300, C.emerald, 0.3]] }
+      {
+        glows: [
+          [300, 200, 300, C.orange, 0.35],
+          [1350, 750, 300, C.emerald, 0.3],
+        ],
+      }
     ),
 
   'blog/european-alternatives-google-microsoft/cover': () => {
@@ -599,13 +797,25 @@ const images = {
       }).join('')}
       ${text(1260, 548, 'GDPR', { size: 44, weight: 800, anchor: 'middle', fill: '#fff' })}
       ${text(1260, 594, 'friendly', { size: 28, weight: 600, anchor: 'middle', fill: '#bfdbfe' })}`,
-      { glows: [[1300, 500, 340, C.blue, 0.45], [200, 820, 300, C.violet, 0.3]] }
+      {
+        glows: [
+          [1300, 500, 340, C.blue, 0.45],
+          [200, 820, 300, C.violet, 0.3],
+        ],
+      }
     )
   },
 
   // Site images ───────────────────────────────────────────────────────────────
   'site/hero': () => {
-    const tile = (x, y, name, cat, score, c) => `<g filter="url(#soft)">${rect(x, y, 300, 200, C.card, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
+    const tile = (
+      x,
+      y,
+      name,
+      cat,
+      score,
+      c
+    ) => `<g filter="url(#soft)">${rect(x, y, 300, 200, C.card, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
       ${rect(x + 24, y + 24, 52, 52, c, 14)}
       ${text(x + 92, y + 50, name, { size: 22, weight: 700 })}
       ${text(x + 92, y + 76, cat, { size: 17, fill: C.muted, weight: 500 })}
@@ -633,14 +843,30 @@ const images = {
       ${text(730, 240, 'Compare', { size: 24, weight: 700 })}
       ${['Free plan', 'AI features', 'Offline mode', 'Team sharing', 'Price / mo'].map((r, i) => `${text(730, 300 + i * 62, r, { size: 19, fill: C.muted, weight: 500 })}<path d="M730 ${318 + i * 62} H1220" stroke="${C.line}" stroke-width="1.5"/>`).join('')}
       ${rect(980, 258, 120, 330, C.indigo, 14, 'fill-opacity="0.14"')}
-      ${[[true, false], [true, true], [true, false], [false, true]].map(([a, b], i) => `${a ? check(1040, 294 + i * 62, 14) : cross(1040, 294 + i * 62, 14)}${b ? check(1160, 294 + i * 62, 14) : cross(1160, 294 + i * 62, 14)}`).join('')}
+      ${[
+        [true, false],
+        [true, true],
+        [true, false],
+        [false, true],
+      ]
+        .map(
+          ([a, b], i) =>
+            `${a ? check(1040, 294 + i * 62, 14) : cross(1040, 294 + i * 62, 14)}${b ? check(1160, 294 + i * 62, 14) : cross(1160, 294 + i * 62, 14)}`
+        )
+        .join('')}
       ${text(1040, 547, '$10', { size: 20, weight: 700, anchor: 'middle' })}${text(1160, 547, '$20', { size: 20, weight: 700, anchor: 'middle' })}
       ${tile(150, 650, 'AI Writer', 'AI Tools', 4.6, C.violet)}
       ${tile(490, 650, 'Code Agent', 'Developer Tools', 4.8, C.sky)}
       ${tile(830, 650, 'Notes App', 'Productivity', 4.4, C.emerald)}
       <g filter="url(#shadow)" transform="rotate(4 1180 760)">${rect(1110, 660, 150, 200, 'url(#brand)', 24)}</g>
       <g transform="rotate(4 1180 760)">${text(1185, 752, '2026', { size: 44, weight: 800, anchor: 'middle', fill: '#fff' })}${text(1185, 792, 'best-of', { size: 20, weight: 600, anchor: 'middle', fill: '#fff' })}${text(1185, 818, 'picks', { size: 20, weight: 600, anchor: 'middle', fill: '#fff' })}</g>`,
-      { glows: [[1200, 120, 300, C.indigo, 0.5], [200, 950, 300, C.cyan, 0.35]], bg: ['#0a0f1f', '#10172e'] }
+      {
+        glows: [
+          [1200, 120, 300, C.indigo, 0.5],
+          [200, 950, 300, C.cyan, 0.35],
+        ],
+        bg: ['#0a0f1f', '#10172e'],
+      }
     )
   },
 
@@ -683,7 +909,12 @@ const images = {
       <!-- sticky notes on the wall -->
       <g transform="rotate(-6 250 260)" filter="url(#soft)">${rect(170, 180, 170, 160, C.yellow, 8)}${lines(194, 222, [110, 90, 120], { fill: '#a16207', op: 0.45, gap: 26 })}</g>
       <g transform="rotate(5 1380 250)" filter="url(#soft)">${rect(1300, 170, 170, 160, '#f9a8d4', 8)}${lines(1324, 212, [110, 120, 80], { fill: '#9d174d', op: 0.4, gap: 26 })}</g>`,
-      { glows: [[1300, 120, 300, C.indigo, 0.45], [250, 200, 260, C.cyan, 0.3]] }
+      {
+        glows: [
+          [1300, 120, 300, C.indigo, 0.45],
+          [250, 200, 260, C.cyan, 0.3],
+        ],
+      }
     ),
 }
 

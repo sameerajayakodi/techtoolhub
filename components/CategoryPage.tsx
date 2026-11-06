@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, toJsonLd } from '@/lib/structured-data'
 
 const PAGE_SIZE = 12
 
-/** Shared body of /ai-tools, /developer-tools and /productivity */
+/** Shared body of the category pages (/ai-tools, /developer-tools, /productivity, /sri-lanka) */
 export default function CategoryPage({ slug }: { slug: CategorySlug }) {
   const category = getCategory(slug)
   const posts = getCards((p) => p.category === slug)

@@ -118,7 +118,7 @@ export const Blog = defineDocumentType(() => ({
     // Which nav section the article lives in (see data/categories.ts)
     category: {
       type: 'enum',
-      options: ['ai-tools', 'developer-tools', 'productivity'],
+      options: ['ai-tools', 'developer-tools', 'productivity', 'sri-lanka'],
       required: true,
     },
     // Article format (not "type": that name is reserved by Contentlayer): drives the badge, the /reviews page and the JSON-LD type
