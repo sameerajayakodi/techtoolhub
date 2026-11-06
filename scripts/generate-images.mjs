@@ -374,6 +374,35 @@ const images = {
       { glows: [[1400, 120, 320, C.emerald, 0.45], [200, 820, 300, C.teal, 0.35]] }
     ),
 
+  'blog/chatgpt-images-2-6/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'CHATGPT IMAGES 2.6 · GIFS', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${windowCard(150, 160, 1300, 660, { title: 'ChatGPT Images', accent: C.pink })}
+      ${[0, 1, 2, 3]
+        .map((i) => {
+          const x = 210 + i * 300
+          const cy = [470, 360, 330, 420][i]
+          return `<g filter="url(#soft)">${rect(x, 250, 270, 300, C.card2, 22, `stroke="${C.line}" stroke-width="2"`)}</g>
+          <path d="M${x + 30} 520 H${x + 240}" stroke="${C.line}" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="${x + 135}" cy="${cy}" rx="${i === 0 ? 56 : 46}" ry="${i === 0 ? 36 : 46}" fill="${C.pink}" fill-opacity="${[0.4, 0.6, 0.8, 1][i]}"/>
+          ${text(x + 135, 586, `Frame ${i + 1}`, { size: 20, weight: 600, anchor: 'middle', fill: C.muted })}`
+        })
+        .join('')}
+      ${rect(210, 640, 1170, 14, C.line, 7)}
+      ${rect(210, 640, 640, 14, C.pink, 7)}
+      <circle cx="850" cy="647" r="20" fill="#fff"/>
+      ${text(210, 700, 'Speed', { size: 22, weight: 600, fill: C.muted })}
+      ${pill(210, 730, 'Flare · fast', { fill: C.pink + '33', color: C.pink, size: 18, h: 40, padX: 16 })}
+      ${pill(390, 730, 'Sunburst · detailed', { fill: C.violet + '33', color: C.violet, size: 18, h: 40, padX: 16 })}
+      ${[C.sky, C.amber, C.emerald]
+        .map((c, i) => `<circle cx="${1130 + i * 90}" cy="750" r="30" fill="${c}"/>`)
+        .join('')}
+      ${text(1130, 710, 'Saved references', { size: 20, weight: 600, fill: C.muted })}`,
+      { glows: [[1400, 120, 320, C.pink, 0.4], [200, 820, 300, C.violet, 0.35]] }
+    ),
+
   'blog/gemini-4-argon-explained/cover': () =>
     frame(
       1600,
