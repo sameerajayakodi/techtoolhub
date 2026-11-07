@@ -116,17 +116,17 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section aria-labelledby="categories" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section aria-labelledby="categories" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
         <h2 id="categories" className="sr-only">
           Categories
         </h2>
-        {categories.map((c) => {
+        {categories.map((c, i) => {
           const Icon = categoryIcons[c.icon]
           return (
             <Link
               key={c.slug}
               href={`/${c.slug}`}
-              className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900/60"
+              className={`group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900/60 ${i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
             >
               <div
                 className={`mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${c.gradient} text-white shadow-sm`}

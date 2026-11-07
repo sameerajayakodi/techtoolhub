@@ -565,6 +565,136 @@ const images = {
       }
     ),
 
+  'blog/ram-prices-2026-why-so-expensive/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'RAM PRICES · 2026', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${[0, 1, 2, 3, 4]
+        .map((i) => {
+          const h = 110 + i * 100
+          const x = 170 + i * 120
+          const hot = i === 4
+          return rect(
+            x,
+            780 - h,
+            84,
+            h,
+            hot ? C.rose : C.card2,
+            14,
+            `stroke="${hot ? C.rose : C.line}" stroke-width="2"`
+          )
+        })
+        .join('')}
+      ${arrow(190, 600, 760, 250, C.amber, { width: 9 })}
+      ${text(170, 836, 'Memory prices', { size: 24, weight: 600, fill: C.muted })}
+      <g filter="url(#shadow)">${rect(840, 290, 640, 270, '#14532d', 20, `stroke="${C.emerald}" stroke-width="3"`)}</g>
+      ${[0, 1, 2, 3, 4, 5, 6, 7]
+        .map((i) =>
+          rect(
+            872 + i * 76,
+            330,
+            58,
+            108,
+            '#0b1020',
+            8,
+            `stroke="${C.emerald}" stroke-opacity="0.6" stroke-width="2"`
+          )
+        )
+        .join('')}
+      ${text(872, 490, 'DRAM', { size: 40, weight: 800, fill: '#bbf7d0' })}
+      ${Array.from({ length: 22 }, (_, i) => rect(868 + i * 27, 532, 15, 28, C.yellow, 2)).join('')}
+      ${pill(840, 620, 'AI demand', { fill: C.pink + '33', color: C.pink, size: 24, h: 52, padX: 22 })}
+      ${pill(1090, 620, 'Supply tight', { fill: C.amber + '33', color: C.amber, size: 24, h: 52, padX: 22 })}
+      ${pill(1380, 620, 'Prices up', { fill: C.rose + '33', color: C.rose, size: 24, h: 52, padX: 22 })}`,
+      {
+        glows: [
+          [1400, 140, 320, C.rose, 0.35],
+          [220, 800, 300, C.amber, 0.3],
+        ],
+      }
+    ),
+
+  'blog/iran-war-tech-prices-2026/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'IRAN WAR · TECH PRICES', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      <path d="M150 250 H1450 V380 H1010 L920 470 H680 L590 380 H150 Z" fill="${C.card2}" stroke="${C.line}" stroke-width="3"/>
+      <path d="M150 680 H1450 V560 H1010 L920 560 H680 L590 560 H150 Z" fill="${C.card2}" stroke="${C.line}" stroke-width="3"/>
+      <path d="M150 560 H590 L680 560 H920 H1010 H1450 V680 H150 Z" fill="${C.card2}" stroke="${C.line}" stroke-width="3"/>
+      ${[
+        [250, 500],
+        [1100, 505],
+      ]
+        .map(
+          ([x, y]) => `<path d="M${x} ${y} h210 l-24 38 h-162 z" fill="${C.sky}"/>
+          ${[0, 1, 2].map((k) => rect(x + 14 + k * 62, y - 34, 54, 34, [C.amber, C.pink, C.teal][k], 4)).join('')}`
+        )
+        .join('')}
+      <path d="M800 400 V540" stroke="${C.rose}" stroke-width="6" stroke-dasharray="14 12" stroke-linecap="round"/>
+      <path d="M800 430 l30 52 h-60 z" fill="${C.amber}"/>
+      ${text(800, 474, '!', { size: 30, weight: 800, anchor: 'middle', fill: C.bg1 })}
+      ${text(800, 600, 'Strait of Hormuz', { size: 24, weight: 600, anchor: 'middle', fill: C.muted })}
+      ${pill(250, 740, 'Helium', { fill: C.violet + '33', color: C.violet, size: 26, h: 56, padX: 26 })}
+      ${pill(450, 740, 'Circuit-board materials', { fill: C.teal + '33', color: C.teal, size: 26, h: 56, padX: 26 })}
+      ${pill(910, 740, 'Freight', { fill: C.sky + '33', color: C.sky, size: 26, h: 56, padX: 26 })}
+      ${rect(1180, 725, 90, 90, C.card2, 16, `stroke="${C.amber}" stroke-width="3"`)}
+      ${rect(1203, 748, 44, 44, C.amber, 8)}
+      ${text(1300, 786, 'Prices?', { size: 30, weight: 700, fill: C.text })}`,
+      {
+        glows: [
+          [1400, 120, 320, C.amber, 0.3],
+          [200, 820, 300, C.sky, 0.3],
+        ],
+      }
+    ),
+
+  'blog/world-war-3-technology-iran-war/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'WAR AND TECH · WHAT IS REAL', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      <circle cx="800" cy="470" r="230" fill="${C.card}" stroke="${C.line}" stroke-width="3"/>
+      <ellipse cx="800" cy="470" rx="230" ry="80" fill="none" stroke="${C.line}" stroke-width="2"/>
+      <ellipse cx="800" cy="470" rx="100" ry="230" fill="none" stroke="${C.line}" stroke-width="2"/>
+      <path d="M800 240 V700 M570 470 H1030" stroke="${C.line}" stroke-width="2"/>
+      ${[
+        [420, 330],
+        [1180, 320],
+        [380, 640],
+        [1230, 620],
+      ]
+        .map(
+          ([x, y]) =>
+            `<path d="M${x} ${y} L800 470" stroke="${C.sky}" stroke-opacity="0.5" stroke-width="3"/><circle cx="${x}" cy="${y}" r="20" fill="${C.sky}"/>`
+        )
+        .join('')}
+      <path d="M1230 620 L800 470" stroke="${C.rose}" stroke-width="4" stroke-dasharray="12 12"/>
+      <circle cx="1230" cy="620" r="20" fill="${C.rose}"/>
+      <circle cx="800" cy="470" r="64" fill="none" stroke="${C.amber}" stroke-opacity="0.35" stroke-width="4"/>
+      <circle cx="800" cy="470" r="110" fill="none" stroke="${C.amber}" stroke-opacity="0.2" stroke-width="4"/>
+      <path d="M800 520 s-40 -50 -40 -76 a40 40 0 0 1 80 0 c0 26 -40 76 -40 76z" fill="${C.amber}"/>
+      <circle cx="800" cy="444" r="14" fill="${C.bg1}"/>
+      ${text(1230, 676, 'Cable cut?', { size: 22, weight: 600, anchor: 'middle', fill: C.rose })}
+      ${[
+        ['GPS', 150, C.amber],
+        ['Internet', 330, C.sky],
+        ['Data centres', 560, C.violet],
+        ['Undersea cables', 860, C.teal],
+      ]
+        .map(([label, x, c]) =>
+          pill(x, 800, label, { fill: c + '33', color: c, size: 26, h: 56, padX: 26 })
+        )
+        .join('')}`,
+      {
+        glows: [
+          [1400, 120, 320, C.sky, 0.3],
+          [200, 800, 300, C.amber, 0.3],
+        ],
+      }
+    ),
+
   'blog/gemini-4-argon-explained/cover': () =>
     frame(
       1600,

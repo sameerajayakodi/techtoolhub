@@ -40,6 +40,14 @@ export const MapPinIcon = (p: IconProps) => (
   </svg>
 )
 
+export const NewspaperIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M5 4h11a1 1 0 0 1 1 1v14H6a2 2 0 0 1-2-2V5a1 1 0 0 1 1-1z" />
+    <path d="M17 8h2a1 1 0 0 1 1 1v8a2 2 0 0 1-2 2h-1" />
+    <path d="M7.5 8h6M7.5 11.5h6M7.5 15h3.5" />
+  </svg>
+)
+
 export const CheckIcon = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="m5 12.5 4.5 4.5L19 7.5" />
@@ -135,4 +143,5 @@ export const categoryIcons = {
   code: CodeIcon,
   bolt: BoltIcon,
   pin: MapPinIcon,
+  news: NewspaperIcon,
 }

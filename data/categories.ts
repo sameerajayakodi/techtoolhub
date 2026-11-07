@@ -32,6 +32,15 @@ export const categories = [
     accent: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10',
   },
   {
+    slug: 'tech-news',
+    title: 'Tech News',
+    description:
+      'Explainers on the tech stories that move prices and affect what you buy: memory, chips, supply chains and the internet.',
+    icon: 'news',
+    gradient: 'from-indigo-500 via-blue-500 to-sky-400',
+    accent: 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10',
+  },
+  {
     slug: 'sri-lanka',
     title: 'Sri Lanka',
     description:

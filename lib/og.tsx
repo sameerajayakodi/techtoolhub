@@ -9,6 +9,7 @@ const gradients: Record<string, [string, string]> = {
   'ai-tools': ['#8b5cf6', '#ec4899'],
   'developer-tools': ['#0ea5e9', '#14b8a6'],
   productivity: ['#10b981', '#84cc16'],
+  'tech-news': ['#6366f1', '#0ea5e9'],
   'sri-lanka': ['#f59e0b', '#ef4444'],
   default: ['#6366f1', '#06b6d4'],
 }
