@@ -11,8 +11,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: isPreview
       ? { userAgent: '*', disallow: '/' }
       : [
-          // /go/ are outbound affiliate redirects (app/go/[tool]/route.ts); /ads/ are ad frames
-          { userAgent: '*', allow: '/', disallow: ['/api/', '/go/', '/ads/'] },
+          // /go/ are outbound affiliate redirects (app/go/[tool]/route.ts)
+          { userAgent: '*', allow: '/', disallow: ['/api/', '/go/'] },
           // Lets AdSense crawl every page so it can match relevant ads
           { userAgent: 'Mediapartners-Google', allow: '/' },
         ],

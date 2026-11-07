@@ -27,11 +27,14 @@ const reservedHeight: Record<AdPosition, string> = {
 
 const banners = siteMetadata.adsterra.banners
 
-/** Adsterra banner sizes per position, largest first (the first that fits is shown) */
+/**
+ * Adsterra banner sizes per position, largest first. The first size that fits and is not already
+ * on the page is shown (each Adsterra unit may appear only once per page).
+ */
 const adsterraSizes: Record<AdPosition, AdsterraBannerSize[]> = {
-  afterIntro: [banners.leaderboard, banners.banner, banners.rectangle],
+  afterIntro: [banners.leaderboard, banners.banner, banners.rectangle, banners.mobile],
   midArticle: [banners.rectangle],
-  endOfArticle: [banners.leaderboard, banners.banner, banners.rectangle],
+  endOfArticle: [banners.leaderboard, banners.banner, banners.rectangle, banners.mobile],
   sidebar: [banners.halfSkyscraper],
   home: [banners.leaderboard, banners.banner, banners.mobile],
 }

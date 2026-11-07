@@ -63,7 +63,9 @@ const siteMetadata = {
    * <AdSlot> shows these wherever no AdSense slot is configured, picking the largest banner
    * that fits the space. Popunder and Social Bar formats are deliberately not used.
    * Set NEXT_PUBLIC_ADSTERRA=off on Vercel to switch them off without a code change.
-   * The script host (bicea.org) is set in public/ads/banner.html.
+   * Banners load directly in the page (Adsterra does not allow wrapping them in an iframe),
+   * each unit at most once per page. The script host (bicea.org) is set in
+   * components/AdsterraBanner.tsx.
    */
   adsterra: {
     enabled: process.env.NEXT_PUBLIC_ADSTERRA !== 'off',

@@ -6,6 +6,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 // Google AdSense + Google Analytics need these hosts.
 // If you add other third-party scripts or embeds, allow their domains here too.
+// Adsterra banners run directly in the page (their terms forbid wrapping them in an iframe) and
+// load scripts and frames from ad hosts that change, so script-src and frame-src also allow https:.
 const googleAds = [
   'https://pagead2.googlesyndication.com',
   'https://*.googlesyndication.com',
@@ -19,13 +21,13 @@ const googleAds = [
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app ${googleAds};
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https: giscus.app ${googleAds};
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   media-src 'self' *.s3.amazonaws.com;
   connect-src *;
   font-src 'self';
-  frame-src 'self' giscus.app https://www.youtube-nocookie.com https://www.youtube.com ${googleAds};
+  frame-src 'self' https: giscus.app https://www.youtube-nocookie.com https://www.youtube.com ${googleAds};
   object-src 'none';
   base-uri 'self';
 `
@@ -104,23 +106,8 @@ module.exports = () => {
     async headers() {
       return [
         {
-          // Everything except the Adsterra banner frames
-          source: '/((?!ads/).*)',
+          source: '/(.*)',
           headers: securityHeaders,
-        },
-        {
-          // public/ads/banner.html runs Adsterra's scripts, whose ad hosts change, so it gets
-          // no script CSP. It is only framed by our own pages, in a sandbox without same-origin
-          // access (components/AdsterraBanner.tsx).
-          source: '/ads/:path*',
-          headers: [
-            { key: 'Content-Security-Policy', value: "frame-ancestors 'self'" },
-            { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
-            { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
-            ...securityHeaders.filter(
-              (h) => h.key !== 'Content-Security-Policy' && h.key !== 'X-Frame-Options'
-            ),
-          ],
         },
       ]
     },
