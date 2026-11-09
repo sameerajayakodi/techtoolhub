@@ -695,6 +695,47 @@ const images = {
       }
     ),
 
+  'blog/receive-freelance-payments-sri-lanka/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'FREELANCE PAYMENTS · SRI LANKA', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${[
+        ['$', 'Client abroad', 150, C.sky],
+        ['%', 'PayPal · Payoneer · Swift', 600, C.amber],
+        ['Rs', 'Your bank', 1050, C.emerald],
+      ]
+        .map(([sym, label, x, c], i) => {
+          const w = 400
+          const h = 400
+          const y = 230
+          const hi = i === 2
+          return `<g filter="url(#shadow)">${rect(x, y, w, h, C.card2, 40, `stroke="${hi ? c : C.line}" stroke-width="${hi ? 5 : 3}"`)}</g>
+          <circle cx="${x + w / 2}" cy="${y + 165}" r="96" fill="${c}" fill-opacity="${hi ? 0.95 : 0.25}"/>
+          ${text(x + w / 2, y + 165 + (sym === 'Rs' ? 26 : 30), sym, { size: sym === 'Rs' ? 72 : 88, weight: 800, anchor: 'middle', fill: hi ? C.bg1 : c })}
+          ${text(x + w / 2, y + 330, label, { size: label.length > 16 ? 26 : 32, weight: 700, anchor: 'middle', fill: C.text })}`
+        })
+        .join('')}
+      ${arrow(560, 430, 596, 430, C.muted, { width: 5 })}
+      ${arrow(1010, 430, 1046, 430, C.muted, { width: 5 })}
+      ${[
+        ['Fees per route', 150],
+        ['PayPal partner banks', 520],
+        ['15% tax rule', 990],
+      ]
+        .map(
+          ([label, x]) =>
+            `${check(x + 22, 760, 18, C.emerald)}${text(x + 54, 768, label, { size: 28, weight: 600, fill: C.text })}`
+        )
+        .join('')}`,
+      {
+        glows: [
+          [1400, 120, 320, C.emerald, 0.35],
+          [200, 820, 300, C.amber, 0.3],
+        ],
+      }
+    ),
+
   'blog/gemini-4-argon-explained/cover': () =>
     frame(
       1600,
