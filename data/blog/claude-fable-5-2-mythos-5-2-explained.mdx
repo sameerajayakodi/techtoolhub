@@ -1,0 +1,173 @@
+---
+title: 'Claude Fable 5.2 and Mythos 5.2: What’s New, Price and Who Gets It'
+date: '2026-11-10'
+lastmod: '2026-11-10'
+summary: 'Anthropic’s new Claude Fable 5.2 is faster and 20% cheaper than Fable 5.1, and Mythos 5.2 is the same model with fewer cyber and biology blocks for verified organisations. Benchmarks, prices, plans and the launch offer, from Anthropic’s own pages.'
+category: ai-tools
+format: news
+tags: ['claude', 'anthropic', 'claude fable 5.2', 'ai assistants']
+images: ['/static/images/blog/claude-fable-5-2-mythos-5-2-explained/cover.webp']
+verdict: 'Fable 5.2 is Anthropic’s most capable model for hard technical work and is cheaper than Fable 5.1; for everyday chat and coding, Anthropic itself still points people to Claude Opus 5.5.'
+featured: true
+affiliate: false
+authors: ['default']
+draft: false
+---
+
+Anthropic released **Claude Fable 5.2** and **Claude Mythos 5.2** on **9 November 2026**. They replace Fable 5.1 and Mythos 5.1 as the company's most capable models, aimed at long, difficult technical work: big coding projects, research and engineering.
+
+Here is what changed, what the two names mean, what it costs and who can use it. Everything below comes from Anthropic's announcement, its developer docs and its help centre, read on **10 November 2026**. Benchmark numbers are Anthropic's own; nobody has independently reproduced them yet.
+
+<Callout type="success" title="The short version">
+  **Fable 5.2** is available in the Claude apps on **Pro, Max, Ultra, Team and Enterprise** plans
+  (not Free) and through the API as `claude-fable-5-2`. It is **up to 30% faster** than Fable 5.1
+  and costs **$8 / $40 per million input / output tokens**, down from $10 / $50. **Mythos 5.2** is
+  the same model with lighter cybersecurity and biology safeguards, for organisations that pass
+  Anthropic's verification programmes. For everyday work, Anthropic still recommends starting with
+  **Claude Opus 5.5**.
+</Callout>
+
+<AdSlot position="afterIntro" />
+
+## Fable and Mythos: one model, two levels of access
+
+The two names are confusing, so start here: Anthropic says **Fable 5.2 and Mythos 5.2 are the same underlying model**.
+
+- **Fable 5.2** has strong cybersecurity and biology safeguards, which is why Anthropic can offer it to everyone on a paid plan. Anthropic notes that those safeguards "will block most cybersecurity-related tasks".
+- **Mythos 5.2** has the same capabilities without those blocks, so it is limited to organisations verified through Anthropic's **Cyber Verification Program** or **Life Sciences Verification Program**.
+
+If you are not a security team or a biomedical lab, Fable 5.2 is the one you can use.
+
+## What's new in 5.2
+
+- **Faster:** outputs arrive up to **30% faster** than Fable 5.1 and Mythos 5.1.
+- **Cheaper:** **$8 per million input tokens and $40 per million output tokens**, down from $10 and $50. Cache reads cost $0.20 per million tokens.
+- **More efficient:** Anthropic says Fable 5.2 at High effort matched Claude Opus 5.5 at Max effort on its main coding test (45.3% vs 45.5%) for roughly half the cost per task.
+- **Clearer writing:** testers found it communicates more clearly than earlier Fable and Mythos models.
+- **Optional fast mode:** up to **2.5 times faster** token generation, at $16 / $80 per million tokens.
+- **Fewer false blocks:** the cyber and biology safeguards are "as robust" as Fable 5.1's but "produce fewer unnecessary blocks", Anthropic says.
+
+## Benchmarks: where it leads, and where it doesn't
+
+Anthropic's table compares Fable 5.2 with Fable 5.1, its own Opus 5.5, OpenAI's GPT-6 Astra and Google's Gemini 4 Carbon. Scores are Anthropic's, at each model's highest available effort unless noted.
+
+| Test (what it measures)                  | Fable 5.2 | Fable 5.1 | Opus 5.5 | GPT-6 Astra | Gemini 4 Carbon |
+| ---------------------------------------- | --------- | --------- | -------- | ----------- | --------------- |
+| FrontierCode 2.0 (code that gets merged) | **49.1%** | 32.4%     | 45.5%    | 42.8%       | 41.1%           |
+| FrontierSWE v2 (agentic coding)          | **69.9%** | 56.3%     | 62.3%    | 65.5%       | 61.2%           |
+| AutomationBench (business workflows)     | 51.4%     | 31.4%     | 42.5%    | 41.4%       | **53.9%**       |
+| OSWorld 2.1 (using a computer)           | **89.3%** | 83.5%     | 87.2%    | 79.5%       | 81.5%           |
+| Humanity's Last Exam, with tools         | **74.2%** | 65.6%     | 67.7%    | 57.2%       | —               |
+| Remote Labor Index (real freelance jobs) | **41.3%** | 17.9%     | 21.3%    | 20.8%       | —               |
+| Chartography (reading charts, no tools)  | **73.4%** | 44.8%     | 64.4%    | 71.0%       | 72.5%           |
+| RoboDojo Sim (controlling robots)        | **64.9%** | 27.6%     | 39.4%    | 29.8%       | —               |
+
+Source: Anthropic's announcement, 9 November 2026. FrontierCode figures for Fable 5.2 and 5.1 are at Xhigh effort; Gemini 4 Carbon's is at Medium. A dash means Anthropic did not report a score.
+
+Fable 5.2 is not first everywhere. **Gemini 4 Carbon** scores higher on AutomationBench (53.9% vs 51.4%). On the AA-Briefcase knowledge-work test, Fable 5.2 leads on the rubric score (66.1%) but **Opus 5.5** has the higher Elo rating (1800 vs 1785). The biggest jumps over Fable 5.1 are in robotics, real-world freelance tasks and chart reading.
+
+## The headline demos
+
+Anthropic describes several things Fable 5.2 and Mythos 5.2 did during testing. These are the company's accounts, not independent results:
+
+- **An operating system from an empty folder.** An engineer asked Fable 5.2 to design a prototype OS. It coordinated **over 1,000 sub-agents for eight days** and produced a system that boots on a laptop, with disk, keyboard and network drivers, file storage, windows, a login screen and an installer.
+- **Fermat's Last Theorem, formalised in 30 hours.** About 1,000 Fable 5.2 agents translated the proof into the Lean proof language in 30 hours. Anthropic's earlier attempt with an unreleased research model took 11 days.
+- **Three working electronic devices.** From a one-paragraph prompt, it designed a voice-assistant hub, a USB speakerphone and a handheld virtual pet, including circuit boards, 3D-printed cases and software. Anthropic built them with the circuit-board company Diode.
+- **Two open physics problems.** Fable 5.2 solved two open problems about black holes, written up in two preprints.
+- **A real migration.** Agents running an earlier version moved one of Anthropic's production services from Python to Rust; it now starts about 26 times faster.
+
+Anthropic also says over 90% of the code changes merged into its core codebase are now written by Claude, with human guidance.
+
+<AdSlot position="midArticle" />
+
+## Mythos 5.2 and cybersecurity
+
+Mythos 5.2 is Anthropic's strongest model for security work. On Anthropic's internal **CVE Rediscovery** test (1,829 known vulnerabilities, run in October 2026), Mythos 5.2 found **10.2% more vulnerabilities than Opus 5.5** and **14.4% more than Mythos 5.1**.
+
+Outside testers report bigger gains. Mozilla, which has used Claude models to harden Firefox all year, said Mythos 5.2 "roughly doubled" its vulnerability discovery numbers compared with Mythos 5.1. Enterprise customers who are not in the verification programme can still reach Mythos 5.2 through **Claude Security**, Anthropic's codebase scanner.
+
+## Safety
+
+Anthropic says it believes "high-stakes risks from misalignment remain low" and that the model did "as well as, or better than" its recent models on most alignment measures. One example it gives: in a deliberately weak sandbox across more than 1,800 scenarios, Mythos 5.2 used credentials or files placed outside its sandbox in **3.1%** of cases. That is about the same as Opus 5.5 (3.3%) and far below Mythos 5 (39%) and Mythos 5.1 (21%).
+
+Anthropic is also open about a weaker result. On a test of harmful actions after wrongly concluding it was in a simulation, Mythos 5.2 scored slightly worse than Opus 5.5. The full details are in the Fable 5.2 and Mythos 5.2 system card.
+
+## Price and availability
+
+| Where                       | What you get                                                                                                                               |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Claude apps and Claude Code | Fable 5.2 on **Pro, Max, Ultra, Team and Enterprise** plans. Not on the Free plan.                                                         |
+| Claude API                  | Model ID `claude-fable-5-2`. **$8 input / $40 output** per million tokens; cache reads $0.20.                                              |
+| Fast mode                   | Up to 2.5 times faster output at **$16 / $80** per million tokens, on Claude Code, the Claude Platform, Google Cloud and Microsoft Foundry |
+| Cloud platforms             | Amazon Web Services, Google Cloud and Microsoft Azure (Foundry), plus the Claude Platform                                                  |
+| Mythos 5.2                  | Same price; only for organisations in Anthropic's Cyber or Life Sciences verification programmes                                           |
+
+Both models have a **1 million token context window** and can write up to **128,000 tokens** in one response. On Medium effort, the default in the Claude apps and Claude Code, Anthropic says Fable 5.2 finishes hard tasks with fewer tokens than Fable 5.1.
+
+### The launch offer
+
+To mark the release, Anthropic is giving paid subscribers extra Fable usage:
+
+- **Pro plans and standard Team seats:** all Fable models included for one week from launch, up to 50% of your weekly usage limits, plus one Fable limit reset.
+- **Max and Ultra plans, and premium Team seats:** one to three Fable limit resets, depending on how long you have paid. Under six months gets one, six to 12 months gets two, and over 12 months gets three.
+
+A reset gives back the weekly usage you spent on Fable models. It does not raise your limits. Resets only go to accounts with paid billing in place before **9 November 2026, 10:00 am PT**, and they are not offered on the Free plan.
+
+## Should you use it?
+
+For most people, probably not as your everyday model. Anthropic's own advice is to **start with Claude Opus 5.5** for most coding and knowledge work, move up to Fable 5.2 for the hardest, open-ended problems, and drop to Sonnet 5.5 or Haiku 5.5 for lighter tasks.
+
+Fable 5.2 makes sense if you:
+
+- run long, multi-step coding or research jobs that Opus 5.5 can't finish,
+- want an "advisor" model that cheaper Claude models can consult on hard steps, or
+- already use Fable 5.1, since 5.2 is faster and cheaper.
+
+**Developers moving from Fable 5.1** should read Anthropic's "What's new in Claude Fable 5.2" page first. It lists four breaking changes, including stricter rules on editing earlier turns of a conversation and the older computer-use tool no longer working outside Amazon Bedrock.
+
+## FAQ
+
+### Is Claude Fable 5.2 free?
+
+No. In the Claude apps it is available on Pro, Max, Ultra, Team and Enterprise plans, not on the Free plan. On the API it costs $8 per million input tokens and $40 per million output tokens.
+
+### What is the difference between Claude Fable 5.2 and Claude Mythos 5.2?
+
+They are the same model. Fable 5.2 has strong cybersecurity and biology safeguards and is open to all paid users. Mythos 5.2 has fewer of those blocks and is only for organisations verified through Anthropic's Cyber or Life Sciences programmes.
+
+### How much does Claude Fable 5.2 cost on the API?
+
+$8 per million input tokens and $40 per million output tokens, with cache reads at $0.20 per million. Fast mode costs $16 and $80.
+
+### Is Claude Fable 5.2 better than GPT-6?
+
+On Anthropic's own benchmarks, Fable 5.2 beats GPT-6 Astra on every test where both were scored, including coding, computer use and Humanity's Last Exam. These are Anthropic's numbers; wait for independent tests before treating them as settled.
+
+### What is the context window of Claude Fable 5.2?
+
+1 million tokens, which is both the default and the maximum, with up to 128,000 output tokens per response.
+
+### What is Claude fast mode?
+
+An optional mode that generates tokens up to 2.5 times faster, at double the normal price ($16 / $80 per million tokens). For Mythos 5.2, fast mode is only available to verified organisations.
+
+## What I could not verify
+
+- All benchmark scores, including those for GPT-6 Astra and Gemini 4 Carbon, are as reported by Anthropic. I have not run any tests myself.
+- The demos (the operating system, the devices, the physics results, the Fermat formalisation) are Anthropic's descriptions. I did not review the preprints or the system card in detail.
+- Anthropic does not publish how many Fable messages each plan includes, so I can't say how far the weekly limits go.
+- News sites also reported on Anthropic's planned stock market listing this week. That is outside this article and I did not check those reports.
+
+## Sources
+
+- [Introducing Claude Fable 5.2 and Claude Mythos 5.2](https://www.anthropic.com/claude-fable-and-mythos-5-2) (Anthropic, 9 November 2026)
+- [Claude Fable](https://www.anthropic.com/claude/fable) (Anthropic, availability and pricing)
+- [What's new in Claude Fable 5.2](https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2) (Claude Platform Docs)
+- [Claude Fable 5.2 launch offers](https://support.claude.com/en/articles/17506494-claude-fable-5-2-launch-offers) (Claude Help Center)
+
+## Related reading
+
+- [GPT-6 in ChatGPT: What's New and Which Plan Gets What](/blog/gpt-6-chatgpt-whats-new)
+- [Gemini 4 Argon: What's New and How to Get It](/blog/gemini-4-argon-explained)
+- [ChatGPT vs Claude vs Gemini (2026): Which AI Is Best?](/blog/chatgpt-vs-claude-vs-gemini)
+- [Best AI Coding Assistants](/blog/best-ai-coding-assistants)

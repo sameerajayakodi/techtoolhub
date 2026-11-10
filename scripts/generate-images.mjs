@@ -736,6 +736,46 @@ const images = {
       }
     ),
 
+  'blog/claude-fable-5-2-mythos-5-2-explained/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'AI NEWS · 9 NOVEMBER 2026', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${[
+        ['Fable 5.2', 'Paid Claude plans + API', 150, C.amber],
+        ['Mythos 5.2', 'Verified organisations', 900, C.violet],
+      ]
+        .map(([name, sub, x, c], i) => {
+          const w = 550
+          const h = 360
+          const y = 220
+          return `<g filter="url(#shadow)">${rect(x, y, w, h, C.card2, 40, `stroke="${c}" stroke-width="${i === 0 ? 5 : 3}"`)}</g>
+          <circle cx="${x + 110}" cy="${y + 110}" r="52" fill="${c}" fill-opacity="${i === 0 ? 0.95 : 0.3}"/>
+          ${text(x + 110, y + 128, '5.2', { size: 40, weight: 800, anchor: 'middle', fill: i === 0 ? C.bg1 : c })}
+          ${text(x + 60, y + 245, name, { size: 64, weight: 800, fill: C.text })}
+          ${text(x + 60, y + 300, sub, { size: 28, weight: 600, fill: C.muted })}`
+        })
+        .join('')}
+      ${rect(700, 380, 200, 40, C.bg1, 20, `stroke="${C.line}" stroke-width="2"`)}
+      ${text(800, 408, 'same model', { size: 22, weight: 700, anchor: 'middle', fill: C.text })}
+      ${[
+        ['Up to 30% faster', 150],
+        ['$8 / $40 per M tokens', 560],
+        ['1M context', 1060],
+      ]
+        .map(
+          ([label, x]) =>
+            `${check(x + 22, 760, 18, C.emerald)}${text(x + 54, 768, label, { size: 28, weight: 600, fill: C.text })}`
+        )
+        .join('')}`,
+      {
+        glows: [
+          [260, 150, 320, C.amber, 0.35],
+          [1400, 820, 320, C.violet, 0.35],
+        ],
+      }
+    ),
+
   'blog/gemini-4-argon-explained/cover': () =>
     frame(
       1600,
