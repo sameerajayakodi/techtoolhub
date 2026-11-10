@@ -776,6 +776,114 @@ const images = {
       }
     ),
 
+  'blog/windows-10-security-updates-2027/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'WINDOWS 10 · SECURITY UPDATES', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      <g filter="url(#shadow)">${rect(150, 200, 560, 460, C.card2, 40, `stroke="${C.sky}" stroke-width="5"`)}</g>
+      ${rect(150, 200, 560, 110, C.sky, 40)}
+      ${rect(150, 270, 560, 40, C.sky, 0)}
+      ${text(430, 275, 'ESU NOW ENDS', { size: 34, weight: 800, anchor: 'middle', fill: C.bg1 })}
+      ${text(430, 470, '12 Oct', { size: 120, weight: 800, anchor: 'middle', fill: C.text })}
+      ${text(430, 590, '2027', { size: 90, weight: 800, anchor: 'middle', fill: C.sky })}
+      <g filter="url(#shadow)">${rect(840, 250, 300, 200, C.card2, 18, `stroke="${C.sky}" stroke-width="4"`)}</g>
+      ${rect(860, 270, 260, 160, C.bg1, 10)}
+      ${text(990, 382, '10', { size: 80, weight: 800, anchor: 'middle', fill: C.sky })}
+      ${rect(800, 452, 380, 22, C.line, 11)}
+      ${arrow(1180, 360, 1290, 360, C.muted, { width: 5 })}
+      <g filter="url(#shadow)">${rect(1300, 260, 150, 200, C.card2, 24, `stroke="${C.emerald}" stroke-width="3"`)}</g>
+      ${text(1375, 380, '11', { size: 72, weight: 800, anchor: 'middle', fill: C.emerald })}
+      ${[
+        ['Free with settings backup', 150],
+        ['1,000 Rewards points', 650],
+        ['$30 one-time', 1080],
+      ]
+        .map(
+          ([label, x]) =>
+            `${check(x + 22, 770, 18, C.emerald)}${text(x + 54, 778, label, { size: 28, weight: 600, fill: C.text })}`
+        )
+        .join('')}`,
+      {
+        glows: [
+          [1400, 120, 320, C.sky, 0.35],
+          [200, 820, 300, C.emerald, 0.25],
+        ],
+      }
+    ),
+
+  'blog/microsoft-ignite-2026-keynote-how-to-watch/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'MICROSOFT IGNITE 2026', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      ${text(150, 290, '17–20 November', { size: 96, weight: 800, fill: C.text })}
+      ${text(150, 360, 'Moscone Center, San Francisco', { size: 36, weight: 600, fill: C.muted })}
+      <g filter="url(#shadow)">${rect(150, 430, 1300, 190, C.card2, 32, `stroke="${C.blue}" stroke-width="4"`)}</g>
+      ${text(200, 500, 'KEYNOTE · TUESDAY 17 NOVEMBER', { size: 26, weight: 700, fill: C.blue })}
+      ${[
+        ['10:00 PT', 200],
+        ['18:00 UTC', 590],
+        ['23:30 Sri Lanka', 980],
+      ]
+        .map(
+          ([label, x]) =>
+            `${rect(x, 525, 340, 70, C.bg1, 35, `stroke="${C.line}" stroke-width="2"`)}${text(x + 170, 572, label, { size: 32, weight: 700, anchor: 'middle', fill: C.text })}`
+        )
+        .join('')}
+      ${[
+        ['Free Digital pass', 150],
+        ['AI agents', 600],
+        ['Copilot', 920],
+        ['Security', 1180],
+      ]
+        .map(
+          ([label, x]) =>
+            `${check(x + 22, 770, 18, C.emerald)}${text(x + 54, 778, label, { size: 28, weight: 600, fill: C.text })}`
+        )
+        .join('')}`,
+      {
+        glows: [
+          [1400, 140, 320, C.blue, 0.4],
+          [220, 820, 300, C.violet, 0.3],
+        ],
+      }
+    ),
+
+  'blog/black-friday-2026-tech-deals-guide/cover': () =>
+    frame(
+      1600,
+      900,
+      `${pill(150, 80, 'BLACK FRIDAY · 27 NOVEMBER 2026', { fill: 'rgba(255,255,255,0.1)', color: C.text, size: 20 })}
+      <g filter="url(#shadow)">${rect(150, 190, 820, 470, C.card2, 36, `stroke="${C.line}" stroke-width="3"`)}</g>
+      ${text(200, 260, 'Price history', { size: 32, weight: 700, fill: C.text })}
+      ${[0, 1, 2, 3].map((i) => rect(200, 330 + i * 80, 720, 2, C.line, 0)).join('')}
+      <polyline points="210,420 300,410 390,430 480,415 570,425 660,330 720,330 780,440 900,560" fill="none" stroke="${C.rose}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="900" cy="560" r="14" fill="${C.emerald}"/>
+      ${pill(600, 270, '“Was” price', { fill: C.rose, color: C.bg1, size: 22, h: 44, padX: 18 })}
+      ${pill(720, 590, 'Real low', { fill: C.emerald, color: C.bg1, size: 22, h: 44, padX: 18 })}
+      <g filter="url(#shadow)">${rect(1060, 190, 390, 470, C.card2, 36, `stroke="${C.amber}" stroke-width="5"`)}</g>
+      ${text(1255, 330, 'Fri', { size: 56, weight: 700, anchor: 'middle', fill: C.amber })}
+      ${text(1255, 470, '27', { size: 150, weight: 800, anchor: 'middle', fill: C.text })}
+      ${text(1255, 580, 'Cyber Monday 30', { size: 30, weight: 600, anchor: 'middle', fill: C.muted })}
+      ${[
+        ['Check price history', 150],
+        ['Exact model', 640],
+        ['Pay by card', 1010],
+      ]
+        .map(
+          ([label, x]) =>
+            `${check(x + 22, 770, 18, C.emerald)}${text(x + 54, 778, label, { size: 28, weight: 600, fill: C.text })}`
+        )
+        .join('')}`,
+      {
+        glows: [
+          [1400, 120, 320, C.amber, 0.35],
+          [200, 820, 300, C.rose, 0.3],
+        ],
+      }
+    ),
+
   'blog/gemini-4-argon-explained/cover': () =>
     frame(
       1600,
