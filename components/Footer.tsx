@@ -5,6 +5,7 @@ import { categories } from '@/data/categories'
 import SocialIcon from '@/components/social-icons'
 import { RssIcon } from './icons'
 import CookieSettingsButton from './CookieSettingsButton'
+import SponsoredLink from './SponsoredLink'
 
 const columns = [
   {
@@ -106,6 +107,11 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} {siteMetadata.title}. All rights reserved. ·{' '}
             <CookieSettingsButton className="hover:text-primary-600 underline" />{' '}
+            {siteMetadata.adsterra.enabled && siteMetadata.adsterra.smartlink ? (
+              <>
+                · <SponsoredLink variant="footer" />{' '}
+              </>
+            ) : null}
             {/* Adsterra domain verification code (also in the <head> meta tags) */}
             <span className="text-[10px] text-gray-400 dark:text-gray-600">A7B2C9D</span>
           </p>

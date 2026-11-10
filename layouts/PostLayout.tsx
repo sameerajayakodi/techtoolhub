@@ -7,6 +7,7 @@ import Image from '@/components/Image'
 import NextImage from 'next/image'
 import Tag from '@/components/Tag'
 import AdSlot from '@/components/AdSlot'
+import SponsoredLink from '@/components/SponsoredLink'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import TableOfContents, { type TocItem } from '@/components/TableOfContents'
 import { CategoryBadge, TypeBadge } from '@/components/CategoryBadge'
@@ -233,6 +234,7 @@ export default function PostLayout({
             </div>
 
             <AdSlot position="endOfArticle" />
+            <SponsoredLink variant="card" />
 
             {tags && tags.length > 0 && (
               <div className="mt-10 flex flex-wrap gap-2">
@@ -310,6 +312,7 @@ export default function PostLayout({
             <div className="sticky top-24 space-y-8">
               <TableOfContents toc={tocItems} />
               <AdSlot position="sidebar" className="my-0!" />
+              <SponsoredLink variant="sidebar" />
             </div>
           </aside>
         </div>

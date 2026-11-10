@@ -69,6 +69,14 @@ const siteMetadata = {
    */
   adsterra: {
     enabled: process.env.NEXT_PUBLIC_ADSTERRA !== 'off',
+    /**
+     * Adsterra Smartlink (dashboard → Smartlinks, traffic type Mainstream). Shown only as labelled
+     * "Sponsored" links by components/SponsoredLink.tsx; empty hides them.
+     * NEXT_PUBLIC_ADSTERRA_SMARTLINK overrides it.
+     */
+    smartlink:
+      process.env.NEXT_PUBLIC_ADSTERRA_SMARTLINK ??
+      'https://asiafilm.org/4/85ffd454b67c016380f9669e234bb019',
     banners: {
       leaderboard: { key: '40310757c5f736e567adcc360cec0351', width: 728, height: 90 },
       banner: { key: '2ed823eedea4033b0d3fe507ec3a6bbc', width: 468, height: 60 },
